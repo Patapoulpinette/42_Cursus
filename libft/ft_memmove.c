@@ -27,12 +27,3 @@ void    *ft_memmove(void *dst, const void *src, size_t len)
     }
     return (dst);
 }
-
-int main()
-{
-    char *source = 0;
-    char destination[] = "Je suis une truite";
-    
-    ft_memmove(destination, source, 8);
-    return 0; 
-}
