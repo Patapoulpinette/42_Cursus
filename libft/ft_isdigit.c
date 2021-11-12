@@ -6,13 +6,13 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 17:48:13 by dbouron           #+#    #+#             */
-/*   Updated: 2021/11/12 17:48:14 by dbouron          ###   ########.fr       */
+/*   Updated: 2021/11/12 23:11:30 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isdigit(int c)
+int	ft_isdigit(int c)
 {
-    if (c >= '0' && c <= '9')
-        return (1);
-    return (0);
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }
