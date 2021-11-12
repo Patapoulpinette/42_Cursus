@@ -1,35 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/12 17:48:57 by dbouron           #+#    #+#             */
-/*   Updated: 2021/11/12 17:48:58 by dbouron          ###   ########.fr       */
+/*   Created: 2021/11/12 16:53:46 by dbouron           #+#    #+#             */
+/*   Updated: 2021/11/12 17:00:29 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t  ft_strlcat(char * restrict dst, const char * restrict src, size_t dstsize)
+int	ft_atoi(const char *str)
 {
-    size_t  i;
-    size_t  j;
+	int	i;
+	int	neg;
+	int	result;
 
-    i = 0;
-    j = ft_strlen(dst);
-    if (dstsize == 0)
-        return (ft_strlen(src));
-    else
-    {
-        while (j < dstsize - 1)
-        {
-            dst[j] = src[i];
-            i++;
-            j++;
-        }
-    }
-    dst[j] = '\0';
-    return (ft_strlen(src));
+	i = 0;
+	neg = 1;
+	result = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			neg = neg * -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		if (result != 0)
+			result = result * 10;
+		result = result + (str[i] - 48);
+		i++;
+	}
+	return (result * neg);
 }
