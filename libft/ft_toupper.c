@@ -6,13 +6,13 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 17:49:24 by dbouron           #+#    #+#             */
-/*   Updated: 2021/11/12 17:49:25 by dbouron          ###   ########.fr       */
+/*   Updated: 2021/11/12 20:52:01 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int ft_toupper(int c)
 {
-    if (c > 'a' && c < 'z')
+    if (c >= 'a' && c <= 'z')
         return (c - 32);
     return (c);
 }

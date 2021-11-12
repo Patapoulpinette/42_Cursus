@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 17:48:36 by dbouron           #+#    #+#             */
-/*   Updated: 2021/11/12 17:48:37 by dbouron          ###   ########.fr       */
+/*   Updated: 2021/11/12 20:49:35 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void    *ft_memmove(void *dst, const void *src, size_t len)
     }
     else if (source < dest)
     {
-        while (len >= 0)
+        while (len > 0)
         {
             dest[len - 1] = source[len - 1];
             len--;
