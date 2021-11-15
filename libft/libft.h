@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 17:49:40 by dbouron           #+#    #+#             */
-/*   Updated: 2021/11/12 23:16:34 by dbouron          ###   ########.fr       */
+/*   Updated: 2021/11/15 01:05:30 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+
+/* -------------------------------------------------------------------------- */
+/*                                  PARTIE 1                                  */
+/* -------------------------------------------------------------------------- */
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -39,5 +43,21 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t type_size);
 char	*ft_strdup(const char *s1);
+
+/* -------------------------------------------------------------------------- */
+/*                                  PARTIE 2                                  */
+/* -------------------------------------------------------------------------- */
+
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+/*ft_strjoin
+ft_strtrim
+ft_split
+ft_itoa
+ft_strmapi
+ft_striteri
+ft_putchar_fd
+ft_putstr_fd
+ft_putendl_fd
+ft_putnbr_fd*/
 
 #endif
