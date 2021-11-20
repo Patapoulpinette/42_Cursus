@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 17:49:40 by dbouron           #+#    #+#             */
-/*   Updated: 2021/11/15 01:05:30 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2021/11/20 16:05:40 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ char	*ft_strdup(const char *s1);
 /* -------------------------------------------------------------------------- */
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-/*ft_strjoin
-ft_strtrim
+char	*ft_strjoin(char const *s1, char const *s2);
+/*ft_strtrim
 ft_split
 ft_itoa
 ft_strmapi
