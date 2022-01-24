@@ -6,32 +6,38 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 16:06:15 by dbouron           #+#    #+#             */
-/*   Updated: 2021/11/20 17:19:59 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2021/11/28 18:12:10 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_start(char const *s1, char const *set)
+size_t	ft_char_in_set(char c, char const *set)
 {
 	size_t	i;
-	size_t	j;
 
 	i = 0;
-	j = 0;
-	while (s1[i])
+	while (set[i])
 	{
-		while (set[j])
-		{
-			if (s1[i] == set[j])
-			j++;
-		}
+		if (c == set[i])
+			return (1);
 		i++;
 	}
-	return (i);
+	return (0);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	
+	size_t	i;
+	size_t	j;
+
+	if (!s1)
+		return (0);
+	i = 0;
+	j = ft_strlen(s1) - 1;
+	while (ft_char_in_set(s1[i], set) == 1)
+		i++;
+	while (ft_char_in_set(s1[j], set) == 1)
+		j--;
+	return (ft_substr(s1, i, j - i + 1));
 }
