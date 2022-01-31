@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 18:14:14 by dbouron           #+#    #+#             */
-/*   Updated: 2022/01/30 17:56:04 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/01/31 18:30:10 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ size_t	ft_nbword(char const *s, char c)
 
 	i = 0;
 	nbword = 0;
-	while (s[i])
+	while (s[i] && i < ft_strlen(s))
 	{
 		check = 0;
 		while (s[i] != c)
@@ -46,51 +46,92 @@ size_t	ft_mallocstr(char const *s, char c, char **tab)
 	i = 0;
 	while (s[start] && s[end])
 	{
-		//comptage des chars
 		start = end;
 		while (s[start] == c)
 			start++;
 		end = start;
 		while (s[end] != c && s[end])
 			end++;
-		//mallocage des strings
 		tab[i] = malloc(sizeof(char) * ((end - start) + 1));
-		if (!tab[i])
+		if (!tab[i++])
 			return (0);
+		start++;
+		end++;
+	}
+	tab[i] = malloc(sizeof(char) * ((end - start) + 1));
+	if (!tab[i])
+		return (0);
+	return (1);
+}
+
+size_t	ft_fillingtab(char const *s, char c, char **tab)
+{
+	size_t	start;
+	size_t	end;
+	size_t	i;
+
+	start = 0;
+	end = 0;
+	i = 0;
+	while (s[start] && s[end])
+	{
+		start = end;
+		while (s[start] == c)
+			start++;
+		end = start;
+		while (s[end] != c && s[end])
+			end++;
+		tab[i] = ft_substr(s, (unsigned int)start, (end - start));
 		start++;
 		end++;
 		i++;
 	}
+	tab[i][0] = '\0';
 	return (1);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**tab;
-	size_t	nbword;
 	size_t	i;
 
-	i = 0;
-	nbword = ft_nbword(s, c); 
-	
-	// Mallocage du tableau
-	tab = malloc(sizeof(char) * (nbword + 1));
+	tab = malloc(sizeof(char) * (ft_nbword(s, c) + 1));
 	if (!tab)
 		return (NULL);
-
-	// Mallocage des strings
-
+	if (ft_mallocstr(s, c, tab) == 0)
+	{
+		i = 0;
+		while (tab[i])
+		{
+			free(tab[i]);
+			i++;
+		}
+		free(tab);
+		return (NULL);
+	}
+	ft_fillingtab(s, c, tab);
 	return (tab);
 }
-
-
-#include <stdio.h>
+/* 
 
 int main(void)
 {
 	char	*string;
+	size_t	nbword;
+	char	**result;
+	int		i;
 
-	string = "Je suis une truite";
-	printf("%zu", ft_nbword(string, ' '));
+	string = "Je suis une patapoulpinette";
+	i = 0;
+	nbword = ft_nbword(string, 'e');
+	printf("%zu \n", nbword);
+	result = ft_split(string, 'e');
+	if (!result)
+		return (0);
+	while (i < nbword)
+	{
+		printf("%s \n", result[i]);
+		i++;
+	}
 	return (0);
-}
+} */
