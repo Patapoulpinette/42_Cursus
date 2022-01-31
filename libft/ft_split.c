@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 18:14:14 by dbouron           #+#    #+#             */
-/*   Updated: 2022/01/28 20:57:45 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/01/30 17:56:04 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,33 @@ size_t	ft_nbword(char const *s, char c)
 	return (nbword);
 }
 
-size_t	ft_nbchar(char const *s, char c)
+size_t	ft_mallocstr(char const *s, char c, char **tab)
 {
 	size_t	start;
 	size_t	end;
+	size_t	i;
 
 	start = 0;
-	end = start;
-	//dans le but de faire un substr
-	while (s[start])
+	end = 0;
+	i = 0;
+	while (s[start] && s[end])
 	{
+		//comptage des chars
+		start = end;
 		while (s[start] == c)
 			start++;
-		while (s[end] != c)
+		end = start;
+		while (s[end] != c && s[end])
 			end++;
+		//mallocage des strings
+		tab[i] = malloc(sizeof(char) * ((end - start) + 1));
+		if (!tab[i])
+			return (0);
+		start++;
+		end++;
+		i++;
 	}
-	return (end - start);
+	return (1);
 }
 
 char	**ft_split(char const *s, char c)
@@ -63,17 +74,12 @@ char	**ft_split(char const *s, char c)
 	nbword = ft_nbword(s, c); 
 	
 	// Mallocage du tableau
-	tab = malloc(sizeof(char) * nbword);
+	tab = malloc(sizeof(char) * (nbword + 1));
 	if (!tab)
 		return (NULL);
 
 	// Mallocage des strings
-	while (i <= nbword)
-	{
-		tab[i] = malloc(sizeof(char) * ft_nbchar(s, c));
-		if (!tab[i])
-			return (NULL);
-	}
+
 	return (tab);
 }
 
