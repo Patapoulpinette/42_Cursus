@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 19:16:16 by dbouron           #+#    #+#             */
-/*   Updated: 2022/01/28 19:58:43 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/02/02 17:52:08 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (0);
 	if (start >= ft_strlen(s))
 		return ((char *)ft_calloc(1, 1));
-	result = stupidity_check(result, s, start, len);
+	if (!(result = stupidity_check(result, s, start, len)))
+		return (NULL);
 	while (s[i] && i < (start + len))
 	{
 		result[j] = s[i];
