@@ -6,7 +6,7 @@
 #    By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/12 18:07:46 by dbouron           #+#    #+#              #
-#    Updated: 2022/01/28 20:03:09 by dbouron          ###   ########lyon.fr    #
+#    Updated: 2022/02/06 17:01:12 by dbouron          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRC = ft_bzero.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_memcmp.c \
 	ft_tolower.c ft_atoi.c ft_calloc.c ft_isalpha.c ft_isdigit.c ft_memchr.c \
 	ft_memcpy.c ft_memset.c ft_strdup.c ft_strlcpy.c ft_strncmp.c \
 	ft_strrchr.c ft_toupper.c ft_substr.c ft_strjoin.c ft_strtrim.c \
-	ft_split.c
+	ft_split.c ft_itoa.c ft_strmapi.c
 
 OBJS = $(SRC:.c=.o)
 
