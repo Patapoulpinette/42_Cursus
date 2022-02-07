@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 19:23:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/07 20:28:24 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/02/07 21:50:02 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 t_list	*ft_lstnew(void *content)
 {
-/* 	t_list	listing;
+	t_list	*first_element;
 
-	listing = malloc(sizeof(t_list));
-	if (!listing)
+	first_element = malloc(sizeof(t_list));
+	if (!first_element)
 		return (NULL);
-	listing->content = content;
-	listing->next = NULL;
-	return (listing); */
+	first_element->content = content;
+	first_element->next = NULL;
+	return (first_element);
 }
