@@ -1,30 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/06 16:58:45 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/07 11:19:38 by dbouron          ###   ########lyon.fr   */
+/*   Created: 2022/02/07 11:18:44 by dbouron           #+#    #+#             */
+/*   Updated: 2022/02/07 11:49:45 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	char			*str;
 	unsigned int	i;
 
 	i = 0;
-	str = ft_calloc(1, sizeof(char) * (ft_strlen(s) + 1));
-	if (!str || !s)
-		return (NULL);
 	while (s[i])
 	{
-		str[i] = (*f)(i, s[i]);
+		(*f)(i, &s[i]);
 		i++;
 	}
-	return (str);
 }
+
+/* void function(unsigned int i, char *a)
+{
+	if (i < ft_strlen(a))
+		a[i] = a[i] - 32;
+}
+
+int main(void)
+{
+    char    *str;
+
+    //void (*f)(unsigned int, char *) = &function;
+    str = "bonjour";
+	ft_striteri(str, &function);
+    printf("str= %s\n", str);
+    return (0);
+} */

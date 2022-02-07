@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 17:49:40 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/06 17:00:06 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/02/07 11:20:31 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-/*ft_striteri
-ft_putchar_fd
+void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+/*ft_putchar_fd
 ft_putstr_fd
 ft_putendl_fd
 ft_putnbr_fd*/
