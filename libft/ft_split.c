@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 18:14:14 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/02 18:11:58 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/02/07 16:23:56 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ size_t	ft_fillingtab(char const *s, char c, char **tab)
 		end = start;
 		while (s[end] != c && s[end])
 			end++;
-		if (!(tab[i] = ft_substr(s, (unsigned int)start, (end - start))))
+		tab[i] = ft_substr(s, (unsigned int)start, (end - start));
+		if (!tab[i])
 			return (0);
 		i++;
 	}
@@ -68,7 +69,7 @@ char	**ft_split(char const *s, char c)
 	tab = ft_calloc(sizeof(char *), (ft_nbword(s, c) + 1));
 	if (!tab)
 		return (NULL);
-	if(!(ft_fillingtab(s, c, tab)))
+	if (!(ft_fillingtab(s, c, tab)))
 	{
 		i = 0;
 		while (tab[i])
