@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 17:49:40 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/07 15:33:14 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/02/07 19:25:59 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,17 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+
+/* -------------------------------------------------------------------------- */
+/*                                   BONUS                                    */
+/* -------------------------------------------------------------------------- */
+
+typedef struct		s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
+
+t_list	*ft_lstnew(void *content);
 
 #endif
