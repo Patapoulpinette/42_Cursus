@@ -6,13 +6,13 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 16:06:15 by dbouron           #+#    #+#             */
-/*   Updated: 2021/11/28 18:12:10 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/02/08 19:15:41 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_char_in_set(char c, char const *set)
+static size_t	ft_char_in_set(char c, char const *set)
 {
 	size_t	i;
 

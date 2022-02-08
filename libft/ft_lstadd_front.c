@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/07 15:32:51 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/08 18:59:59 by dbouron          ###   ########lyon.fr   */
+/*   Created: 2022/02/08 11:06:29 by dbouron           #+#    #+#             */
+/*   Updated: 2022/02/08 13:43:49 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	unsigned int	nb;
-
-	if (n < 0)
+	if (new != NULL)
 	{
-		write(fd, "-", 1);
-		n = n * -1;
+		new->next = *lst;
+		*lst = new;
 	}
-	nb = n;
-	if (nb > 9)
-	{
-		ft_putnbr_fd(nb / 10, fd);
-	}
-	ft_putchar_fd('0' + nb % 10, fd);
 }

@@ -6,13 +6,13 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 19:16:16 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/07 16:24:52 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/02/08 19:16:15 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*stupidity_check(char *result, char const *s, unsigned int start,
+static char	*stupidity_check(char *result, char const *s, unsigned int start,
 		size_t len)
 {
 	if (ft_strlen(s) > len)

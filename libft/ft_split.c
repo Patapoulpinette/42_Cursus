@@ -6,13 +6,13 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 18:14:14 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/07 16:23:56 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/02/08 19:10:57 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_nbword(char const *s, char c)
+static size_t	ft_nbword(char const *s, char c)
 {
 	size_t	check;
 	size_t	i;
@@ -35,7 +35,7 @@ size_t	ft_nbword(char const *s, char c)
 	return (nbword);
 }
 
-size_t	ft_fillingtab(char const *s, char c, char **tab)
+static size_t	ft_fillingtab(char const *s, char c, char **tab)
 {
 	size_t	start;
 	size_t	end;

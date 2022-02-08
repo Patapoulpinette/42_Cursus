@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/07 15:32:51 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/08 18:59:59 by dbouron          ###   ########lyon.fr   */
+/*   Created: 2022/02/08 16:36:50 by dbouron           #+#    #+#             */
+/*   Updated: 2022/02/08 18:49:34 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	unsigned int	nb;
+	t_list	*new_lst;
+	t_list	*temp;
 
-	if (n < 0)
+	if (!lst)
+		return (NULL);
+	new_lst = 0;
+	while (lst)
 	{
-		write(fd, "-", 1);
-		n = n * -1;
+		temp = ft_lstnew((*f)(lst->content));
+		if (!temp)
+		{
+			ft_lstclear(&temp, (*del));
+			return (NULL);
+		}
+		lst = lst->next;
+		ft_lstadd_back(&new_lst, temp);
 	}
-	nb = n;
-	if (nb > 9)
-	{
-		ft_putnbr_fd(nb / 10, fd);
-	}
-	ft_putchar_fd('0' + nb % 10, fd);
+	return (new_lst);
 }
