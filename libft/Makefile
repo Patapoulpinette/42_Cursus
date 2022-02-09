@@ -6,11 +6,12 @@
 #    By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/12 18:07:46 by dbouron           #+#    #+#              #
-#    Updated: 2022/02/08 16:38:01 by dbouron          ###   ########lyon.fr    #
+#    Updated: 2022/02/09 14:23:24 by dbouron          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
+HEADFILE = libft.h
 
 SRC = ft_bzero.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_memcmp.c \
 	ft_memmove.c ft_strchr.c ft_strlcat.c ft_strlen.c ft_strnstr.c \
@@ -27,7 +28,7 @@ OBJS = $(SRC:.c=.o)
 
 OBJS_BONUS = $(SRC_BONUS:.c=.o)
 
-%.o: %.c
+%.o: %.c $(HEADFILE)
 	gcc -Wall -Werror -Wextra -o $@ -c $<
 
 $(NAME) : $(OBJS)
