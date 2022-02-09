@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 17:48:30 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/08 18:59:39 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/02/09 14:59:22 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	i = 0;
 	source = (char *)src;
 	destination = (char *)dst;
-	if (source == 0 || destination == 0)
+	if (source == 0 && destination == 0)
 		return (0);
 	while (i < n)
 	{
