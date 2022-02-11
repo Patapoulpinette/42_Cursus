@@ -6,15 +6,15 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:38:15 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/11 17:54:34 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/02/11 18:07:32 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strchr(const char *s, int c)
+size_t	ft_strchr(const char *s, char c)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (s[i])
