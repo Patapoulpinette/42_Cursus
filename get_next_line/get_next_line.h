@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 15:03:58 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/11 15:40:51 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/02/11 17:52:39 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,9 @@
 # include <unistd.h>/* pour read() */
 
 char	*get_next_line(int fd);
+char	*ft_strchr(const char *s, int c);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+size_t	ft_strlen(const char *s);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif

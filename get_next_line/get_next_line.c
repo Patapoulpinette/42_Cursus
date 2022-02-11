@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 15:03:23 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/11 16:46:23 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/02/11 17:57:14 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 char	*get_next_line(int fd)
 {
 	static char	*buffer;
+	char		*backup;
+	char		*result;
 	int			size;
 
 	if (fd == -1)
@@ -28,5 +30,9 @@ char	*get_next_line(int fd)
 	size = read(fd, buffer, buffer_size);
 	/* if (size retourne une valeur d'erreur)
 		return 0; */
-	
+	if (ft_strchr(buffer, '\n') != 0)
+	{
+		result = ft_strjoin(buffer, backup);
+		backup = ft_substr(buffer, 0, ft_strchr(buffer, '\n'));
+	}
 }
