@@ -15,19 +15,20 @@ int main()
 		return 0;
 	
 	/*	on passe a read : */
-	size = read (fd, buf, 32);
-	printf("size : %d\n", size);
+/* 	size = read (fd, buf, 32);
+	printf("size : %d\n", size); */
 	
+	printf("GNL : %s\n", get_next_line(fd));
 	/*
-		On raoute un '\0' à la fin de la chaine lut, pour être sur d'avoir une chaine de caractères valide.
+		On raoute un '\0' à la fin de la chaine lue, pour être sur d'avoir une chaine de caractères valide.
 		size correspondant a l'index du dernier caractere du buffer + 1.
-		Ceci est utile si tu veux utiliser ta chaine dans une fonction comme strcmp() ou printf()
+		Ceci est utile si on veut utiliser la chaine de caractères dans une fonction comme strcmp() ou printf()
 	*/
 
-	buf[size] = 0;
-	printf("buffer : %s\n", buf);
+/* 	buf[size] = 0;
+	printf("buffer : %s\n", buf); */
 
-	/*	Ne pas oublier de libérer ton file descriptor */
+	/*	Ne pas oublier de libérer fd */
 	close(fd);
 
 	return 0;
