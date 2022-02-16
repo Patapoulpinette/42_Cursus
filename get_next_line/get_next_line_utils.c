@@ -6,18 +6,20 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:38:15 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/11 18:07:32 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/02/16 18:34:54 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strchr(const char *s, char c)
+size_t	ft_mystrchr(const char *s, char c, size_t len)
 {
 	size_t	i;
 
 	i = 0;
-	while (s[i])
+	if (!s)
+		return (0);
+	while (s[i] && i < len)
 	{
 		if (s[i] == (char)c)
 			return (i);
@@ -26,18 +28,6 @@ size_t	ft_strchr(const char *s, char c)
 	if (s[i] == (char)c)
 		return (i);
 	return (0);
-}
-
-static char	*stupidity_check(char *result, char const *s, unsigned int start,
-		size_t len)
-{
-	if (ft_strlen(s) > len)
-		result = malloc(sizeof(char) * (len + 1));
-	else
-		result = malloc(sizeof(char) * (ft_strlen(s) - start + 1));
-	if (!result)
-		return (NULL);
-	return (result);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -53,7 +43,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (0);
 	if (start >= ft_strlen(s))
 		return (0);
-	result = stupidity_check(result, s, start, len);
+	if (ft_strlen(s) > len)
+		result = malloc(sizeof(char) * (len + 1));
+	else
+		result = malloc(sizeof(char) * (ft_strlen(s) - start + 1));
 	if (!result)
 		return (NULL);
 	while (s[i] && i < (start + len))
@@ -71,6 +64,8 @@ size_t	ft_strlen(const char *s)
 	int	i;
 
 	i = 0;
+	if (!s)
+		return (0);
 	while (s[i])
 		i++;
 	return (i);
@@ -82,6 +77,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	i;
 	size_t	j;
 
+	if (!s1 && !s2)
+		return (NULL);
 	result = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!result)
 		return (NULL);

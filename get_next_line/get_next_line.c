@@ -6,34 +6,67 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 15:03:23 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/15 19:19:49 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/02/16 18:12:36 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h> // pour tester avec puts
 
-#define buffer_size 32
+#define BUFFER_SIZE 32
 
 char	*get_next_line(int fd)
 {
-	char		*buffer;
-	static char	*backup;
+	char		buffer[BUFFER_SIZE + 1];
+	static char	*backup = NULL;
 	char		*result;
 	int			size;
+	size_t		char_in_buffer;
+	size_t		char_in_backup;
 
-	if (fd == -1)
+	if (fd == -1 || BUFFER_SIZE < 1 || read(fd, 0, 0) == -1)
 		return (NULL);
-	buffer = malloc(sizeof(char) * buffer_size);
-	if (!buffer)
-		return (NULL);
-
-	size = read(fd, buffer, buffer_size);
-	/* if (size retourne une valeur d'erreur)
-		return 0; */
-	if (ft_strchr(buffer, '\n') != 0)
+	puts("Les parametres donnes sont ok");
+	char_in_buffer = ft_mystrchr(buffer, '\n', BUFFER_SIZE);
+	puts("1er char in buffer ok");
+	char_in_backup = ft_mystrchr(backup, '\n', ft_strlen(backup));
+	puts("1er char in backup ok");
+	while (char_in_backup == 0 && char_in_buffer == 0)
 	{
-		result = ft_strjoin(backup, ft_substr(buffer, 0, ft_strchr(buffer, '\n')));
-		backup = ft_substr(buffer, ft_strchr(buffer, '\n'), ft_strlen(buffer) - ft_strchr(buffer, '\n'));
+		puts("avant de lire fd");
+		size = read(fd, buffer, BUFFER_SIZE);
+		if (size == -1)
+			return (NULL);
+		buffer[size] = '\0';
+		puts("Apres avoir lu");
+		char_in_buffer = ft_mystrchr(buffer, '\n', BUFFER_SIZE);
+		puts("2eme char in buffer ok");
+		if (char_in_buffer != 0)
+		{
+			result = ft_strjoin(backup, ft_substr(buffer, 0, char_in_buffer));
+			if (!result)
+				return (NULL);
+			puts("Result ok");
+			backup = ft_substr(buffer, char_in_buffer, \
+				ft_strlen(buffer) - char_in_buffer);
+			if (!backup)
+				return (NULL);
+			puts("backup ok");
+			return (result);
+		}
 	}
-	return (result);
+	if (ft_mystrchr(backup, '\n') != 0)
+	{
+		result = ft_substr(backup, 0, char_in_backup);
+		if (!result)
+			return (NULL);
+		puts("lecture de backup et result ok");
+		backup = ft_substr(backup, char_in_backup, \
+			ft_strlen(backup) - char_in_backup);
+		if (!backup)
+			return (NULL);
+		puts("Result de backup ok");
+		return (result);
+	}
+	return (NULL);
 }
