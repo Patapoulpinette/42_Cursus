@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:38:15 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/16 18:34:54 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/02/17 17:58:45 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	result = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!result)
+	{
+		free((void *)s1);
 		return (NULL);
+	}
 	i = 0;
 	while (s1[i])
 	{
@@ -90,11 +93,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	j = 0;
 	while (s2[j])
-	{
-		result[i] = s2[j];
-		i++;
-		j++;
-	}
+		result[i++] = s2[j++];
 	result[i] = '\0';
+	free((void *)s1);
 	return (result);
 }

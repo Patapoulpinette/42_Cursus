@@ -8,6 +8,7 @@ int	main(void)
 	int		fd;
 	char	buf[32];
 	int		size;
+	char	*result;
 
 	/*	On ouvre le fichier : en fait on recupere un fd sur le fichier*/
 	fd = open("test.txt", O_RDONLY);
@@ -19,12 +20,9 @@ int	main(void)
 /* 	size = read (fd, buf, 32);
 	printf("size : %d\n", size); */
 
-	printf("GNL : %s\n", get_next_line(fd));
-	/*
-		On raoute un '\0' à la fin de la chaine lue, pour être sur d'avoir une chaine de caractères valide.
-		size correspondant a l'index du dernier caractere du buffer + 1.
-		Ceci est utile si on veut utiliser la chaine de caractères dans une fonction comme strcmp() ou printf()
-	*/
+	result = get_next_line(fd);
+	printf("GNL : %s\n", result);
+	free(result);
 
 /* 	buf[size] = 0;
 	printf("buffer : %s\n", buf); */

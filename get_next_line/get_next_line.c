@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 15:03:23 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/16 18:12:36 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/02/17 16:34:06 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,19 @@ char	*get_next_line(int fd)
 	puts("1er char in backup ok");
 	while (char_in_backup == 0 && char_in_buffer == 0)
 	{
-		puts("avant de lire fd");
+		puts("Je rentre dans le boucle while car il n'y a pas de \\n");
 		size = read(fd, buffer, BUFFER_SIZE);
 		if (size == -1)
 			return (NULL);
 		buffer[size] = '\0';
 		puts("Apres avoir lu");
+		printf("size = %d\n", size);
+		printf("buffer = %s\n", buffer);
 		char_in_buffer = ft_mystrchr(buffer, '\n', BUFFER_SIZE);
 		puts("2eme char in buffer ok");
 		if (char_in_buffer != 0)
 		{
+			puts("Je rentre dans le if car il y a un \\n");
 			result = ft_strjoin(backup, ft_substr(buffer, 0, char_in_buffer));
 			if (!result)
 				return (NULL);
@@ -54,6 +57,8 @@ char	*get_next_line(int fd)
 			puts("backup ok");
 			return (result);
 		}
+		backup = ft_strjoin(backup, buffer);
+		printf("backup = %s\n", backup);
 	}
 	if (ft_mystrchr(backup, '\n') != 0)
 	{
