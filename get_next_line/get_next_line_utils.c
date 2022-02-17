@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:38:15 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/17 17:58:45 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/02/17 21:18:23 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ size_t	ft_mystrchr(const char *s, char c, size_t len)
 
 	i = 0;
 	if (!s)
-		return (0);
+		return (-1);
+	if (len == 0)
+		return (-1);
 	while (s[i] && i < len)
 	{
 		if (s[i] == (char)c)
@@ -27,7 +29,7 @@ size_t	ft_mystrchr(const char *s, char c, size_t len)
 	}
 	if (s[i] == (char)c)
 		return (i);
-	return (0);
+	return (-1);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
