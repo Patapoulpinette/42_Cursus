@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 15:03:23 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/18 16:46:01 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/02/21 17:52:22 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,20 @@ char	*get_next_line(int fd)
 			if (!result)
 				return (NULL);
 			//printf("result = %s\n", result);
-			backup = ft_substr(buffer, ft_mystrchr(buffer, '\n') + 1, ft_strlen(buffer) - ft_mystrchr(buffer, '\n'));
-			if (!backup)
-				return (NULL);
-			//printf("backup = %s\n", backup);
+			//printf("start = %d, len = %lu\n", ft_mystrchr(buffer, '\n') + 1, ft_strlen(buffer));
+			if (ft_mystrchr(buffer, '\n') + 1 == (int)ft_strlen(buffer))
+			{
+				//puts("Je suis dans le if");
+				backup = NULL;
+			}
+			else
+			{
+				//puts("Je suis dans le else");
+				backup = ft_substr(buffer, ft_mystrchr(buffer, '\n') + 1, ft_strlen(buffer) - ft_mystrchr(buffer, '\n') - 1);
+				if (!backup)
+					return (NULL);
+				//printf("Il y a un \\n dans buffer donc la fin de buffer va dans backup = %s\n", backup);
+			}
 			return (result);
 		}
 		backup = ft_strjoin(backup, buffer);
@@ -62,10 +72,10 @@ char	*get_next_line(int fd)
 		if (!result)
 			return (NULL);
 		//puts("lecture de backup et result ok");
-		backup = ft_substr(backup, ft_mystrchr(backup, '\n') + 1, ft_strlen(backup) - ft_mystrchr(backup, '\n'));
+		backup = ft_substr(backup, ft_mystrchr(backup, '\n') + 1, ft_strlen(backup) - ft_mystrchr(backup, '\n') - 1);
 		if (!backup)
 			return (NULL);
-		//puts("Result de backup ok");
+		//printf("Il y a un \\n dans backup donc la fin de backup va dans backup = %s\n", backup);
 		return (result);
 	}
 	return (NULL);

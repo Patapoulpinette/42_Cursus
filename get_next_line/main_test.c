@@ -6,52 +6,120 @@
 int	main(void)
 {
 	int		fd;
-	char	buf[32];
-	int		size;
-	char	*result;
+	char	*result = NULL;
 
 	fd = open("test.txt", O_RDONLY);
 	printf("open : %d\n", fd);
 	if (fd == -1)
 		return (0);
 
-/* 	puts("\n1ER ROUND\n");
+/* 	result = get_next_line(fd);
+	printf("GNL : %s\n", result);
+	free(result);
+
 	result = get_next_line(fd);
 	printf("GNL : %s\n", result);
 	free(result);
 
-	puts("\n2EME ROUND\n");
 	result = get_next_line(fd);
 	printf("GNL : %s\n", result);
 	free(result);
 
-	puts("\n3EME ROUND\n");
 	result = get_next_line(fd);
 	printf("GNL : %s\n", result);
 	free(result);
 
-	puts("\n4EME ROUND\n");
 	result = get_next_line(fd);
 	printf("GNL : %s\n", result);
 	free(result);
 
-	puts("\n5EME ROUND\n");
 	result = get_next_line(fd);
 	printf("GNL : %s\n", result);
 	free(result);
 
-	puts("\n6EME ROUND\n");
+	result = get_next_line(fd);
+	printf("GNL : %s\n", result);
+	free(result);
+
+	result = get_next_line(fd);
+	printf("GNL : %s\n", result);
+	free(result);
+
+	result = get_next_line(fd);
+	printf("GNL : %s\n", result);
+	free(result);
+
+	result = get_next_line(fd);
+	printf("GNL : %s\n", result);
+	free(result);
+
+	result = get_next_line(fd);
+	printf("GNL : %s\n", result);
+	free(result);
+
+	result = get_next_line(fd);
+	printf("GNL : %s\n", result);
+	free(result);
+
+	result = get_next_line(fd);
+	printf("GNL : %s\n", result);
+	free(result);
+
+	result = get_next_line(fd);
+	printf("GNL : %s\n", result);
+	free(result);
+
+	result = get_next_line(fd);
+	printf("GNL : %s\n", result);
+	free(result);
+
+	result = get_next_line(fd);
+	printf("GNL : %s\n", result);
+	free(result);
+
+	result = get_next_line(fd);
+	printf("GNL : %s\n", result);
+	free(result);
+
+	result = get_next_line(fd);
+	printf("GNL : %s\n", result);
+	free(result);
+
+	result = get_next_line(fd);
+	printf("GNL : %s\n", result);
+	free(result);
+
+	result = get_next_line(fd);
+	printf("GNL : %s\n", result);
+	free(result);
+
+	result = get_next_line(fd);
+	printf("GNL : %s\n", result);
+	free(result);
+
+	result = get_next_line(fd);
+	printf("GNL : %s\n", result);
+	free(result);
+
+	result = get_next_line(fd);
+	printf("GNL : %s\n", result);
+	free(result);
+
 	result = get_next_line(fd);
 	printf("GNL : %s\n", result);
 	free(result); */
 
-	while (result)
+	while (1)
 	{
 		result = get_next_line(fd);
+		if (!result)
+			break ;
 		printf("GNL : %s\n", result);
 		free(result);
 	}
-
+	result = get_next_line(fd);
+	printf("GNL : %s\n", result);
+	free(result);
 	close(fd);
 
 	return (0);

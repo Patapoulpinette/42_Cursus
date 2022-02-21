@@ -6,16 +6,16 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:38:15 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/18 16:46:31 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/02/21 16:23:35 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h> // pour tester avec puts
 
-size_t	ft_mystrchr(const char *s, char c)
+int	ft_mystrchr(const char *s, char c)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	if (!s)
@@ -76,7 +76,6 @@ static char	*ft_join_s2(char const *s2)
 {
 	char	*result;
 	size_t	i;
-	size_t	j;
 
 	result = malloc(sizeof(char) * (ft_strlen(s2) + 1));
 	if (!result)
