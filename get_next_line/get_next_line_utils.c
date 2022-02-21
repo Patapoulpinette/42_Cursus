@@ -6,12 +6,11 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:38:15 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/21 16:23:35 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/02/21 18:20:01 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h> // pour tester avec puts
 
 int	ft_mystrchr(const char *s, char c)
 {
@@ -96,14 +95,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	i;
 	size_t	j;
 
-	//puts("Je rentre dans strjoin");
 	if (!s1 && !s2)
 		return (NULL);
 	if (!s1)
 	{
 		return (ft_join_s2(s2));
 	}
-	//printf("Les parametres donnes sont :\n - s1(backup) = %s\n - s2(buffer) = %s\n", s1, s2);
 	result = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!result)
 		return (NULL);
