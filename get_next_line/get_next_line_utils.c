@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:38:15 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/21 19:50:33 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/02/22 19:06:07 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (start >= ft_strlen(s))
 		return (0);
 	if (ft_strlen(s) > len)
-		result = malloc(sizeof(char) * (len + 1));
+		result = ft_calloc((len + 1), sizeof(char));
 	else
-		result = malloc(sizeof(char) * (ft_strlen(s) - start + 1));
+		result = ft_calloc((ft_strlen(s) - start + 1), sizeof(char));
 	if (!result)
 		return (NULL);
 	while (s[i] && i < (start + len))
@@ -67,55 +67,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-// static char	*ft_join_s2(char const *s2)
-// {
-// 	char	*result;
-// 	size_t	i;
-
-// 	result = malloc(sizeof(char) * (ft_strlen(s2) + 1));
-// 	if (!result)
-// 		return (NULL);
-// 	i = 0;
-// 	while (s2[i])
-// 	{
-// 		result[i] = s2[i];
-// 		i++;
-// 	}
-// 	result[i] = '\0';
-// 	return (result);
-// }
-
-// char	*ft_strjoin(char const *s1, char const *s2)
-// {
-// 	char	*result;
-// 	size_t	i;
-// 	size_t	j;
-
-// 	if (!s1 && !s2)
-// 		return (NULL);
-// 	if (!s1)
-// 	{
-// 		return (ft_join_s2(s2));
-// 	}
-// 	result = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-// 	if (!result)
-// 		return (NULL);
-// 	i = 0;
-// 	while (s1[i])
-// 	{
-// 		result[i] = s1[i];
-// 		i++;
-// 	}
-// 	j = 0;
-// 	while (s2[j])
-// 		result[i++] = s2[j++];
-// 	result[i] = '\0';
-// 	free((void *)s1);
-// 	return (result);
-// }
-
-//------------------------------------------------------
-char *ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*result;
 	size_t	i;
@@ -123,11 +75,9 @@ char *ft_strjoin(char *s1, char *s2)
 
 	if (!s1 && !s2)
 		return (NULL);
-	puts("HELLO");
-	result = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	result = ft_calloc((ft_strlen(s1) + ft_strlen(s2) + 1), sizeof(char));
 	if (!result)
 		return (NULL);
-	puts("HELLO 1");
 	i = 0;
 	j = 0;
 	if (s1)
@@ -136,14 +86,29 @@ char *ft_strjoin(char *s1, char *s2)
 			result[i] = s1[i];
 			i++;
 		}
-	puts("HELLO 2");
-	puts(s2);
 	if (s2)
 		while (s2[j])
-			result[i++] = s1[j++];
-	puts("HELLO 3");
+			result[i++] = s2[j++];
 	result[i] = 0;
 	free(s1);
-	puts("HELLO 4");
+	return (result);
+}
+
+void	*ft_calloc(size_t count, size_t type_size)
+{
+	void	*result;
+	size_t	i;
+	char	*str;
+
+	result = malloc(count * type_size);
+	if (!result)
+		return (NULL);
+	i = 0;
+	str = (char *)result;
+	while (i < count * type_size)
+	{
+		str[i] = 0;
+		i++;
+	}
 	return (result);
 }
