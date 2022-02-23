@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 15:03:58 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/23 18:09:41 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 18:47:03 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 32
 # endif
 # if BUFFER_SIZE <= 0
 #  error "NEGATIVE BUFFER SIZE"
@@ -22,8 +22,6 @@
 
 # include <stdlib.h>/* pour malloc */
 # include <unistd.h>/* pour read() */
-# include <fcntl.h>/* pour tester */
-# include <stdio.h>/* pour tester */
 
 char	*get_next_line(int fd);
 int		ft_strchr_gnl(const char *s, char c);

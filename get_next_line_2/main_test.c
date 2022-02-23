@@ -12,19 +12,6 @@ int	main(void)
 	printf("open : %d\n", fd);
 	if (fd == -1)
 		return (0);
-
-/* 	result = get_next_line(fd);
-	printf("GNL : %s\n", result);
-	free(result);
-
-	result = get_next_line(fd);
-	printf("GNL : %s\n", result);
-	free(result);
-
-	result = get_next_line(fd);
-	printf("GNL : %s\n", result);
-	free(result); */
-
 	while (1)
 	{
 		result = get_next_line(fd);
@@ -37,6 +24,5 @@ int	main(void)
 	printf("GNL : %s\n", result);
 	free(result);
 	close(fd);
-
 	return (0);
 }
