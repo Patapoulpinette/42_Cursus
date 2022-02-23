@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:38:15 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/23 11:27:59 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 15:28:22 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,33 @@ int	ft_strchr_gnl(const char *s, char c)
 	if (s[i] == (char)c)
 		return (i);
 	return (-1);
+}
+
+char	*ft_strjoin_gnl(char *s1, char *s2)
+{
+	char	*result;
+	size_t	i;
+	size_t	j;
+
+	if (!s1 && !s2)
+		return (NULL);
+	result = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!result)
+		return (NULL);
+	i = 0;
+	j = 0;
+	if (s1)
+		while (s1[i])
+		{
+			result[i] = s1[i];
+			i++;
+		}
+	if (s2)
+		while (s2[j])
+			result[i++] = s2[j++];
+	result[i] = 0;
+	free(s1);
+	return (result);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -65,31 +92,4 @@ size_t	ft_strlen(const char *s)
 	while (s[i])
 		i++;
 	return (i);
-}
-
-char	*ft_strjoin_gnl(char *s1, char *s2)
-{
-	char	*result;
-	size_t	i;
-	size_t	j;
-
-	if (!s1 && !s2)
-		return (NULL);
-	result = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
-	if (!result)
-		return (NULL);
-	i = 0;
-	j = 0;
-	if (s1)
-		while (s1[i])
-		{
-			result[i] = s1[i];
-			i++;
-		}
-	if (s2)
-		while (s2[j])
-			result[i++] = s2[j++];
-	result[i] = 0;
-	free(s1);
-	return (result);
 }
