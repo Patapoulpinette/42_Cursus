@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:38:15 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/23 15:28:22 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 18:00:37 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_strchr_gnl(const char *s, char c)
 	int	i;
 
 	i = 0;
-	if (!s)
+	if (!s || !s[i])
 		return (-1);
 	while (s[i])
 	{
@@ -44,11 +44,13 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 	i = 0;
 	j = 0;
 	if (s1)
+	{
 		while (s1[i])
 		{
 			result[i] = s1[i];
 			i++;
 		}
+	}
 	if (s2)
 		while (s2[j])
 			result[i++] = s2[j++];
@@ -57,7 +59,7 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 	return (result);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len, int mode)
 {
 	char	*result;
 	size_t	i;
@@ -79,6 +81,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	while (s[i] && i < (start + len))
 		result[j++] = s[i++];
 	result[j] = '\0';
+	if (mode)
+		free(s);
 	return (result);
 }
 
