@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 15:03:58 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/23 17:56:32 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 18:09:41 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 32
+#  define BUFFER_SIZE 1
 # endif
 # if BUFFER_SIZE <= 0
 #  error "NEGATIVE BUFFER SIZE"
@@ -28,7 +28,7 @@
 char	*get_next_line(int fd);
 int		ft_strchr_gnl(const char *s, char c);
 char	*ft_strjoin_gnl(char *s1, char *s2);
-char	*ft_substr(char const *s, unsigned int start, size_t len, int mode);
+char	*ft_substr(char *s, unsigned int start, size_t len, int mode);
 size_t	ft_strlen(const char *s);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 15:03:23 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/23 18:00:22 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 18:23:32 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*get_next_line(int fd)
 {
 	static char	*backup;
 	char		*result;
-	//char		*tmp;
+	char		*tmp;
 	int			check_reading;
 
 	while (ft_strchr_gnl(backup, '\n') == -1)
@@ -43,8 +43,7 @@ char	*get_next_line(int fd)
 			return (NULL);
 		if (check_reading == 0)
 		{
-			result = ft_substr(backup, 0, ft_strlen(backup), 0);
-			free(backup);
+			result = ft_substr(backup, 0, ft_strlen(backup), 1);
 			backup = NULL;
 			return (result);
 		}
@@ -52,9 +51,9 @@ char	*get_next_line(int fd)
 	result = ft_substr(backup, 0, ft_strchr_gnl(backup, '\n'), 0);
 	if (!result)
 		return (NULL);
-	//tmp = backup;
+	tmp = backup;
 	backup = ft_substr(backup, ft_strchr_gnl(backup, '\n') + 1, \
-			ft_strlen(backup) - ft_strchr_gnl(backup, '\n') - 1, 1);
-	//free (tmp);
+			ft_strlen(backup) - ft_strchr_gnl(backup, '\n') - 1, 0);
+	free (tmp);
 	return (result);
 }
