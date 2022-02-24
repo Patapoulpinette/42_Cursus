@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 15:03:23 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/23 18:23:32 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/02/24 14:29:42 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*get_next_line(int fd)
 			return (result);
 		}
 	}
-	result = ft_substr(backup, 0, ft_strchr_gnl(backup, '\n'), 0);
+	result = ft_substr(backup, 0, ft_strchr_gnl(backup, '\n') + 1, 0);
 	if (!result)
 		return (NULL);
 	tmp = backup;

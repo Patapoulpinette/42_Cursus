@@ -17,12 +17,9 @@ int	main(void)
 		result = get_next_line(fd);
 		if (!result)
 			break ;
-		printf("GNL : %s\n", result);
+		printf("GNL : %s", result);
 		free(result);
 	}
-	result = get_next_line(fd);
-	printf("GNL : %s\n", result);
-	free(result);
 	close(fd);
 	return (0);
 }
