@@ -37,7 +37,6 @@ int	main(void)
 	int		fd1;
 	int		fd2;
 	int		fd3;
-	/* int		apercebolpb; */
 	char	*result1 = NULL;
 	char	*result2 = NULL;
 	char	*result3 = NULL;
@@ -56,8 +55,6 @@ int	main(void)
 		return (0);
 	while (1)
 	{
-		/* apercebolpb = 1;
-		if () */
 		result1 = get_next_line(fd1);
 		printf("GNL1 : %s\n", result1);
 		free(result1);
@@ -67,7 +64,6 @@ int	main(void)
 		result3 = get_next_line(fd3);
 		printf("GNL3 : %s\n", result3);
 		free(result3);
-		/* if (apercebolpb = 1) */
 		if (!result1 && !result2 && !result3)
 			break ;
 	}
