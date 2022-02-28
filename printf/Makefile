@@ -6,7 +6,7 @@
 #    By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/25 18:24:38 by dbouron           #+#    #+#              #
-#    Updated: 2022/02/25 18:26:30 by dbouron          ###   ########lyon.fr    #
+#    Updated: 2022/02/28 14:42:11 by dbouron          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ OBJS = $(SRC:.c=.o)
 	gcc -Wall -Werror -Wextra -o $@ -c $<
 
 $(NAME) : $(OBJS)
-	ar rc $(NAME) $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
 all : $(NAME)
 
@@ -32,3 +32,5 @@ fclean : clean
 	rm -rf $(NAME)
 
 re : fclean all
+
+.PHONY: all clean fclean re
