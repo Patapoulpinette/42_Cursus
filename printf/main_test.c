@@ -1,17 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include "ft_printf.h"
 
 /* ************************************************************************** */
 /*                     TEST DE LA "VRAIE" FONCTION PRINTF                     */
 /* ************************************************************************** */
 
-int main(void)
+/* int main(void)
 {
 	int		i;
-	void	*p;
+	void	*p = NULL;
 
-/* 	i = printf("1. Je suis une patapoulpinette\n");
+	i = printf("1. Je suis une patapoulpinette\n");
 	printf("printf return : %d\n", i);
 	i = printf("2. %d est un nombre décimal (base 10) avec d\n", -1560000);
 	printf("printf return : %d\n", i);
@@ -27,7 +28,7 @@ int main(void)
 	printf("printf return : %d\n", i);
 	i = printf("6. J'ai mangé %u M&M's\n", -5);
 	printf("printf return : %d\n", i);
-	i = printf("7. Voici un nombre hexadécimal en minuscule : %x\n", 45);
+	i = printf("7. Voici un nombre hexadécimal en minuscule : %x\n", -45868955);
 	printf("printf return : %d\n", i);
 	i = printf("8. Voici un nombre hexadécimal en majuscule : %X\n", 45);
 	printf("printf return : %d\n", i);
@@ -36,9 +37,27 @@ int main(void)
 	i = printf("10. Ma capacité à réfléchir est actuellement de %bonjour\n");
 	printf("printf return : %d\n", i);
 	i = printf("10. Ma capacité à réfléchir est actuellement de 1%\n");
-	printf("printf return : %d\n", i); */
+	printf("printf return : %d\n", i);
 	i = printf("11. Voici le retour d'un pointeur : %p\n", p);
 	printf("printf return : %d\n", i);
+	i = printf("");
+	printf("printf return : %d\n", i);
+} */
+
+/* ************************************************************************** */
+/*                             TEST DE MON PRINTF                             */
+/* ************************************************************************** */
+
+int main(void)
+{
+	ft_printf("");
+	ft_printf("1. Je suis une patapoulpinette\n");
+	ft_printf("2. Je suis une patapoulpinett%c", 'e');
+	ft_printf("\n3. Je suis une patapoulpin%ctte\n", 'e');
+	ft_printf("4. Je suis un%c patapoulpin%ctte\n", 'e', 'e');
+	ft_printf("%s", "5. Je suis une patapoulpinette\n");
+	ft_printf("%d. Je suis une patapoulpinette\n", 6);
+	return (0);
 }
 
 /* ************************************************************************** */
