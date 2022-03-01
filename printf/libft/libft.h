@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 17:49:40 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/28 17:43:23 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/01 14:55:00 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 /* -------------------------------------------------------------------------- */
 
 void	ft_putchar(char c);
+void	ft_putstr(char *str);
+void	ft_putnbr(int nb);
+void	ft_putnbr_base(int nbr, char *base);
 
 #endif

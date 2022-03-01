@@ -6,33 +6,40 @@
 /*                     TEST DE LA "VRAIE" FONCTION PRINTF                     */
 /* ************************************************************************** */
 
-/* int main(void)
+int main(void)
 {
-	int i;
+	int		i;
+	void	*p;
 
-	i = printf("1. Je suis une patapoulpinette						");
-	printf("%d\n", i);
-	i = printf("2. %d est un nombre décimal (base 10) avec d			", -1560000);
-	printf("%d\n", i);
-	i = printf("3. %i est un nombre entier avec i					", 012);
-	printf("%d\n", i);
-	i = printf("3. %i est un nombre entier (base 10) avec i				", 12);
-	printf("%d\n", i);
-	i = printf("4. La chaine de caractères retournée est : %s", "Je suis une patapoulpinette	");
-	printf("%d\n", i);
-	i = printf("5. J'affiche un seul caractère : %c					", 's');
-	printf("%d\n", i);
-	i = printf("6. J'ai mangé %u M&M's							", 5);
-	printf("%d\n", i);
-	i = printf("7. Voici un nombre hexadécimal en minuscule : %x			", 45);
-	printf("%d\n", i);
-	i = printf("8. Voici un nombre hexadécimal en majuscule : %X			", 45);
-	printf("%d\n", i);
-	i = printf("9. Ma capacité à réfléchir est actuellement de 1%%			");
-	printf("%d\n", i);
+/* 	i = printf("1. Je suis une patapoulpinette\n");
+	printf("printf return : %d\n", i);
+	i = printf("2. %d est un nombre décimal (base 10) avec d\n", -1560000);
+	printf("printf return : %d\n", i);
+	i = printf("3. %i est un nombre entier avec i\n", 012);
+	printf("printf return : %d\n", i);
+	i = printf("3. %i est un nombre entier (base 10) avec i\n", 12);
+	printf("printf return : %d\n", i);
+	i = printf("4. La chaine de caractères retournée est : %s\n", "Je suis une patapoulpinette");
+	printf("printf return : %d\n", i);
+	i = printf("5. J'affiche un seul caractère : %c\n", 's');
+	printf("printf return : %d\n", i);
+	i = printf("6. J'ai mangé %u M&M's\n", 5);
+	printf("printf return : %d\n", i);
+	i = printf("6. J'ai mangé %u M&M's\n", -5);
+	printf("printf return : %d\n", i);
+	i = printf("7. Voici un nombre hexadécimal en minuscule : %x\n", 45);
+	printf("printf return : %d\n", i);
+	i = printf("8. Voici un nombre hexadécimal en majuscule : %X\n", 45);
+	printf("printf return : %d\n", i);
+	i = printf("9. Ma capacité à réfléchir est actuellement de 1%%\n");
+	printf("printf return : %d\n", i);
 	i = printf("10. Ma capacité à réfléchir est actuellement de %bonjour\n");
-	printf("%d\n", i);
-} */
+	printf("printf return : %d\n", i);
+	i = printf("10. Ma capacité à réfléchir est actuellement de 1%\n");
+	printf("printf return : %d\n", i); */
+	i = printf("11. Voici le retour d'un pointeur : %p\n", p);
+	printf("printf return : %d\n", i);
+}
 
 /* ************************************************************************** */
 /*        EXEMPLE D'UTILISATION DE VA_START, VA_ARG, VA_COPY ET VA_END        */
