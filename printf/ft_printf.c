@@ -6,61 +6,76 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 15:21:19 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/01 18:23:31 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/02 19:22:50 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	conversion(char c, va_list ptr)
+int	conversion(char c, va_list ptr)
 {
+	int	l;
+
 	if (c == 'c')
-		ft_putchar(va_arg(ptr, int));
+		l = ft_putchar(va_arg(ptr, int));
 	else if (c == 's')
-		ft_putstr(va_arg(ptr, char *));
+		l = ft_putstr(va_arg(ptr, char *));
+	else if (c == 'p')
+	{
+		write(0, "0x", 3);
+		l = ft_putnbr_base(va_arg(ptr, unsigned long long), "0123456789abcdef");
+		l = l + 2;
+	}
 	else if (c == 'd' || c == 'i')
-		ft_putnbr(va_arg(ptr, int));
+		l = ft_putnbr(va_arg(ptr, int));
 	else if (c == 'u')
-		ft_putnbr_base(va_arg(ptr, unsigned long long), "0123456789");
-	else if (c == 'x' || c == 'p')
-		ft_putnbr_base(va_arg(ptr, unsigned long long), "0123456789abcdef");
+		l = ft_putnbr_base(va_arg(ptr, unsigned long long), "0123456789");
+	else if (c == 'x')
+		l = ft_putnbr_base(va_arg(ptr, unsigned long long), "0123456789abcdef");
 	else if (c == 'X')
-		ft_putnbr_base(va_arg(ptr, unsigned long long), "0123456789ABCDEF");
+		l = ft_putnbr_base(va_arg(ptr, unsigned long long), "0123456789ABCDEF");
 	else if (c == '%')
-		ft_putchar('%');
+		l = ft_putchar('%');
+	else
+		l = ft_putchar(c);
+	return (l);
 }
 
-void	string_analyse(const char *str, va_list ptr)
+int	string_analyse(const char *str, va_list ptr)
 {
 	int	i;
+	int	len;
 
 	i = 0;
+	len = 0;
 	if (!str)
-		return ;
+		return (i);
 	while (str[i])
 	{
-		if (str[i] == '%' && (str[i + 1] == 'c' || str[i + 1] == 's' || \
-			str[i + 1] == 'p' || str[i + 1] == 'd' || str[i + 1] == 'i' || \
-			str[i + 1] == 'u' || str[i + 1] == 'x' || str[i + 1] == 'X' || \
-			str[i + 1] == '%'))
+		if (str[i] == '%' && str[i + 1])
 		{
-			conversion(str[i + 1], ptr);
+			len += conversion(str[i + 1], ptr);
 			i++;
 		}
 		else if (str[i] == '%' && str[i + 1] == '\0')
 			i++;
 		else if (str[i] != '%')
+		{
 			ft_putchar(str[i]);
+			len++;
+		}
 		i++;
 	}
+	return (len);
 }
 
 int	ft_printf(const char *str, ...)
 {
 	va_list	ptr;
+	int		len;
 
 	va_start(ptr, str);
-	string_analyse(str, ptr);
+	len = string_analyse(str, ptr);
 	va_end(ptr);
-	return (1);
+	return (len);
 }
