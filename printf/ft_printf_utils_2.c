@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 16:34:31 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/03 12:13:13 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/03 13:38:59 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,10 @@ int	ft_putnb_b_ui(unsigned int nbr, char *base)
 	int	len;
 
 	len = 0;
-	//len = ft_intlen(nbr);
 	if (ft_error(base) == 0)
 	{
 		if (nbr > ft_strlen(base) - 1)
-			ft_putnb_b_ui(nbr / ft_strlen(base), base);
+			len += ft_putnb_b_ui(nbr / ft_strlen(base), base);
 		len += ft_putchar(base[nbr % ft_strlen(base)]);
 	}
 	return (len);
@@ -98,11 +97,10 @@ int	ft_putnb_b_ull(unsigned long long nbr, char *base)
 	int	len;
 
 	len = 0;
-	//len = ft_intlen(nbr);
 	if (ft_error(base) == 0)
 	{
 		if (nbr > ft_strlen(base) - 1)
-			ft_putnb_b_ull(nbr / ft_strlen(base), base);
+			len += ft_putnb_b_ull(nbr / ft_strlen(base), base);
 		len += ft_putchar(base[nbr % ft_strlen(base)]);
 	}
 	return (len);
