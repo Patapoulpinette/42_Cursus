@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 16:34:31 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/02 19:12:57 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/03 12:13:13 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,16 +78,32 @@ static int	ft_error(char *base)
 	return (0);
 }
 
-int	ft_putnbr_base(unsigned long long nbr, char *base)
+int	ft_putnb_b_ui(unsigned int nbr, char *base)
 {
 	int	len;
 
-	len = ft_intlen(nbr);
+	len = 0;
+	//len = ft_intlen(nbr);
 	if (ft_error(base) == 0)
 	{
 		if (nbr > ft_strlen(base) - 1)
-			ft_putnbr_base(nbr / ft_strlen(base), base);
-		ft_putchar(base[nbr % ft_strlen(base)]);
+			ft_putnb_b_ui(nbr / ft_strlen(base), base);
+		len += ft_putchar(base[nbr % ft_strlen(base)]);
+	}
+	return (len);
+}
+
+int	ft_putnb_b_ull(unsigned long long nbr, char *base)
+{
+	int	len;
+
+	len = 0;
+	//len = ft_intlen(nbr);
+	if (ft_error(base) == 0)
+	{
+		if (nbr > ft_strlen(base) - 1)
+			ft_putnb_b_ull(nbr / ft_strlen(base), base);
+		len += ft_putchar(base[nbr % ft_strlen(base)]);
 	}
 	return (len);
 }

@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 15:15:53 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/02 19:01:40 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/03 11:45:10 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int		ft_printf(const char *str, ...);
 int		ft_putchar(char c);
 int		ft_putstr(char *str);
 int		ft_putnbr(int nb);
-int		ft_putnbr_base(unsigned long long nbr, char *base);
+int		ft_putnb_b_ui(unsigned int nbr, char *base);
+int		ft_putnb_b_ull(unsigned long long nbr, char *base);
 size_t	ft_intlen(int nb);
 size_t	ft_strlen(const char *s);
 

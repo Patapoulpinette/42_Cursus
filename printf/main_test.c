@@ -4,7 +4,8 @@ int main(void)
 {
 	int		i;
 	int		j;
-	void	*p;
+	int		c = 12;
+	void	*p = c;
 
 /* 	i = ft_printf("1. Je suis une patapoulpinette\n");
 	j = printf("1. Je suis une patapoulpinette\n");
@@ -26,8 +27,8 @@ int main(void)
 	printf("--> ft_printf return : %d\n", i);
 	printf("--> printf return : %d\n", j);
 	
-	i = ft_printf("3. %i est un nombre entier avec i\n", "fd441865");
-	j = printf("3. %i est un nombre entier avec i\n", "fd441865");
+	i = ft_printf("3. %i est un nombre entier avec i\n", 45864368436488955);
+	j = printf("3. %i est un nombre entier avec i\n", 45864368436488955);
 	printf("--> ft_printf return : %d\n", i);
 	printf("--> printf return : %d\n", j);
 
@@ -66,12 +67,12 @@ int main(void)
 	printf("--> ft_printf return : %d\n", i);
 	printf("--> printf return : %d\n", j);
 
-/* 	i = ft_printf("8. Voici un nombre hexadécimal en majuscule : %X\n", 4556);
-	j = printf("8. Voici un nombre hexadécimal en majuscule : %X\n", 4556);
+	i = ft_printf("8. Voici un nombre hexadécimal en majuscule : %X\n", 4556924);
+	j = printf("8. Voici un nombre hexadécimal en majuscule : %X\n", 4556924);
 	printf("--> ft_printf return : %d\n", i);
 	printf("--> printf return : %d\n", j);
 
-	i = ft_printf("9. Ma capacité à réfléchir est actuellement de 1%%\n");
+/* 	i = ft_printf("9. Ma capacité à réfléchir est actuellement de 1%%\n");
 	j = printf("9. Ma capacité à réfléchir est actuellement de 1%%\n");
 	printf("--> ft_printf return : %d\n", i);
 	printf("--> printf return : %d\n", j);
@@ -84,14 +85,14 @@ int main(void)
 	i = ft_printf("10. Ma capacité à réfléchir est actuellement de 1%\n");
 	j = printf("10. Ma capacité à réfléchir est actuellement de 1%\n");
 	printf("--> ft_printf return : %d\n", i);
-	printf("--> printf return : %d\n", j);
+	printf("--> printf return : %d\n", j); */
 
 	i = ft_printf("11. Voici le retour d'un pointeur : %p\n", p);
 	j = printf("11. Voici le retour d'un pointeur : %p\n", p);
 	printf("--> ft_printf return : %d\n", i);
 	printf("--> printf return : %d\n", j);
 
-	i = ft_printf("");
+/* 	i = ft_printf("");
 	j = printf("");
 	printf("--> ft_printf return : %d\n", i);
 	printf("--> printf return : %d\n", j); */

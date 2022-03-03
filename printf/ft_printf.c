@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 15:21:19 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/02 19:22:50 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/03 11:45:03 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@ int	conversion(char c, va_list ptr)
 	else if (c == 'p')
 	{
 		write(0, "0x", 3);
-		l = ft_putnbr_base(va_arg(ptr, unsigned long long), "0123456789abcdef");
+		l = ft_putnb_b_ull(va_arg(ptr, unsigned long long), "0123456789abcdef");
 		l = l + 2;
 	}
 	else if (c == 'd' || c == 'i')
 		l = ft_putnbr(va_arg(ptr, int));
 	else if (c == 'u')
-		l = ft_putnbr_base(va_arg(ptr, unsigned long long), "0123456789");
+		l = ft_putnb_b_ui(va_arg(ptr, unsigned int), "0123456789");
 	else if (c == 'x')
-		l = ft_putnbr_base(va_arg(ptr, unsigned long long), "0123456789abcdef");
+		l = ft_putnb_b_ui(va_arg(ptr, unsigned int), "0123456789abcdef");
 	else if (c == 'X')
-		l = ft_putnbr_base(va_arg(ptr, unsigned long long), "0123456789ABCDEF");
+		l = ft_putnb_b_ui(va_arg(ptr, unsigned int), "0123456789ABCDEF");
 	else if (c == '%')
 		l = ft_putchar('%');
 	else
