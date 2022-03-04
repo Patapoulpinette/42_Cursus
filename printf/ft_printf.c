@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 15:21:19 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/03 11:45:03 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/04 16:04:09 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	conversion(char c, va_list ptr)
 		l = ft_putstr(va_arg(ptr, char *));
 	else if (c == 'p')
 	{
-		write(0, "0x", 3);
+		write(1, "0x", 2);
 		l = ft_putnb_b_ull(va_arg(ptr, unsigned long long), "0123456789abcdef");
 		l = l + 2;
 	}

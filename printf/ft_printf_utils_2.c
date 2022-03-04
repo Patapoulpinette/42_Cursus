@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 16:34:31 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/03 13:38:59 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/04 15:39:36 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t	ft_intlen(int nb)
 		nb = nb * -1;
 	}
 	nbr = nb;
-	while (nbr > 10)
+	while (nbr > 9)
 	{
 		nbr = nbr / 10;
 		len++;
