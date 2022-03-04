@@ -6,17 +6,15 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 15:15:53 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/03 11:45:10 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/04 16:19:10 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <stdlib.h>/* pour malloc et free */
-# include <unistd.h>/* pour write */
-# include <stdarg.h>/* pour va_start, va_arg, va_copy et va_end */
-# include <stdio.h>/* pour puts et printf*/
+# include <unistd.h>
+# include <stdarg.h>
 
 int		ft_printf(const char *str, ...);
 
