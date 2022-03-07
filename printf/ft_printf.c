@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 15:21:19 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/04 16:04:09 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/07 10:03:34 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ int	string_analyse(const char *str, va_list ptr)
 			len += conversion(str[i + 1], ptr);
 			i++;
 		}
-		else if (str[i] == '%' && str[i + 1] == '\0')
-			i++;
 		else if (str[i] != '%')
 		{
 			ft_putchar(str[i]);
