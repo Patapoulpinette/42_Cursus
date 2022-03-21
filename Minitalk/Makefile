@@ -6,12 +6,12 @@
 #    By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/21 18:47:31 by dbouron           #+#    #+#              #
-#    Updated: 2022/03/21 20:08:23 by dbouron          ###   ########lyon.fr    #
+#    Updated: 2022/03/21 20:36:34 by dbouron          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME_S = server
-NAME_C = client
+SERVER = server
+CLIENT = client
 
 # **************************************************************************** #
 #                               FILES and PATHS                                #
@@ -19,13 +19,13 @@ NAME_C = client
 
 HEADFILE =		minitalk.h
 
-SRC_PRINTF =		./ft_printf
+PRINTF =		./ft_printf
 
-SRCS_S =			server.c
+SRCS_SERVER =	server.c
 
-SRCS_C =			client.c
+SRCS_CLIENT =	client.c
 
-SRCS =				minitalk_utils.c
+SRCS =			minitalk_utils.c
 
 # **************************************************************************** #
 #                                    COLORS                                    #
@@ -55,42 +55,42 @@ NO_COLOR		=	\033[0m
 
 .SILENT:
 
-OBJS_S = $(SRCS_S:.c=.o)
+OBJS_SERVER = $(SRCS_SERVER:.c=.o)
 
-OBJS_C = $(SRCS_C:.c=.o)
+OBJS_CLIENT = $(SRCS_CLIENT:.c=.o)
 
 OBJS =$(SRCS:.c=.o)
 
-%.o: $(SRCS_S) $(SRCS_C) $(SRCS) $(HEADFILES)
+%.o: $(SRCS_SERVER) $(SRCS_CLIENT) $(SRCS) $(HEADFILES)
 	gcc -Wall -Werror -Wextra -o $@ -c $<
 	@printf "\033[2K\r$(CYAN)Lowding...$(RESET)"
 
-$(NAME_S) : $(OBJS_S) $(OBJS)
-	ar rcs $(NAME_S) $(OBJS_S) $(OBJS)
-	@printf "\033[2K\r$(LIGHT_GREEN)--> compiled [√]\n"
+$(SERVER) : $(OBJS_SERVER) $(OBJS)
+	ar rcs $(SERVER) $(OBJS_SERVER) $(OBJS)
+	@printf "\033[2K\r$(LIGHT_GREEN)--> Server compiled [√]\n"
 
-$(NAME_C) : $(OBJS_C) $(OBJS)
-	ar rcs $(NAME_C) $(OBJS_C) $(OBJS)
-	@printf "\033[2K\r$(LIGHT_GREEN)--> compiled [√]\n"
+$(CLIENT) : $(OBJS_CLIENT) $(OBJS)
+	ar rcs $(CLIENT) $(OBJS_CLIENT) $(OBJS)
+	@printf "\033[2K\r$(LIGHT_GREEN)--> Client compiled [√]\n"
 	
-all : compil $(NAME_S) $(NAME_C)
+all : compil $(SERVER) $(CLIENT)
 
 compil :
-	@make -C $(SRC_PRINTF)
+	@make -C $(PRINTF)
 
-server : compil $(NAME_S)
+server : compil $(SERVER)
 
-client : compil $(NAME_C)
+client : compil $(CLIENT)
 
 clean :
-	rm -rf $(OBJS_S) $(OBJS_C) $(OBJS)
-	@make clean -C $(SRC_PRINTF)
-	@printf "\033[2K\r$(LIGHT_BLUE)--> cleaned\n"
+	rm -rf $(OBJS_SERVER) $(OBJS_CLIENT) $(OBJS)
+	@make clean -C $(PRINTF)
+	@printf "\033[2K\r$(LIGHT_BLUE)--> Cleaned\n"
 
 fclean : clean
-	rm -rf $(NAME_S) $(NAME_C)
-	@make fclean -C $(SRC_PRINTF)
+	rm -rf $(SERVER) $(CLIENT)
+	@make fclean -C $(PRINTF)
 
 re : fclean all
 
-.PHONY: all server client clean fclean re
+.PHONY: all server client compil clean fclean re
