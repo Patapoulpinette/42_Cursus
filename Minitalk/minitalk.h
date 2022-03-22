@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:29:50 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/21 18:46:49 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/22 10:56:51 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 
 void			handler(int sigtype);
 void			ft_atob(char *str, char *pid);
-size_t			ft_strlen(const char *s);
 unsigned int	ft_putnbr_base(unsigned int nbr, char *base);
 int				ft_atoi(const char *str);
+char			*ft_itoa(int n);
 
 #endif

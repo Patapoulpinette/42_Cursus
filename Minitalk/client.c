@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:15:43 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/21 18:45:19 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/22 10:55:50 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_atob(char *str, char *pid)
 	while (str && str[i])
 	{
 		num_b = ft_putnbr_base(str[i], "01");
-		str_b = ft_atoi(num_b);
+		str_b = ft_itoa(num_b);
 		while (str_b && str_b[j])
 		{
 			if (str_b[i] == '1')

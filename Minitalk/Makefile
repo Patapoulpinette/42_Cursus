@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/03/21 18:47:31 by dbouron           #+#    #+#              #
-#    Updated: 2022/03/22 09:46:06 by dbouron          ###   ########lyon.fr    #
+#    Created: 2022/03/22 11:25:39 by dbouron           #+#    #+#              #
+#    Updated: 2022/03/22 11:25:41 by dbouron          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,15 +60,15 @@ OBJS_SERVER = $(SRCS_SERVER:.c=.o)
 OBJS_CLIENT = $(SRCS_CLIENT:.c=.o)
 
 %.o: $(SRCS_SERVER) $(SRCS_CLIENT) $(HEADFILES)
-	gcc -Wall -Werror -Wextra -o $@ -c $<
+	gcc -Wall -Wextra -Werror -o $@ -c $<
 	@printf "\033[2K\r$(CYAN)Loading...$(RESET)"
 
-$(SERVER) : $(OBJS_SERVER) compil
-	ar rcs $(SERVER) $(OBJS_SERVER)
+$(SERVER) : $(OBJS_SERVER) $(HEADFILE) compil
+	gcc -Wall -Wextra -Werror -o $(SERVER) $(SRCS_SERVER) -L./ft_printf -l ftprintf
 	@printf "\033[2K\r$(LIGHT_GREEN)--> Server compiled [√]\n"
 
-$(CLIENT) : $(OBJS_CLIENT) compil
-	ar rcs $(CLIENT) $(OBJS_CLIENT)
+$(CLIENT) : $(OBJS_CLIENT) $(HEADFILE) compil
+	gcc -Wall -Wextra -Werror -o $(CLIENT) $(SRCS_CLIENT) -L./ft_printf -l ftprintf
 	@printf "\033[2K\r$(LIGHT_GREEN)--> Client compiled [√]\n"
 	
 all : $(SERVER) $(CLIENT)

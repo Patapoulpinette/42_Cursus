@@ -6,20 +6,37 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:07:36 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/21 18:45:35 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/22 11:22:27 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-size_t	ft_strlen(const char *s)
+char	*ft_itoa(int n)
 {
-	int	i;
+	char			*str;
+	unsigned int	nb;
+	int				len;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	len = ft_intlen(n);
+	str = malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	str[len--] = '\0';
+	if (n == 0)
+		str[0] = '0';
+	if (n < 0)
+	{
+		str[0] = '-';
+		n = n * -1;
+	}
+	nb = n;
+	while (nb > 0 && len >= 0)
+	{
+		str[len--] = '0' + nb % 10;
+		nb = nb / 10;
+	}
+	return (str);
 }
 
 unsigned int	ft_putnbr_base(unsigned int nbr, char *base)
