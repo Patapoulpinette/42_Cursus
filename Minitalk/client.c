@@ -6,17 +6,36 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:15:43 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/22 10:55:50 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/23 12:06:58 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
+char	*ft_dec_to_binary(unsigned int n)
+{
+	char	*tab;
+	int		i;
+
+	i = 0;
+	tab = malloc(sizeof(char) * 33);
+	if (!tab)
+		return (NULL);
+	while (n > 0)
+	{
+		tab[i] = '0' + n % 2;
+		n = n / 2;
+		i++;
+	}
+	tab[i] = '\0';
+	ft_strswap(tab);
+	return (tab);
+}
+
 void	ft_atob(char *str, char *pid)
 {
 	int				i;
 	int				j;
-	unsigned int	num_b;
 	char			*str_b;
 
 	i = 0;
@@ -27,14 +46,14 @@ void	ft_atob(char *str, char *pid)
 		return ;
 	while (str && str[i])
 	{
-		num_b = ft_putnbr_base(str[i], "01");
-		str_b = ft_itoa(num_b);
+		str_b = ft_dec_to_binary(str[i]);
 		while (str_b && str_b[j])
 		{
 			if (str_b[i] == '1')
 				kill(ft_atoi(pid), SIGUSR1);
 			else if (str_b[i] == '0')
 				kill(ft_atoi(pid), SIGUSR2);
+			usleep(15);
 			j++;
 		}
 		i++;

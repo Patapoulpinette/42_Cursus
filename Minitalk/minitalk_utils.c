@@ -6,13 +6,13 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:07:36 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/22 11:22:27 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/23 12:07:49 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-char	*ft_itoa(int n)
+/* char	*ft_itoa(int n)
 {
 	char			*str;
 	unsigned int	nb;
@@ -37,14 +37,7 @@ char	*ft_itoa(int n)
 		nb = nb / 10;
 	}
 	return (str);
-}
-
-unsigned int	ft_putnbr_base(unsigned int nbr, char *base)
-{
-	if (nbr > ft_strlen(base) - 1)
-		ft_putnbr_base(nbr / ft_strlen(base), base);
-	return (base[nbr % ft_strlen(base)]);
-}
+} */
 
 int	ft_atoi(const char *str)
 {
@@ -71,4 +64,22 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return (result * neg);
+}
+
+void	ft_strswap(char *str)
+{
+	int		i;
+	int		j;
+	char	tmp;
+
+	i = 0;
+	j = ft_strlen(str) - 1;
+	while (str && str[i] && i <= j)
+	{
+		tmp = str[i];
+		str[i] = str[j];
+		str[j] = tmp;
+		i++;
+		j--;
+	}
 }
