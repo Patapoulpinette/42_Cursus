@@ -6,16 +6,36 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:17:36 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/24 12:12:25 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/24 16:41:27 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
+int	ft_binary_to_dec(char *str)
+{
+	int	nb;
+	int	i;
+	int	len;
+
+	i = 0;
+	nb = 0;
+	len = ft_strlen(str);
+	while (str[i])
+	{
+		nb += (str[i] - 48) * ft_recursive_power(2, (len -1));
+		i++;
+		len--;
+	}
+	return (nb);
+}
+
 void	handler(int sigtype)
 {
 	static int	i = 0;
-	static char	binary[9];
+	static char	binary[8];
+	char		letter;
+	//static char	*result = NULL;
 
 	if (sigtype == SIGUSR1)
 		binary[i++] = '1';
@@ -23,7 +43,12 @@ void	handler(int sigtype)
 		binary[i++] = '0';
 	if (i == 7)
 	{
-		ft_printf("string reçue : %s\n", binary);
+		//ft_printf("1. string received : %s\n", binary);
+		letter = ft_binary_to_dec(binary);
+		//printf("letter : %d\n", letter);
+		printf("%c\n", letter);
+		//result = ft_strjoin(result, letter);
+		//ft_printf("2. string received : %s\n", result);
 		i = 0;
 	}
 }

@@ -6,38 +6,37 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:07:36 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/23 12:07:49 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/24 15:38:34 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-/* char	*ft_itoa(int n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char			*str;
-	unsigned int	nb;
-	int				len;
+	char	*result;
+	size_t	i;
+	size_t	j;
 
-	len = ft_intlen(n);
-	str = malloc(sizeof(char) * (len + 1));
-	if (!str)
+	result = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!result)
 		return (NULL);
-	str[len--] = '\0';
-	if (n == 0)
-		str[0] = '0';
-	if (n < 0)
+	i = 0;
+	while (s1[i])
 	{
-		str[0] = '-';
-		n = n * -1;
+		result[i] = s1[i];
+		i++;
 	}
-	nb = n;
-	while (nb > 0 && len >= 0)
+	j = 0;
+	while (s2[j])
 	{
-		str[len--] = '0' + nb % 10;
-		nb = nb / 10;
+		result[i] = s2[j];
+		i++;
+		j++;
 	}
-	return (str);
-} */
+	result[i] = '\0';
+	return (result);
+}
 
 int	ft_atoi(const char *str)
 {
@@ -82,4 +81,13 @@ void	ft_strswap(char *str)
 		i++;
 		j--;
 	}
+}
+
+int	ft_recursive_power(int nb, int power)
+{
+	if (power < 0)
+		return (0);
+	if (power == 0)
+		return (1);
+	return (nb * ft_recursive_power(nb, power - 1));
 }
