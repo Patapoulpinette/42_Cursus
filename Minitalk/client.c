@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:15:43 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/23 12:06:58 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/24 12:09:57 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,24 @@ void	ft_atob(char *str, char *pid)
 		return ;
 	if (!pid)
 		return ;
+	puts("2");
 	while (str && str[i])
 	{
+		puts("3");
 		str_b = ft_dec_to_binary(str[i]);
+		puts(str_b);
 		while (str_b && str_b[j])
 		{
-			if (str_b[i] == '1')
+			printf("Character : %c\n", str_b[j]);
+			if (str_b[j] == '1')
 				kill(ft_atoi(pid), SIGUSR1);
-			else if (str_b[i] == '0')
+			else if (str_b[j] == '0')
 				kill(ft_atoi(pid), SIGUSR2);
 			usleep(15);
 			j++;
 		}
 		i++;
+		j = 0;
 	}
 }
 
@@ -64,6 +69,7 @@ int	main(int argc, char **argv)
 {
 	if (argc == 3)
 	{
+		puts("1");
 		ft_atob(argv[2], argv[1]);
 		return (0);
 	}

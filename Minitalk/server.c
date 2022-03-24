@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:17:36 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/22 10:46:26 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/24 12:12:25 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	handler(int sigtype)
 		binary[i++] = '1';
 	else if (sigtype == SIGUSR2)
 		binary[i++] = '0';
-	if (i == 8)
+	if (i == 7)
 	{
 		ft_printf("string reçue : %s\n", binary);
 		i = 0;
