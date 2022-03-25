@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:15:43 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/25 15:14:50 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/25 15:22:02 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_dec_to_binary(unsigned int n)
 	int		i;
 
 	i = 0;
-	tab = malloc(sizeof(char) * 33);
+	tab = malloc(sizeof(char) * 8);
 	if (!tab)
 		return (NULL);
 	while (n > 0)
