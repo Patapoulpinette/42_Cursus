@@ -6,7 +6,7 @@
 #    By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 11:25:39 by dbouron           #+#    #+#              #
-#    Updated: 2022/03/24 16:41:54 by dbouron          ###   ########lyon.fr    #
+#    Updated: 2022/03/25 10:03:02 by dbouron          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ CLIENT = client
 HEADFILE =		minitalk.h
 
 PRINTF =		./ft_printf
+PRINTF_LIB =	./ft_printf/libftprintf.a
 
 SRCS_SERVER =	server.c minitalk_utils.c
 
@@ -59,21 +60,21 @@ OBJS_SERVER = $(SRCS_SERVER:.c=.o)
 
 OBJS_CLIENT = $(SRCS_CLIENT:.c=.o)
 
-%.o: $(SRCS_SERVER) $(SRCS_CLIENT) $(HEADFILES)
+%.o: %.c $(HEADFILES)
 	gcc -Wall -Wextra -Werror -o $@ -c $<
 	@printf "\033[2K\r$(CYAN)Loading...$(RESET)"
 
-$(SERVER) : $(OBJS_SERVER) $(HEADFILE) compil
+$(SERVER) : $(OBJS_SERVER) $(HEADFILE) $(PRINTF_LIB)
 	gcc -Wall -Wextra -Werror -o $(SERVER) $(SRCS_SERVER) -L./ft_printf -l ftprintf
 	@printf "\033[2K\r$(LIGHT_GREEN)--> Server compiled [√]\n"
 
-$(CLIENT) : $(OBJS_CLIENT) $(HEADFILE) compil
+$(CLIENT) : $(OBJS_CLIENT) $(HEADFILE) $(PRINTF_LIB)
 	gcc -Wall -Wextra -Werror -o $(CLIENT) $(SRCS_CLIENT) -L./ft_printf -l ftprintf
 	@printf "\033[2K\r$(LIGHT_GREEN)--> Client compiled [√]\n"
 	
 all : $(SERVER) $(CLIENT)
 
-compil :
+$(PRINTF_LIB) :
 	@make -C $(PRINTF)
 
 clean :

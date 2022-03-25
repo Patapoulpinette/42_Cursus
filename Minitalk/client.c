@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:15:43 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/24 16:37:04 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/25 10:17:49 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ void	ft_atob(char *str, char *pid)
 	while (str && str[i])
 	{
 		str_b = ft_dec_to_binary(str[i]);
-		//puts(str_b);
+		dprintf(1, "%s\n", str_b);
 		while (str_b && str_b[j])
 		{
-			//printf("Character : %c\n", str_b[j]);
+			dprintf(1, "%c\n", str_b[j]);
 			if (str_b[j] == '1')
 				kill(ft_atoi(pid), SIGUSR1);
 			else if (str_b[j] == '0')
@@ -72,5 +72,3 @@ int	main(int argc, char **argv)
 	}
 	return (ft_printf("Wrong number of arguments\n"));
 }
-
-/* Ne pas oublier de changer atoi en ft_atoi */

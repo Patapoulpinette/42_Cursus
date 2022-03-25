@@ -44,7 +44,7 @@ int	main(void)
 {
 	int	n = 0;
 
-	n = ft_binary_to_dec("1001111");
+	n = ft_binary_to_dec("010000");
 	printf("%d\n", n);
 	return (0);
 }
