@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:15:43 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/25 15:22:02 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/25 15:32:23 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	ft_atob(char *str, char *pid)
 		}
 		i++;
 		j = 0;
+		free(str_b);
 	}
 }
 
