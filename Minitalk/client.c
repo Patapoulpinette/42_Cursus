@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:15:43 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/25 15:32:23 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/25 15:49:40 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,7 @@ void	ft_atob(char *str, char *pid)
 
 	i = 0;
 	j = 0;
-	if (!str)
-		return ;
-	if (!pid)
+	if (!str || !pid)
 		return ;
 	while (str[i])
 	{
@@ -70,6 +68,8 @@ int	main(int argc, char **argv)
 	{
 		if (ft_strlen(argv[2]) > 20000)
 			ft_printf("String too long\n");
+		if (!argv[1])/* It's not working !!! */
+			ft_printf("Wrong PID\n");
 		else
 			ft_atob(argv[2], argv[1]);
 		return (0);
