@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:15:43 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/28 18:34:10 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/28 18:02:09 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_dec_to_binary(unsigned int n)
 	int		i;
 
 	i = 0;
-	tab = malloc(sizeof(char) * 8);
+	tab = malloc(sizeof(char) * 25);
 	if (!tab)
 		return (NULL);
 	while (n > 0)
@@ -27,7 +27,7 @@ char	*ft_dec_to_binary(unsigned int n)
 		n = n / 2;
 		i++;
 	}
-	while (i < 7)
+	while (i < 24)
 		tab[i++] = '0';
 	tab[i] = '\0';
 	ft_strswap(tab);
@@ -82,7 +82,7 @@ int	main(int argc, char **argv)
 	{
 		if (ft_strlen(argv[2]) > 20000)
 			ft_printf("String too long\n");
-		if (!*argv[1])
+		if (!argv[1])/* It's not working !!! */
 			ft_printf("Wrong PID\n");
 		else
 			ft_atob(argv[2], argv[1]);
