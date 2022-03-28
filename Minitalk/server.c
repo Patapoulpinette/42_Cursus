@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:17:36 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/25 15:24:25 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/28 17:28:24 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,24 @@ void	handler(int sigtype)
 	static int	i = 0;
 	static char	binary[8];
 	char		letter;
-	//static char	*result = NULL;
+	static char	*result = NULL;
 
 	if (sigtype == SIGUSR1)
 		binary[i++] = '1';
 	else if (sigtype == SIGUSR2)
-		binary[i++] = '0';
+			binary[i++] = '0';
 	if (i == 7)
 	{
 		letter = ft_binary_to_dec(binary);
-		dprintf(1, "%c", letter);
-		//result = ft_strjoin(result, letter);
-		//ft_printf("2. string received : %s\n", result);
+		result = ft_strcjoin(result, letter);
+		if (letter == '\0')
+		{
+			ft_printf("%s", result);
+			free(result);
+			result = NULL;
+			i = 0;
+			return ;
+		}
 		i = 0;
 	}
 }

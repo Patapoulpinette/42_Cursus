@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 16:28:19 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/04 15:43:48 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/28 16:16:14 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ size_t	ft_strlen(const char *s)
 	int	i;
 
 	i = 0;
-	while (s[i])
+	while ( s && s[i])
 		i++;
 	return (i);
 }

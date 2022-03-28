@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:29:50 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/24 15:38:46 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/28 15:32:36 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void			ft_atob(char *str, char *pid);
 int				ft_atoi(const char *str);
 char			*ft_dec_to_binary(unsigned int n);
 void			ft_strswap(char *str);
-char			*ft_strjoin(char const *s1, char const *s2);
+char			*ft_strcjoin(char *s1, char c);
 int				ft_recursive_power(int nb, int power);
 
 #endif

@@ -6,35 +6,29 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:07:36 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/24 15:38:34 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/28 17:23:43 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strcjoin(char *s1, char c)
 {
 	char	*result;
 	size_t	i;
-	size_t	j;
 
-	result = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	result = malloc(sizeof(char) * (ft_strlen((const char *)s1) + 2));
 	if (!result)
 		return (NULL);
 	i = 0;
-	while (s1[i])
+	while (s1 && s1[i])
 	{
 		result[i] = s1[i];
 		i++;
 	}
-	j = 0;
-	while (s2[j])
-	{
-		result[i] = s2[j];
-		i++;
-		j++;
-	}
+	result[i++] = c;
 	result[i] = '\0';
+	free(s1);
 	return (result);
 }
 
