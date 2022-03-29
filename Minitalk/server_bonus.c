@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:17:36 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/29 14:01:59 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/29 16:42:00 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_binary_to_dec(char *str)
 void	handler(int sigtype)
 {
 	static int	i = 0;
-	static char	binary[25];
+	static char	binary[17];
 	char		letter;
 	static char	*result = NULL;
 
@@ -41,9 +41,10 @@ void	handler(int sigtype)
 		binary[i++] = '1';
 	else if (sigtype == SIGUSR2)
 			binary[i++] = '0';
-	if (i == 24)
+	if (i == 16)
 	{
 		letter = ft_binary_to_dec(binary);
+		//dprintf(2, "%s\n", binary);
 		result = ft_strcjoin(result, letter);
 		if (letter == '\0')
 		{

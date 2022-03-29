@@ -6,19 +6,19 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:15:43 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/29 14:00:23 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/29 16:43:13 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
 
-char	*ft_dec_to_binary(unsigned int n)
+char	*ft_dec_to_binary(int n)
 {
 	char	*tab;
 	int		i;
 
 	i = 0;
-	tab = malloc(sizeof(char) * 25);
+	tab = malloc(sizeof(char) * 17);
 	if (!tab)
 		return (NULL);
 	while (n > 0)
@@ -27,7 +27,7 @@ char	*ft_dec_to_binary(unsigned int n)
 		n = n / 2;
 		i++;
 	}
-	while (i < 24)
+	while (i < 16)
 		tab[i++] = '0';
 	tab[i] = '\0';
 	ft_strswap(tab);
@@ -39,7 +39,7 @@ void	end_of_msg(char *pid)
 	int	i;
 
 	i = 0;
-	while (i < 7)
+	while (i < 16)
 	{
 		kill(ft_atoi(pid), SIGUSR2);
 		usleep(100);
@@ -60,6 +60,8 @@ void	ft_atob(char *str, char *pid)
 	while (str[i])
 	{
 		str_b = ft_dec_to_binary(str[i]);
+		//char *s="❤";
+		//dprintf(2, "code ascii lettre : %d\t|\t%c\n", s[0], 231);
 		while (str_b && str_b[j])
 		{
 			if (str_b[j] == '1')
