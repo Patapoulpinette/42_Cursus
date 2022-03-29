@@ -6,7 +6,7 @@
 #    By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 11:25:39 by dbouron           #+#    #+#              #
-#    Updated: 2022/03/29 14:07:44 by dbouron          ###   ########lyon.fr    #
+#    Updated: 2022/03/29 15:34:35 by dbouron          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,9 @@ SRCS_SERVER =	server.c minitalk_utils.c
 
 SRCS_CLIENT =	client.c minitalk_utils.c
 
-SRCS_BONUS =	server_bonus.c client_bonus.c minitalk_utils_bonus.c
+SRCS_SERVER_BONUS =	server_bonus.c minitalk_utils_bonus.c
+
+SRCS_CLIENT_BONUS =	client_bonus.c minitalk_utils_bonus.c
 
 # **************************************************************************** #
 #                                    COLORS                                    #
@@ -64,9 +66,11 @@ OBJS_SERVER = $(SRCS_SERVER:.c=.o)
 
 OBJS_CLIENT = $(SRCS_CLIENT:.c=.o)
 
-OBJS_BONUS = $(SRCS_BONUS:.c=.o)
+OBJS_SERVER_BONUS = $(SRCS_SERVER_BONUS:.c=.o)
 
-%.o: %.c $(HEADFILES)
+OBJS_CLIENT_BONUS = $(SRCS_CLIENT_BONUS:.c=.o)
+
+%.o: %.c $(HEADFILES) $(HEADFILE_BONUS)
 	gcc -Wall -Wextra -Werror -o $@ -c $<
 	@printf "\033[2K\r$(CYAN)Loading...$(RESET)"
 
@@ -83,8 +87,18 @@ all : $(SERVER) $(CLIENT)
 $(PRINTF_LIB) :
 	@make -C $(PRINTF)
 
+bonus : bonus_server bonus_client
+
+bonus_server : $(OBJS_SERVER_BONUS) $(HEADFILE_BONUS) $(PRINTF_LIB)
+	gcc -Wall -Wextra -Werror -o $(SERVER) $(SRCS_SERVER_BONUS) -L./ft_printf -l ftprintf
+	@printf "\033[2K\r$(LIGHT_GREEN)--> Bonus : server compiled [√]\n"
+
+bonus_client : $(OBJS_CLIENT_BONUS) $(HEADFILE_BONUS) $(PRINTF_LIB)
+	gcc -Wall -Wextra -Werror -o $(CLIENT) $(SRCS_CLIENT_BONUS) -L./ft_printf -l ftprintf
+	@printf "\033[2K\r$(LIGHT_GREEN)--> Bonus : client compiled [√]\n"
+
 clean :
-	rm -rf $(OBJS_SERVER) $(OBJS_CLIENT)
+	rm -rf $(OBJS_SERVER) $(OBJS_CLIENT) $(OBJS_SERVER_BONUS) $(OBJS_CLIENT_BONUS)
 	@make clean -C $(PRINTF)
 	@printf "\033[2K\r$(LIGHT_BLUE)--> Cleaned\n"
 
