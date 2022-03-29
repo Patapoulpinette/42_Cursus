@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:17:36 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/28 17:28:24 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/29 14:01:59 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 int	ft_binary_to_dec(char *str)
 {
@@ -33,7 +33,7 @@ int	ft_binary_to_dec(char *str)
 void	handler(int sigtype)
 {
 	static int	i = 0;
-	static char	binary[8];
+	static char	binary[25];
 	char		letter;
 	static char	*result = NULL;
 
@@ -41,7 +41,7 @@ void	handler(int sigtype)
 		binary[i++] = '1';
 	else if (sigtype == SIGUSR2)
 			binary[i++] = '0';
-	if (i == 7)
+	if (i == 24)
 	{
 		letter = ft_binary_to_dec(binary);
 		result = ft_strcjoin(result, letter);

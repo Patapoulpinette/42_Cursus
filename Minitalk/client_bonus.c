@@ -6,11 +6,11 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:15:43 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/28 18:02:09 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/29 14:00:23 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 char	*ft_dec_to_binary(unsigned int n)
 {
@@ -42,7 +42,7 @@ void	end_of_msg(char *pid)
 	while (i < 7)
 	{
 		kill(ft_atoi(pid), SIGUSR2);
-		usleep(200);
+		usleep(100);
 		i++;
 	}
 }
@@ -66,7 +66,7 @@ void	ft_atob(char *str, char *pid)
 				kill(ft_atoi(pid), SIGUSR1);
 			else if (str_b[j] == '0')
 				kill(ft_atoi(pid), SIGUSR2);
-			usleep(200);
+			usleep(100);
 			j++;
 		}
 		i++;
@@ -80,10 +80,10 @@ int	main(int argc, char **argv)
 {
 	if (argc == 3)
 	{
-		if (ft_strlen(argv[2]) > 20000)
-			ft_printf("String too long\n");
-		if (!argv[1])/* It's not working !!! */
+		if (!*argv[1])
 			ft_printf("Wrong PID\n");
+		else if (ft_strlen(argv[2]) > 20000)
+			ft_printf("String too long\n");
 		else
 			ft_atob(argv[2], argv[1]);
 		return (0);

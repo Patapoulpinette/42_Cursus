@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk_utils.c                                   :+:      :+:    :+:   */
+/*   minitalk_utils_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:07:36 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/28 17:23:43 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/29 14:00:52 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 char	*ft_strcjoin(char *s1, char c)
 {

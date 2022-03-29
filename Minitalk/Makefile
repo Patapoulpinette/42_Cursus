@@ -6,7 +6,7 @@
 #    By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 11:25:39 by dbouron           #+#    #+#              #
-#    Updated: 2022/03/25 10:03:02 by dbouron          ###   ########lyon.fr    #
+#    Updated: 2022/03/29 14:07:44 by dbouron          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,12 +19,16 @@ CLIENT = client
 
 HEADFILE =		minitalk.h
 
+HEADFILE_BONUS = minitalk_bonus.h
+
 PRINTF =		./ft_printf
 PRINTF_LIB =	./ft_printf/libftprintf.a
 
 SRCS_SERVER =	server.c minitalk_utils.c
 
 SRCS_CLIENT =	client.c minitalk_utils.c
+
+SRCS_BONUS =	server_bonus.c client_bonus.c minitalk_utils_bonus.c
 
 # **************************************************************************** #
 #                                    COLORS                                    #
@@ -59,6 +63,8 @@ NO_COLOR		=	\033[0m
 OBJS_SERVER = $(SRCS_SERVER:.c=.o)
 
 OBJS_CLIENT = $(SRCS_CLIENT:.c=.o)
+
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 %.o: %.c $(HEADFILES)
 	gcc -Wall -Wextra -Werror -o $@ -c $<
