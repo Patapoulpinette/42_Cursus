@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:29:50 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/31 11:29:23 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/31 16:36:57 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@
 void	handler(int sigtype);
 void	ft_atob(char *str, char *pid);
 int		ft_atoi(const char *str);
-char	*ft_dec_to_binary(int n);
+//char	*ft_dec_to_binary(int n);
+//int		ft_binary_to_dec(char *str);
 void	ft_strswap(char *str);
 char	*ft_strcjoin(char *s1, char c);
 int		ft_recursive_power(int nb, int power);
-void	ft_invert(char *str);
+void	ft_invert_binary_to_negbinary(char *str);
+void	ft_invert_negbinary_to_binary(char *str);
 
 #endif

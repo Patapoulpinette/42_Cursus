@@ -6,13 +6,13 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:15:43 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/31 11:29:49 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/31 16:56:08 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
 
-char	*dec_to_binary(int n)
+char	*ft_dec_to_binary(int n)
 {
 	char	*tab;
 	int		i;
@@ -36,7 +36,7 @@ char	*dec_to_binary(int n)
 	tab[i] = '\0';
 	ft_strswap(tab);
 	if (n < 0)
-		ft_invert(tab);
+		ft_invert_binary_to_negbinary(tab);
 	return (tab);
 }
 
@@ -66,8 +66,8 @@ void	ft_atob(char *str, char *pid)
 	while (str[i])
 	{
 		str_b = ft_dec_to_binary(str[i]);
-		//char *s="❤";
-		//dprintf(2, "code ascii lettre : %d\t|\t%c\n", s[0], 231);
+/* 		char *s="ç";
+		dprintf(2, "code ascii lettre : %d\t|\t%c\t%s\n", s[0], -61, s); */
 		while (str_b && str_b[j])
 		{
 			if (str_b[j] == '1')

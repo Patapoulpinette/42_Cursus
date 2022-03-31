@@ -22,16 +22,19 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-void	ft_invert2(char *str)
+void	ft_invert_negbinary_to_binary(char *str)
 {
 	int	i;
-	int	len;
+	int	j;
 
 	i = 0;
-	len = ft_strlen(str) - 1;
-	while (str[len] == '0' && len >= 0)
-		str[len--] = '1';
-	str[len] = '0';
+	j = ft_strlen(str) - 1;
+	if (str[j] == '0')
+	{
+		while (str[j] == '0' && j > 0)
+			str[j--] = '1';
+		str[j] = '0';
+	}
 	while (str[i])
 	{
 		if (str[i] == '0')
@@ -56,7 +59,7 @@ int	ft_binary_to_dec(char *str)
 	if (str[i] == '1')
 	{
 		sign = sign * -1;
-		ft_invert2(str);
+		ft_invert_negbinary_to_binary(str);
 	}
 	while (str[i])
 	{
@@ -69,9 +72,10 @@ int	ft_binary_to_dec(char *str)
 
 int	main(void)
 {
-	int	n = 0;
+	int		n = 0;
+	char	str[17] = "1111110111001000\0";
 
-	n = ft_binary_to_dec("1111110111001000");
+	n = ft_binary_to_dec(str);
 	printf("%d\n", n);
 	return (0);
 }

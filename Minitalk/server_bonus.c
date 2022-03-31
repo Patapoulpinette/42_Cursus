@@ -6,28 +6,58 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:17:36 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/29 16:42:00 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/31 16:56:12 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
+
+void	ft_invert_negbinary_to_binary(char *str)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = ft_strlen(str) - 1;
+	if (str[j] == '0')
+	{
+		while (str[j] == '0' && j > 0)
+			str[j--] = '1';
+		str[j] = '0';
+	}
+	while (str[i])
+	{
+		if (str[i] == '0')
+			str[i] = '1';
+		else if (str[i] == '1')
+			str[i] = '0';
+		i++;
+	}
+}
 
 int	ft_binary_to_dec(char *str)
 {
 	int	nb;
 	int	i;
 	int	len;
+	int	sign;
 
 	i = 0;
 	nb = 0;
-	len = ft_strlen(str);
+	len = ft_strlen(str) - 1;
+	sign = 1;
+	if (str[i] == '1')
+	{
+		sign = sign * -1;
+		ft_invert_negbinary_to_binary(str);
+	}
 	while (str[i])
 	{
-		nb += (str[i] - 48) * ft_recursive_power(2, (len -1));
+		nb += (str[i] - 48) * ft_recursive_power(2, (len));
 		i++;
 		len--;
 	}
-	return (nb);
+	return (nb * sign);
 }
 
 void	handler(int sigtype)
@@ -44,7 +74,7 @@ void	handler(int sigtype)
 	if (i == 16)
 	{
 		letter = ft_binary_to_dec(binary);
-		//dprintf(2, "%s\n", binary);
+/* 		dprintf(2, "%d\t| %c\n", letter, letter); */
 		result = ft_strcjoin(result, letter);
 		if (letter == '\0')
 		{
