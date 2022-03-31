@@ -6,31 +6,37 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:15:43 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/29 16:43:13 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/31 11:29:49 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
 
-char	*ft_dec_to_binary(int n)
+char	*dec_to_binary(int n)
 {
 	char	*tab;
 	int		i;
+	int		nb;
 
 	i = 0;
+	nb = n;
+	if (n < 0)
+		nb = nb * -1;
 	tab = malloc(sizeof(char) * 17);
 	if (!tab)
 		return (NULL);
-	while (n > 0)
+	while (nb > 0)
 	{
-		tab[i] = '0' + n % 2;
-		n = n / 2;
+		tab[i] = '0' + nb % 2;
+		nb = nb / 2;
 		i++;
 	}
 	while (i < 16)
 		tab[i++] = '0';
 	tab[i] = '\0';
 	ft_strswap(tab);
+	if (n < 0)
+		ft_invert(tab);
 	return (tab);
 }
 

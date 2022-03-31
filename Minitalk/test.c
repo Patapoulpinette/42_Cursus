@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen(char *s)
 {
 	int	i;
 
@@ -31,31 +31,64 @@ void	ft_strswap(char *str)
 	}
 }
 
-char	*dec_to_binary(unsigned int n)
+void	ft_invert(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '0')
+			str[i] = '1';
+		else if (str[i] == '1')
+			str[i] = '0';
+		i++;
+	}
+	i = ft_strlen(str) - 1;
+	if (str[i] == '0')
+		str[i] = '1';
+	else if (str[i] == '1')
+	{
+		while (str[i] == '1')
+			str[i--] = '0';
+		str[i] = '1';
+	}
+}
+
+char	*dec_to_binary(int n)
 {
 	char	*tab;
 	int		i;
+	int		nb;
 
 	i = 0;
-	tab = malloc(sizeof(char) * 33);
+	nb = n;
+	if (n < 0)
+		nb = nb * -1;
+	tab = malloc(sizeof(char) * 17);
 	if (!tab)
 		return (NULL);
-	while (n > 0)
+	while (nb > 0)
 	{
-		tab[i] = '0' + n % 2;
-		n = n / 2;
+		tab[i] = '0' + nb % 2;
+		nb = nb / 2;
 		i++;
 	}
+	while (i < 16)
+		tab[i++] = '0';
 	tab[i] = '\0';
 	ft_strswap(tab);
+	if (n < 0)
+		ft_invert(tab);
 	return (tab);
 }
 
-int main()
+int	main(void)
 {
 	char	*tab;
-	
-	tab = dec_to_binary(16164654);
+
+	tab = dec_to_binary(-0);
 	printf("%s\n", tab);
-	return 0;
+	free(tab);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:07:36 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/29 14:00:52 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/03/31 11:28:59 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,28 @@ int	ft_recursive_power(int nb, int power)
 	if (power == 0)
 		return (1);
 	return (nb * ft_recursive_power(nb, power - 1));
+}
+
+void	ft_invert(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '0')
+			str[i] = '1';
+		else if (str[i] == '1')
+			str[i] = '0';
+		i++;
+	}
+	i = ft_strlen(str) - 1;
+	if (str[i] == '0')
+		str[i] = '1';
+	else if (str[i] == '1')
+	{
+		while (str[i] == '1')
+			str[i--] = '0';
+		str[i] = '1';
+	}
 }
