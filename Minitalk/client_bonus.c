@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:15:43 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/01 11:32:28 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/04/01 18:03:06 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,17 @@ void	ft_atob(char *str, char *pid)
 	end_of_msg(pid);
 }
 
+static void	handler_client(int sigtype)
+{
+	if (sigtype == SIGUSR1)
+		ft_printf("Message sent\n");
+	return ;
+}
+
 int	main(int argc, char **argv)
 {
+	struct sigaction	action_client;
+
 	if (argc == 3)
 	{
 		if (!*argv[1])
@@ -92,6 +101,9 @@ int	main(int argc, char **argv)
 			ft_printf("String too long\n");
 		else
 			ft_atob(argv[2], argv[1]);
+		action_client.sa_handler = handler_client;
+		sigaction(SIGUSR1, &action_client, NULL);
+		pause();
 		return (0);
 	}
 	return (ft_printf("Wrong number of arguments\n"));

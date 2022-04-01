@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:29:50 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/31 16:36:57 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/04/01 17:38:05 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,8 @@
 # include <unistd.h>
 # include "./ft_printf/ft_printf.h"
 
-void	handler(int sigtype);
 void	ft_atob(char *str, char *pid);
 int		ft_atoi(const char *str);
-//char	*ft_dec_to_binary(int n);
-//int		ft_binary_to_dec(char *str);
 void	ft_strswap(char *str);
 char	*ft_strcjoin(char *s1, char c);
 int		ft_recursive_power(int nb, int power);

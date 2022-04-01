@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:17:36 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/01 11:32:10 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/04/01 17:59:33 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,20 @@ int	ft_binary_to_dec(char *str)
 	return (nb * sign);
 }
 
-void	handler(int sigtype)
+void	confirm_msg(siginfo_t *info)
+{
+	usleep(100);
+	kill(info->si_pid, SIGUSR1);
+}
+
+static void	handler(int sigtype, siginfo_t *info, void *context)
 {
 	static int	i = 0;
 	static char	binary[17];
 	char		letter;
 	static char	*result = NULL;
 
+	context = NULL;
 	if (sigtype == SIGUSR1)
 		binary[i++] = '1';
 	else if (sigtype == SIGUSR2)
@@ -81,6 +88,7 @@ void	handler(int sigtype)
 			free(result);
 			result = NULL;
 			i = 0;
+			confirm_msg(info);
 			return ;
 		}
 		i = 0;
@@ -94,8 +102,9 @@ int	main(void)
 
 	pid = getpid();
 	printf("PID : %d\n", pid);
-	action.sa_handler = handler;
+	action.sa_sigaction = &handler;
 	action.sa_flags = SA_RESTART;
+	action.sa_flags = SA_SIGINFO;
 	sigaction(SIGUSR1, &action, NULL);
 	sigaction(SIGUSR2, &action, NULL);
 	while (1)
