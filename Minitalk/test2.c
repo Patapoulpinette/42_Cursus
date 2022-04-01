@@ -29,12 +29,15 @@ void	ft_invert_negbinary_to_binary(char *str)
 
 	i = 0;
 	j = ft_strlen(str) - 1;
+	dprintf(2, "init : %s\n", str);
 	if (str[j] == '0')
 	{
+		dprintf(2, "je suis dans la boucle");
 		while (str[j] == '0' && j > 0)
 			str[j--] = '1';
-		str[j] = '0';
 	}
+	str[j] = '0';
+	dprintf(2, "temp : %s\n", str);
 	while (str[i])
 	{
 		if (str[i] == '0')
@@ -43,6 +46,7 @@ void	ft_invert_negbinary_to_binary(char *str)
 			str[i] = '0';
 		i++;
 	}
+	dprintf(2, "final : %s\n", str);
 }
 
 int	ft_binary_to_dec(char *str)
@@ -73,7 +77,7 @@ int	ft_binary_to_dec(char *str)
 int	main(void)
 {
 	int		n = 0;
-	char	str[17] = "1111110111001000\0";
+	char	str[17] = "1111111111000011";
 
 	n = ft_binary_to_dec(str);
 	printf("%d\n", n);

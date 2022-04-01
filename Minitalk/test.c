@@ -87,7 +87,7 @@ int	main(void)
 {
 	char	*tab;
 
-	tab = dec_to_binary(-0);
+	tab = dec_to_binary(-61);
 	printf("%s\n", tab);
 	free(tab);
 	return (0);

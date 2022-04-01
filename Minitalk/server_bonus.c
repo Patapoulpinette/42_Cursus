@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:17:36 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/31 16:56:12 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/04/01 11:32:10 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	ft_invert_negbinary_to_binary(char *str)
 	{
 		while (str[j] == '0' && j > 0)
 			str[j--] = '1';
-		str[j] = '0';
 	}
+	str[j] = '0';
 	while (str[i])
 	{
 		if (str[i] == '0')
@@ -74,7 +74,6 @@ void	handler(int sigtype)
 	if (i == 16)
 	{
 		letter = ft_binary_to_dec(binary);
-/* 		dprintf(2, "%d\t| %c\n", letter, letter); */
 		result = ft_strcjoin(result, letter);
 		if (letter == '\0')
 		{

@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:15:43 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/31 16:56:08 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/04/01 11:32:28 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ void	ft_atob(char *str, char *pid)
 	while (str[i])
 	{
 		str_b = ft_dec_to_binary(str[i]);
-/* 		char *s="ç";
-		dprintf(2, "code ascii lettre : %d\t|\t%c\t%s\n", s[0], -61, s); */
 		while (str_b && str_b[j])
 		{
 			if (str_b[j] == '1')
