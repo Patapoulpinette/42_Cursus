@@ -6,12 +6,14 @@
 #    By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 11:25:39 by dbouron           #+#    #+#              #
-#    Updated: 2022/03/29 15:34:35 by dbouron          ###   ########lyon.fr    #
+#    Updated: 2022/04/01 13:47:17 by dbouron          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 SERVER = server
 CLIENT = client
+BONUSS = server_bonus
+BONUSC = client_bonus
 
 # **************************************************************************** #
 #                               FILES and PATHS                                #
@@ -87,14 +89,14 @@ all : $(SERVER) $(CLIENT)
 $(PRINTF_LIB) :
 	@make -C $(PRINTF)
 
-bonus : bonus_server bonus_client
+bonus : ${BONUSS} ${BONUSC}
 
-bonus_server : $(OBJS_SERVER_BONUS) $(HEADFILE_BONUS) $(PRINTF_LIB)
-	gcc -Wall -Wextra -Werror -o $(SERVER) $(SRCS_SERVER_BONUS) -L./ft_printf -l ftprintf
+${BONUSS} : $(OBJS_SERVER_BONUS) $(HEADFILE_BONUS) $(PRINTF_LIB)
+	gcc -Wall -Wextra -Werror -o ${BONUSS} $(SRCS_SERVER_BONUS) -L./ft_printf -l ftprintf
 	@printf "\033[2K\r$(LIGHT_GREEN)--> Bonus : server compiled [√]\n"
 
-bonus_client : $(OBJS_CLIENT_BONUS) $(HEADFILE_BONUS) $(PRINTF_LIB)
-	gcc -Wall -Wextra -Werror -o $(CLIENT) $(SRCS_CLIENT_BONUS) -L./ft_printf -l ftprintf
+${BONUSC} : $(OBJS_CLIENT_BONUS) $(HEADFILE_BONUS) $(PRINTF_LIB)
+	gcc -Wall -Wextra -Werror -o ${BONUSC} $(SRCS_CLIENT_BONUS) -L./ft_printf -l ftprintf
 	@printf "\033[2K\r$(LIGHT_GREEN)--> Bonus : client compiled [√]\n"
 
 clean :
@@ -103,7 +105,7 @@ clean :
 	@printf "\033[2K\r$(LIGHT_BLUE)--> Cleaned\n"
 
 fclean : clean
-	rm -rf $(SERVER) $(CLIENT)
+	rm -rf $(SERVER) $(CLIENT) ${BONUSS} ${BONUSC}
 	@make fclean -C $(PRINTF)
 
 re : fclean all
