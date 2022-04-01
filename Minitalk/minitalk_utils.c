@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:07:36 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/28 17:23:43 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/04/01 11:48:46 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,11 @@ int	ft_recursive_power(int nb, int power)
 	if (power == 0)
 		return (1);
 	return (nb * ft_recursive_power(nb, power - 1));
+}
+
+int	ft_isascii(int c)
+{
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
 }

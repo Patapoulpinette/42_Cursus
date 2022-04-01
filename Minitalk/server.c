@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:17:36 by dbouron           #+#    #+#             */
-/*   Updated: 2022/03/28 17:28:24 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/04/01 11:46:12 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_binary_to_dec(char *str)
 	len = ft_strlen(str);
 	while (str[i])
 	{
-		nb += (str[i] - 48) * ft_recursive_power(2, (len -1));
+		nb += (str[i] - 48) * ft_recursive_power(2, (len - 1));
 		i++;
 		len--;
 	}
