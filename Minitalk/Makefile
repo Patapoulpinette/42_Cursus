@@ -6,7 +6,7 @@
 #    By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 11:25:39 by dbouron           #+#    #+#              #
-#    Updated: 2022/04/01 13:47:17 by dbouron          ###   ########lyon.fr    #
+#    Updated: 2022/04/04 17:05:00 by dbouron          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,8 @@ OBJS_SERVER_BONUS = $(SRCS_SERVER_BONUS:.c=.o)
 
 OBJS_CLIENT_BONUS = $(SRCS_CLIENT_BONUS:.c=.o)
 
+all : printf_lib Makefile $(SERVER) $(CLIENT)
+
 %.o: %.c $(HEADFILES) $(HEADFILE_BONUS)
 	gcc -Wall -Wextra -Werror -o $@ -c $<
 	@printf "\033[2K\r$(CYAN)Loading...$(RESET)"
@@ -84,9 +86,7 @@ $(CLIENT) : $(OBJS_CLIENT) $(HEADFILE) $(PRINTF_LIB)
 	gcc -Wall -Wextra -Werror -o $(CLIENT) $(SRCS_CLIENT) -L./ft_printf -l ftprintf
 	@printf "\033[2K\r$(LIGHT_GREEN)--> Client compiled [√]\n"
 	
-all : $(SERVER) $(CLIENT)
-
-$(PRINTF_LIB) :
+printf_lib :
 	@make -C $(PRINTF)
 
 bonus : ${BONUSS} ${BONUSC}
