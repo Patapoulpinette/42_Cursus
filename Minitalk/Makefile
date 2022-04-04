@@ -6,7 +6,7 @@
 #    By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 11:25:39 by dbouron           #+#    #+#              #
-#    Updated: 2022/04/04 17:05:00 by dbouron          ###   ########lyon.fr    #
+#    Updated: 2022/04/04 17:19:28 by dbouron          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -110,4 +110,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY: all compil clean fclean re
+.PHONY: all printf_lib bonus clean fclean re
