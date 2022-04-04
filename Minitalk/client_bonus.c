@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:15:43 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/01 18:03:06 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/04/04 11:40:57 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	end_of_msg(char *pid)
 	while (i < 16)
 	{
 		kill(ft_atoi(pid), SIGUSR2);
-		usleep(100);
+		usleep(200);
 		i++;
 	}
 }
@@ -72,7 +72,7 @@ void	ft_atob(char *str, char *pid)
 				kill(ft_atoi(pid), SIGUSR1);
 			else if (str_b[j] == '0')
 				kill(ft_atoi(pid), SIGUSR2);
-			usleep(100);
+			usleep(200);
 			j++;
 		}
 		i++;
@@ -85,7 +85,7 @@ void	ft_atob(char *str, char *pid)
 static void	handler_client(int sigtype)
 {
 	if (sigtype == SIGUSR1)
-		ft_printf("Message sent\n");
+		ft_printf("Message received\n");
 	return ;
 }
 
@@ -96,9 +96,9 @@ int	main(int argc, char **argv)
 	if (argc == 3)
 	{
 		if (!*argv[1])
-			ft_printf("Wrong PID\n");
+			return (ft_printf("Wrong PID\n"));
 		else if (ft_strlen(argv[2]) > 20000)
-			ft_printf("String too long\n");
+			return (ft_printf("String too long\n"));
 		else
 			ft_atob(argv[2], argv[1]);
 		action_client.sa_handler = handler_client;

@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:17:36 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/01 17:59:33 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/04/04 10:38:25 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	ft_binary_to_dec(char *str)
 
 void	confirm_msg(siginfo_t *info)
 {
-	usleep(100);
+	usleep(200);
 	kill(info->si_pid, SIGUSR1);
 }
 
