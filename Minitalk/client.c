@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:15:43 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/04 10:21:19 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/04/04 17:21:05 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int	main(int argc, char **argv)
 		else if (ft_strlen(argv[2]) > 20000)
 			return (ft_printf("String too long\n"));
 		else if (!analyse_string(argv[2]))
-			return (ft_printf("String error : ascii caracteres only\n"));
+			return (ft_printf("String error : ascii characteres only\n"));
 		else
 			ft_atob(argv[2], argv[1]);
 		return (0);
