@@ -6,7 +6,7 @@
 #    By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 11:25:39 by dbouron           #+#    #+#              #
-#    Updated: 2022/04/04 17:19:28 by dbouron          ###   ########lyon.fr    #
+#    Updated: 2022/04/04 17:30:22 by dbouron          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,7 @@ $(CLIENT) : $(OBJS_CLIENT) $(HEADFILE) $(PRINTF_LIB)
 printf_lib :
 	@make -C $(PRINTF)
 
-bonus : ${BONUSS} ${BONUSC}
+bonus : printf_lib Makefile ${BONUSS} ${BONUSC}
 
 ${BONUSS} : $(OBJS_SERVER_BONUS) $(HEADFILE_BONUS) $(PRINTF_LIB)
 	gcc -Wall -Wextra -Werror -o ${BONUSS} $(SRCS_SERVER_BONUS) -L./ft_printf -l ftprintf
