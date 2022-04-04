@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:15:43 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/01 12:04:43 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/04/04 10:21:19 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,15 +95,13 @@ int	main(int argc, char **argv)
 	if (argc == 3)
 	{
 		if (!*argv[1])
-			ft_printf("Wrong PID\n");
+			return (ft_printf("Wrong PID\n"));
 		else if (ft_strlen(argv[2]) > 20000)
-			ft_printf("String too long\n");
+			return (ft_printf("String too long\n"));
+		else if (!analyse_string(argv[2]))
+			return (ft_printf("String error : ascii caracteres only\n"));
 		else
-		{
-			if (!analyse_string(argv[2]))
-				return (ft_printf("String error : ascii caracteres only\n"));
 			ft_atob(argv[2], argv[1]);
-		}
 		return (0);
 	}
 	return (ft_printf("Wrong number of arguments\n"));
