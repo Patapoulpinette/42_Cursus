@@ -6,17 +6,15 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:29:50 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/01 11:48:14 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/04/05 10:34:19 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINITALK_H
 # define MINITALK_H
 
-# include <stdio.h>
 # include <signal.h>
 # include <stdlib.h>
-# include <unistd.h>
 # include "./ft_printf/ft_printf.h"
 
 void	handler(int sigtype);

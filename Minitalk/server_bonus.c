@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:17:36 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/04 17:06:45 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/04/05 10:36:06 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int	main(void)
 	struct sigaction	action;
 
 	pid = getpid();
-	printf("PID : %d\n", pid);
+	ft_printf("PID : %d\n", pid);
 	action.sa_sigaction = &handler;
 	action.sa_flags = SA_RESTART;
 	action.sa_flags = SA_SIGINFO;

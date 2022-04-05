@@ -63,7 +63,7 @@ int	main(void)
 	struct sigaction	action;
 
 	pid = getpid();
-	printf("PID : %d\n", pid);
+	ft_printf("PID : %d\n", pid);
 	action.sa_handler = handler;
 	action.sa_flags = SA_RESTART;
 	sigaction(SIGUSR1, &action, NULL);
