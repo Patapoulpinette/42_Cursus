@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:15:43 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/04 17:21:05 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/04/05 09:39:01 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ void	end_of_msg(char *pid)
 
 void	ft_atob(char *str, char *pid)
 {
-	int				i;
-	int				j;
-	char			*str_b;
+	int		i;
+	int		j;
+	char	*str_b;
 
 	i = 0;
 	j = 0;
