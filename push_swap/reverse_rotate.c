@@ -1,46 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/06 14:27:34 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/06 16:33:51 by dbouron          ###   ########.fr       */
+/*   Created: 2022/04/07 10:37:26 by dbouron           #+#    #+#             */
+/*   Updated: 2022/04/07 10:59:45 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	swap_a(char *str)
+void	reverse_rotate_a(char *str)
 {
+	int		i;
 	char	temp;
 
-	if (!str)
-		return ;
-	temp = str[0];
-	str[0] = str[1];
-	str[1] = temp;
+	i = 0;
+	while (str[i])
+		i++;
+	temp = str[i - 1];
+	while (i > 1)
+	{
+		str[i - 1] = str[i - 2];
+		i--;
+	}
+	str[0] = temp;
 }
 
-void	swap_b(char *str)
+void	reverse_rotate_b(char *str)
 {
+	int		i;
 	char	temp;
 
-	if (!str)
-		return ;
-	temp = str[0];
-	str[0] = str[1];
-	str[1] = temp;
+	i = 0;
+	while (str[i])
+		i++;
+	temp = str[i - 1];
+	while (i > 1)
+	{
+		str[i - 1] = str[i - 2];
+		i--;
+	}
+	str[0] = temp;
 }
 
-void	swap_stack(char *str_a, char *str_b)
+void	reverse_rotate_ab(char *str_a, char *str_b)
 {
-	swap_a(str_a);
-	swap_b(str_b);
-}
-
-void	push_a(char *str_a, char *str_b)
-{
-	if (!str_b)
-		return ;
-
+	reverse_rotate_a(str_a);
+	reverse_rotate_b(str_b);
 }
