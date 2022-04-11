@@ -6,15 +6,17 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 10:22:10 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/07 10:41:29 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/11 11:49:38 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdio.h>
 
 void	swap_a(char *str)
 {
 	char	temp;
 
-	if (!str)
+	if (!str || !str[1])
 		return ;
 	temp = str[0];
 	str[0] = str[1];
@@ -25,7 +27,7 @@ void	swap_b(char *str)
 {
 	char	temp;
 
-	if (!str)
+	if (!str || !str[1])
 		return ;
 	temp = str[0];
 	str[0] = str[1];
@@ -82,4 +84,21 @@ void	push_b(char *str_a, char *str_b)
 		str_a[i] = str_a[i + 1];
 		i++;
 	}
+}
+
+int	main(void)
+{
+	char	a[15] = "123456789";
+	char	b[5] = "023";
+
+	dprintf(2, "a : %s\nb : %s\n", a, b);
+	swap_stack(a, b);
+	dprintf(2, "a : %s\nb : %s\n", a, b);
+	push_a(a, b);
+	dprintf(2, "a : %s\nb : %s\n", a, b);
+	swap_stack(a, b);
+	dprintf(2, "a : %s\nb : %s\n", a, b);
+	push_a(a, b);
+	dprintf(2, "a : %s\nb : %s\n", a, b);
+	return (0);
 }
