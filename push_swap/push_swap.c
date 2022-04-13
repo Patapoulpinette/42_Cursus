@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:41:09 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/13 14:44:00 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/13 14:59:01 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ int	parsing(int argc, char **tab)
 
 	i = 0;
 	j = 1;
-	while (*tab[j] && j < argc - 1)
+	while (tab[j] && j < argc)
 	{
 		while (tab[j][i])
 		{
 			if (ft_isdigit(tab[j][i]) == 0)
-				return (/*ft_*/printf("Error | %c\n", tab[j][i]));
+				return (/*ft_*/printf("Error\n"));
 			i++;
 		}
 		i = 0;
