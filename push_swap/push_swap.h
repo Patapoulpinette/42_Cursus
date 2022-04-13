@@ -1,51 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_rotate.c                                   :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/07 10:37:26 by dbouron           #+#    #+#             */
+/*   Created: 2022/04/13 11:03:04 by dbouron           #+#    #+#             */
 /*   Updated: 2022/04/13 11:07:12 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	reverse_rotate_a(char *str)
-{
-	int		i;
-	char	temp;
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-	i = 0;
-	while (str[i])
-		i++;
-	temp = str[i - 1];
-	while (i > 1)
-	{
-		str[i - 1] = str[i - 2];
-		i--;
-	}
-	str[0] = temp;
-}
+# include <stdio.h>//pour dprintf
 
-void	reverse_rotate_b(char *str)
-{
-	int		i;
-	char	temp;
+void	swap_a(char *str);
+void	swap_b(char *str);
+void	swap_stack(char *str_a, char *str_b);
+void	push_a(char *str_a, char *str_b);
+void	push_b(char *str_a, char *str_b);
+void	rotate_a(char *str);
+void	rotate_b(char *str);
+void	rotate_ab(char *str_a, char *str_b);
+void	reverse_rotate_a(char *str);
+void	reverse_rotate_b(char *str);
+void	reverse_rotate_ab(char *str_a, char *str_b);
 
-	i = 0;
-	while (str[i])
-		i++;
-	temp = str[i - 1];
-	while (i > 1)
-	{
-		str[i - 1] = str[i - 2];
-		i--;
-	}
-	str[0] = temp;
-}
-
-void	reverse_rotate_ab(char *str_a, char *str_b)
-{
-	reverse_rotate_a(str_a);
-	reverse_rotate_b(str_b);
-}
+#endif
