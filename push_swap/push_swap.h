@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:03:04 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/13 11:07:12 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/13 14:05:44 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdio.h>//pour dprintf
 
+//operations
 void	swap_a(char *str);
 void	swap_b(char *str);
 void	swap_stack(char *str_a, char *str_b);
@@ -26,5 +27,8 @@ void	rotate_ab(char *str_a, char *str_b);
 void	reverse_rotate_a(char *str);
 void	reverse_rotate_b(char *str);
 void	reverse_rotate_ab(char *str_a, char *str_b);
+
+//utils
+int		ft_isdigit(int c);
 
 #endif
