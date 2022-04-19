@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:03:04 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/13 14:05:44 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/19 12:02:44 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ void	reverse_rotate_ab(char *str_a, char *str_b);
 
 //utils
 int		ft_isdigit(int c);
+int		ft_atoi(const char *str);
 
 #endif
