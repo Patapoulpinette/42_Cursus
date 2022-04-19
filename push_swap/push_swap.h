@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <stdio.h>//pour dprintf
+# include <limits.h>//pour INT_MAX
 
 //operations
 void	swap_a(char *str);
