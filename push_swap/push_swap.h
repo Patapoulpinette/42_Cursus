@@ -32,5 +32,6 @@ void	reverse_rotate_ab(char *str_a, char *str_b);
 //utils
 int		ft_isdigit(int c);
 int		ft_atoi(const char *str);
+long	ft_atol(const char *str);
 
 #endif

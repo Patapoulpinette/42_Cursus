@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:41:09 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/19 15:05:11 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/20 11:19:18 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,12 @@ int	parsing_digit(int argc, char **tab)
 int	parsing_int(int argc, char **tab)
 {
 	int	j;
-//	ft_atoi();
-//	ft_itoa();
-//	puis comparer
+
 	j = 1;
 	while (tab[j] && j < argc)
 	{
-		dprintf(2, "tab[%d] = %d\n", j, ft_atoi(tab[j]));
-		if (ft_atoi(tab[j]) > INT_MAX || ft_atoi(tab[j]) < INT_MIN)//don't work
-		{
+		if (ft_atol(tab[j]) > INT_MAX || ft_atol(tab[j]) < INT_MIN)
 			return (/*ft_*/printf("Error\n"));
-		}
 		j++;
 	}
 	return (0);
@@ -75,9 +70,9 @@ int	parsing_duplicates(int argc, char **tab)
 
 int	main(int argc, char **argv)
 {
-	parsing_digit(argc, argv);
-	parsing_int(argc, argv);
-	parsing_duplicates(argc, argv);
-//	algorithm
+	if (parsing_digit(argc, argv) == 0 &&
+		parsing_int(argc, argv) == 0 &&
+		parsing_duplicates(argc, argv) == 0)
+		dprintf(2, "parsing ok\n");
 	return (0);
 }
