@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:03:04 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/19 12:02:44 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/20 11:52:49 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define PUSH_SWAP_H
 
 # include <stdio.h>//pour dprintf
-# include <limits.h>//pour INT_MAX
+# include <limits.h>//pour INT_MAX && INT_MIN
+# include <stdlib.h>//pour malloc
 
 //operations
 void	swap_a(char *str);
@@ -33,5 +34,8 @@ void	reverse_rotate_ab(char *str_a, char *str_b);
 int		ft_isdigit(int c);
 int		ft_atoi(const char *str);
 long	ft_atol(const char *str);
+
+//algorithm
+void	algorithm(int argc, char **argv);
 
 #endif
