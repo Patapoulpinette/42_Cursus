@@ -36,6 +36,6 @@ int		ft_atoi(const char *str);
 long	ft_atol(const char *str);
 
 //algorithm
-void	algorithm(int argc, char **argv);
+void	algorithm(int size, int *stack_a);
 
 #endif
