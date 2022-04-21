@@ -6,80 +6,80 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 10:22:10 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/13 11:07:12 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/21 18:20:54 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	swap_a(char *str)
+void	swap_a(int *stack_a, int size_a)
 {
 	char	temp;
 
-	if (!str || !str[1])
+	if (size_a < 2)
 		return ;
-	temp = str[0];
-	str[0] = str[1];
-	str[1] = temp;
+	temp = stack_a[0];
+	stack_a[0] = stack_a[1];
+	stack_a[1] = temp;
 }
 
-void	swap_b(char *str)
+void	swap_b(int *stack_b, int size_b)
 {
 	char	temp;
 
-	if (!str || !str[1])
+	if (size_b < 2)
 		return ;
-	temp = str[0];
-	str[0] = str[1];
-	str[1] = temp;
+	temp = stack_b[0];
+	stack_b[0] = stack_b[1];
+	stack_b[1] = temp;
 }
 
-void	swap_stack(char *str_a, char *str_b)
+void	swap_ab(int *stack_a, int *stack_b, int size_a, int size_b)
 {
-	swap_a(str_a);
-	swap_b(str_b);
+	swap_a(stack_a, size_a);
+	swap_b(stack_b, size_b);
 }
 
-void	push_a(char *str_a, char *str_b)
+void	push_a(int *stack_a, int *stack_b, int size_a, int size_b)
 {
 	int	i;
 
 	i = 0;
-	if (!str_b)
+	if (size_b == 0)
 		return ;
-	while (str_a[i])
+	while (i < size_a)
 		i++;
 	while (i > 0)
 	{
-		str_a[i] = str_a[i - 1];
+		stack_a[i] = stack_a[i - 1];
 		i--;
 	}
-	str_a[0] = str_b[0];
+	stack_a[0] = stack_b[0];
 	i = 0;
-	while (str_b[i])
+	while (i < size_b)
 	{
-		str_b[i] = str_b[i + 1];
+		stack_b[i] = stack_b[i + 1];
 		i++;
 	}
 }
 
-void	push_b(char *str_a, char *str_b)
+void	push_b(int *stack_a, int *stack_b, int size_a, int size_b)
 {
 	int	i;
 
 	i = 0;
-	if (!str_a)
+	if (size_a == 0)
 		return ;
-	while (str_b[i])
+	while (i < size_b)
 		i++;
 	while (i > 0)
 	{
-		str_b[i] = str_b[i - 1];
+		stack_b[i] = stack_b[i - 1];
 		i--;
 	}
-	str_b[0] = str_a[0];
+	stack_b[0] = stack_a[0];
 	i = 0;
-	while (str_a[i])
+	while (i < size_a)
 	{
-		str_a[i] = str_a[i + 1];
+		stack_a[i] = stack_a[i + 1];
 		i++;
 	}
 }

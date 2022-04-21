@@ -33,7 +33,7 @@ int	parsing_digit(int argc, char **tab)
 	return (0);
 }
 
-int	parsing_int(int argc, char **tab)
+int	parsing_int(int argc, char **tab)//TODO
 {
 	int	j;
 

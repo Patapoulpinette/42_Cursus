@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 11:20:52 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/21 12:22:48 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/21 18:31:38 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,44 +68,84 @@
 //	tri_rapide(tableau + mur - 1, taille - mur + 1);
 //}
 
-void	put_my_nbrs_into_index(int *tab)//TODO
+int	*indexing(int *tab, int size)
 {
+	int	i;
+	int	j;
+	int	count;
+	int	*index;
 
+	i = 0;
+	index = malloc(sizeof(int *) * size);
+	if (!index)
+		return (NULL);
+	while (i < size)
+	{
+		j = 0;
+		count = 0;
+		while (j < size)
+		{
+			if (tab[j] < tab[i])
+				count++;
+			j++;
+		}
+		index[i] = count;
+		i++;
+	}
+	return (index);
 }
 
-bool	is_sorted(int *tab, int size)//TODO
+bool	is_sorted(int *tab, int size)
 {
 	int	i;
 
 	i = 0;
 	while (i < size - 1 && tab[i] < tab [i + 1])
 	{
-		if ()
-			return (false);
+		if (i == size - 1)
+		{
+			dprintf(2, "sorted");
+			return (true);
+		}
 		i++;
 	}
-	return (true);
+	return (false);
 }
 
-void	ft_algo_of_fire(int *stack_a, int *stack_b, int size)
+void	ft_algo_of_fire(int *stack_a, int *stack_b, int size_a)//TODO test operations & algo
 {
 	int	i;
 	int	j;
+	int	size_b;
 
 	i = 0;
-	while (!is_sorted(tab_a, size))
+	size_b = 0;
+	while (!is_sorted(stack_a, size_a))
 	{
 		j = 0;
-		while (j < size)
+		while (j < size_a)
 		{
-			if ((tab[0] >> i) & 1)
-				ra();
+			dprintf(2, "pouet\n");
+			if ((stack_a[0] >> i) & 1)
+			{
+				dprintf(2, "if\n");
+				rotate_a(stack_a, size_a);
+			}
 			else
-				pb();
+			{
+				dprintf(2, "else\n");
+				push_b(stack_a, stack_b, size_a, size_b);
+				size_b++;
+				dprintf(2, "count = %d\n", count);
+			}
 			j++;
 		}
-		while (!b.empty())
-			pa();
+		while (size_b > 0)
+		{
+			dprintf(2, "igloo\n");
+			push_a(stack_a, stack_b, size_a, size_b);
+			size_b--;
+		}
 		i++;
 	}
 
@@ -122,12 +162,15 @@ int	main(int argc, char **argv)
 	j = 0;
 	tab_a = malloc(sizeof(int *) * argc - 1);
 	tab_b = malloc(sizeof(int *) * argc - 1);
+	if (!tab_a || !tab_b)
+		return (0);
 	while (argv[i] && i < argc)
 	{
 		tab_a[j] = ft_atoi(argv[i]);
 		i++;
 		j++;
 	}
+	tab_a = indexing(tab_a, argc - 1);
 	ft_algo_of_fire(tab_a, tab_b, argc - 1);
 	j = 0;
 	while (j < argc - 1)

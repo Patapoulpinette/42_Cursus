@@ -6,46 +6,46 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 10:23:56 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/13 11:07:12 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/21 18:23:47 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	rotate_a(char *str)
+void	rotate_a(int *stack_a, int size_a)
 {
 	char	temp;
 	int		i;
 
 	i = 0;
-	if (!str)
+	if (size_a == 0)
 		return ;
-	temp = str[0];
-	while (str[i])
+	temp = stack_a[0];
+	while (i < size_a)
 	{
-		str[i] = str[i + 1];
+		stack_a[i] = stack_a[i + 1];
 		i++;
 	}
-	str[i - 1] = temp;
+	stack_a[i - 1] = temp;
 }
 
-void	rotate_b(char *str)
+void	rotate_b(int *stack_b, int size_b)
 {
 	char	temp;
 	int		i;
 
 	i = 0;
-	if (!str)
+	if (size_b == 0)
 		return ;
-	temp = str[0];
-	while (str[i])
+	temp = stack_b[0];
+	while (i < size_b)
 	{
-		str[i] = str[i + 1];
+		stack_b[i] = stack_b[i + 1];
 		i++;
 	}
-	str[i - 1] = temp;
+	stack_b[i - 1] = temp;
 }
 
-void	rotate_ab(char *str_a, char *str_b)
+void	rotate_ab(int *stack_a, int *stack_b, int size_a, int size_b)
 {
-	rotate_a(str_a);
-	rotate_b(str_b);
+	rotate_a(stack_a, int size_a);
+	rotate_b(stack_b, int size_b);
 }
