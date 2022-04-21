@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:03:04 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/21 18:24:48 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/21 20:57:28 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,26 @@
 # include <stdlib.h>//pour malloc
 # include <stdbool.h>//pour type bool
 
+typedef struct	s_data_stack
+{
+    int	*stack_a;
+    int	*stack_b;
+    int	size_a;
+    int	size_b;
+}				t_data_stack;
+
 //operations
-void	swap_a(int *stack_a, int size_a);
-void	swap_b(int *stack_b, int size_b);
-void	swap_ab(int *stack_a, int *stack_b, int size_a, int size_b);
-void	push_a(int *stack_a, int *stack_b, int size_a, int size_b);
-void	push_b(int *stack_a, int *stack_b, int size_a, int size_b);
-void	rotate_a(int *stack_a, int size_a);
-void	rotate_b(int *stack_b, int size_b);
-void	rotate_ab(int *stack_a, int *stack_b, int size_a, int size_b);
-void	reverse_rotate_a(int *stack_a, int size_a);
-void	reverse_rotate_b(int *stack_b, int size_b);
-void	reverse_rotate_ab(int *stack_a, int *stack_b, int size_a, int size_b);
+void	swap_a(t_data_stack stacks);
+void	swap_b(t_data_stack stacks);
+void	swap_ab(t_data_stack stacks);
+void	push_a(t_data_stack stacks);
+void	push_b(t_data_stack stacks);
+void	rotate_a(t_data_stack stacks);
+void	rotate_b(t_data_stack stacks);
+void	rotate_ab(t_data_stack stacks);
+void	reverse_rotate_a(t_data_stack stacks);
+void	reverse_rotate_b(t_data_stack stacks);
+void	reverse_rotate_ab(t_data_stack stacks);
 
 //utils
 int		ft_isdigit(int c);
@@ -37,7 +45,7 @@ int		ft_atoi(const char *str);
 long	ft_atol(const char *str);
 
 //algorithm
-void	ft_algo_of_fire(int *stack_a, int *stack_b, int size);
-int		*indexing(int *tab, int size);
+void	ft_algo_of_fire(t_data_stack stacks);
+int		*indexing(t_data_stack stacks);
 
 #endif

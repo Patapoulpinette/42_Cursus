@@ -6,46 +6,48 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 10:23:56 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/21 18:23:47 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/21 21:04:36 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	rotate_a(int *stack_a, int size_a)
+#include "push_swap.h"
+
+void	rotate_a(t_data_stack stacks)
 {
 	char	temp;
 	int		i;
 
 	i = 0;
-	if (size_a == 0)
+	if (stacks.size_a == 0)
 		return ;
-	temp = stack_a[0];
-	while (i < size_a)
+	temp = stacks.stack_a[0];
+	while (i < stacks.size_a)
 	{
-		stack_a[i] = stack_a[i + 1];
+		stacks.stack_a[i] = stacks.stack_a[i + 1];
 		i++;
 	}
-	stack_a[i - 1] = temp;
+	stacks.stack_a[i - 1] = temp;
 }
 
-void	rotate_b(int *stack_b, int size_b)
+void	rotate_b(t_data_stack stacks)
 {
 	char	temp;
 	int		i;
 
 	i = 0;
-	if (size_b == 0)
+	if (stacks.size_b == 0)
 		return ;
-	temp = stack_b[0];
-	while (i < size_b)
+	temp = stacks.stack_b[0];
+	while (i < stacks.size_b)
 	{
-		stack_b[i] = stack_b[i + 1];
+		stacks.stack_b[i] = stacks.stack_b[i + 1];
 		i++;
 	}
-	stack_b[i - 1] = temp;
+	stacks.stack_b[i - 1] = temp;
 }
 
-void	rotate_ab(int *stack_a, int *stack_b, int size_a, int size_b)
+void	rotate_ab(t_data_stack stacks)
 {
-	rotate_a(stack_a, int size_a);
-	rotate_b(stack_b, int size_b);
+	rotate_a(stacks);
+	rotate_b(stacks);
 }
