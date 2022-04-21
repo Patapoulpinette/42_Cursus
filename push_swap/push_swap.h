@@ -36,6 +36,6 @@ int		ft_atoi(const char *str);
 long	ft_atol(const char *str);
 
 //algorithm
-void	algorithm(int size, int *stack_a);
+void	ft_algo_of_fire(int *stack_a, int *stack_b, int size);
 
 #endif
