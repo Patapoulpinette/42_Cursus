@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:03:04 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/21 20:57:28 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/04/21 22:04:40 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,17 @@ typedef struct	s_data_stack
 }				t_data_stack;
 
 //operations
-void	swap_a(t_data_stack stacks);
-void	swap_b(t_data_stack stacks);
-void	swap_ab(t_data_stack stacks);
-void	push_a(t_data_stack stacks);
-void	push_b(t_data_stack stacks);
-void	rotate_a(t_data_stack stacks);
-void	rotate_b(t_data_stack stacks);
-void	rotate_ab(t_data_stack stacks);
-void	reverse_rotate_a(t_data_stack stacks);
-void	reverse_rotate_b(t_data_stack stacks);
-void	reverse_rotate_ab(t_data_stack stacks);
+void	swap_a(t_data_stack *stacks);
+void	swap_b(t_data_stack *stacks);
+void	swap_ab(t_data_stack *stacks);
+void	push_a(t_data_stack *stacks);
+void	push_b(t_data_stack *stacks);
+void	rotate_a(t_data_stack *stacks);
+void	rotate_b(t_data_stack *stacks);
+void	rotate_ab(t_data_stack *stacks);
+void	reverse_rotate_a(t_data_stack *stacks);
+void	reverse_rotate_b(t_data_stack *stacks);
+void	reverse_rotate_ab(t_data_stack *stacks);
 
 //utils
 int		ft_isdigit(int c);
