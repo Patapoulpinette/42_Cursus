@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 11:20:52 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/22 12:37:13 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/22 15:18:31 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	*indexing(t_data_stack *stacks)
 		index[i] = count;
 		i++;
 	}
+	free(stacks->stack_a);
 	return (index);
 }
 
@@ -82,7 +83,6 @@ void	ft_algorithm(t_data_stack *stacks)
 			push_a(stacks);
 		i++;
 	}
-
 }
 
 //______________________________________________________________________________
