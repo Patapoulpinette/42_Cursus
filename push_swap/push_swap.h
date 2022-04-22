@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:03:04 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/22 00:18:39 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/04/22 11:17:36 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 # include <stdlib.h>//pour malloc
 # include <stdbool.h>//pour type bool
 
-typedef struct	s_data_stack
+typedef struct s_data_stack
 {
-    int	*stack_a;
-    int	*stack_b;
-    int	size_a;
-    int	size_b;
+	int	*stack_a;
+	int	*stack_b;
+	int	size_a;
+	int	size_b;
 }				t_data_stack;
 
 //operations
@@ -40,6 +40,7 @@ void	reverse_rotate_b(t_data_stack *stacks);
 void	reverse_rotate_ab(t_data_stack *stacks);
 
 //utils
+int		ft_strlen(char *str);
 int		ft_isdigit(int c);
 int		ft_atoi(const char *str);
 long	ft_atol(const char *str);

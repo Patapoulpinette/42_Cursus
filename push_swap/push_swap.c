@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:41:09 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/22 01:01:27 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/04/22 11:02:03 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ int	parsing_int(int argc, char **tab)//TODO
 	j = 1;
 	while (tab[j] && j < argc)
 	{
-		if (ft_atol(tab[j]) > INT_MAX || ft_atol(tab[j]) < INT_MIN)
+		if (ft_atol(tab[j]) > INT32_MAX || ft_atol(tab[j]) < INT32_MIN \
+			/*|| ft_strlen(tab[j]) > 10*/)
 			return (/*ft_*/printf("Error\n"));
 		j++;
 	}
@@ -70,13 +71,13 @@ int	parsing_duplicates(int argc, char **tab)
 
 int	main(int argc, char **argv)
 {
-	int	i;
-	int	j;
+	int				i;
+	int				j;
 	t_data_stack	stacks;
-	
-	if (parsing_digit(argc, argv) == 0 &&
-		parsing_int(argc, argv) == 0 &&
-		parsing_duplicates(argc, argv) == 0)
+
+	if (parsing_digit(argc, argv) == 0 \
+		&& parsing_int(argc, argv) == 0 \
+		&& parsing_duplicates(argc, argv) == 0)
 	{
 		dprintf(2, "parsing ok\n");//for testing
 		i = 1;
@@ -89,7 +90,7 @@ int	main(int argc, char **argv)
 			return (0);
 		while (argv[i] && i < argc)
 			stacks.stack_a[j++] = ft_atoi(argv[i++]);
-		
+
 		i = 0;//for testing
 		j = 0;//for testing
 		dprintf(2, "init---------------\n");//for testing
@@ -101,7 +102,7 @@ int	main(int argc, char **argv)
 		dprintf(2, "taille b = %d\n", stacks.size_b);//for testing
 
 		stacks.stack_a = indexing(&stacks);
-		
+
 		i = 0;//for testing
 		j = 0;//for testing
 		dprintf(2, "index---------------\n");//for testing
@@ -111,9 +112,9 @@ int	main(int argc, char **argv)
 		while (i < stacks.size_b)//for testing
 			dprintf(2, "\t%d\n", stacks.stack_b[i++]);//for testing
 		dprintf(2, "taille b = %d\n", stacks.size_b);//for testing
-		
+
 		ft_algo_of_fire(&stacks);
-		
+
 		i = 0;//for testing
 		j = 0;//for testing
 		dprintf(2, "algo---------------\n");//for testing
@@ -123,10 +124,10 @@ int	main(int argc, char **argv)
 		while (i < stacks.size_b)//for testing
 			dprintf(2, "\t%d\n", stacks.stack_b[i++]);//for testing
 		dprintf(2, "taille b = %d\n", stacks.size_b);//for testing
-		
+
 		free(stacks.stack_a);
 		free(stacks.stack_b);
 		return (0);
-		}
+	}
 	return (0);
 }

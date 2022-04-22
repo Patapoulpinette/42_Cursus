@@ -6,11 +6,23 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:04:29 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/20 11:10:44 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/22 11:25:11 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i])
+		i++;
+	return (i);
+}
 
 int	ft_isdigit(int c)
 {

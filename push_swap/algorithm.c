@@ -6,28 +6,28 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 11:20:52 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/22 01:51:44 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/04/22 10:51:05 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <unistd.h>//for testing - usleep
 
-bool	is_sorted(t_data_stack *stacks)//not working
+bool	is_sorted(t_data_stack *stacks)
 {
 	int	i;
 
 	i = 0;
-	while (i < stacks->size_a - 1 && stacks->stack_a[i] < stacks->stack_a[i + 1])
+	while (i < stacks->size_a - 1 \
+			&& stacks->stack_a[i] < stacks->stack_a[i + 1])
 		i++;
 	if (i == stacks->size_a - 1)
 	{
-		dprintf(2, "sorted\n");//for testing
+		dprintf(2, "sorted ✓\n");//for testing
 		return (true);
 	}
 	else
 	{
-		dprintf(2, "not sorted\n");//for testing
+		dprintf(2, "not sorted ❌ \n");//for testing
 		return (false);
 	}
 }
@@ -59,60 +59,27 @@ int	*indexing(t_data_stack *stacks)
 	return (index);
 }
 
-void	ft_algo_of_fire(t_data_stack *stacks)//TODO test algo : ne sort pas de la 1ere boucle qui demande si c'est trié
+void	ft_algo_of_fire(t_data_stack *stacks)
 {
 	int	i;
 	int	j;
-	int	k;//for testing
-	int	l;//for testing
+	int	size_a_init;
 
 	i = 0;
+	size_a_init = stacks->size_a;
 	while (!is_sorted(stacks))
 	{
 		j = 0;
-		while (j < stacks->size_a)
+		while (j < size_a_init)
 		{
 			if ((stacks->stack_a[0] >> i) & 1)
-			{
 				rotate_a(stacks);
-				k = 0;//for testing
-				l = 0;//for testing
-				dprintf(2, "rotate_a---------------\n");//for testing
-				while (l < stacks->size_a)//for testing
-					dprintf(2, "\t%d\n", stacks->stack_a[l++]);//for testing
-				dprintf(2, "taille a = %d\n", stacks->size_a);//for testing
-				while (k < stacks->size_b)//for testing
-					dprintf(2, "\t%d\n", stacks->stack_b[k++]);//for testing
-				dprintf(2, "taille b = %d\n", stacks->size_b);//for testing
-			}
 			else
-			{
 				push_b(stacks);
-				k = 0;//for testing
-				l = 0;//for testing
-				dprintf(2, "push_b---------------\n");//for testing
-				while (l < stacks->size_a)//for testing
-					dprintf(2, "\t%d\n", stacks->stack_a[l++]);//for testing
-				dprintf(2, "taille a = %d\n", stacks->size_a);//for testing
-				while (k < stacks->size_b)//for testing
-					dprintf(2, "\t%d\n", stacks->stack_b[k++]);//for testing
-				dprintf(2, "taille b = %d\n", stacks->size_b);//for testing
-			}
 			j++;
 		}
 		while (stacks->size_b > 0)
-		{
 			push_a(stacks);
-			k = 0;//for testing
-			l = 0;//for testing
-			dprintf(2, "push_a---------------\n");//for testing
-			while (l < stacks->size_a)//for testing
-				dprintf(2, "\t%d\n", stacks->stack_a[l++]);//for testing
-			dprintf(2, "taille a = %d\n", stacks->size_a);//for testing
-			while (k < stacks->size_b)//for testing
-				dprintf(2, "\t%d\n", stacks->stack_b[k++]);//for testing
-			dprintf(2, "taille b = %d\n", stacks->size_b);//for testing
-		}
 		i++;
 	}
 
