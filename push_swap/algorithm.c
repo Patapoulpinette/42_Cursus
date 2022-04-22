@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 11:20:52 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/22 10:51:05 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/22 11:41:29 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ bool	is_sorted(t_data_stack *stacks)
 		i++;
 	if (i == stacks->size_a - 1)
 	{
-		dprintf(2, "sorted ✓\n");//for testing
+		dprintf(2, "sorted \033[1;32m✔\033[0m\n");//for testing
 		return (true);
 	}
 	else
 	{
-		dprintf(2, "not sorted ❌ \n");//for testing
+		dprintf(2, "not sorted \033[1;31m✗\033[0m\n");//for testing
 		return (false);
 	}
 }

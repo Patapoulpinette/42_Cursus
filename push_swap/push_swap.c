@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:41:09 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/22 11:02:03 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/22 11:35:46 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	parsing_digit(int argc, char **tab)
 	return (0);
 }
 
-int	parsing_int(int argc, char **tab)//TODO
+int	parsing_int(int argc, char **tab)
 {
 	int	j;
 
@@ -41,7 +41,7 @@ int	parsing_int(int argc, char **tab)//TODO
 	while (tab[j] && j < argc)
 	{
 		if (ft_atol(tab[j]) > INT32_MAX || ft_atol(tab[j]) < INT32_MIN \
-			/*|| ft_strlen(tab[j]) > 10*/)
+			|| ft_strlen(tab[j]) > 10)
 			return (/*ft_*/printf("Error\n"));
 		j++;
 	}
