@@ -6,13 +6,33 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 11:20:52 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/21 21:47:51 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/04/22 01:51:44 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <unistd.h>//for testing - usleep
 
-int	*indexing(t_data_stack stacks)
+bool	is_sorted(t_data_stack *stacks)//not working
+{
+	int	i;
+
+	i = 0;
+	while (i < stacks->size_a - 1 && stacks->stack_a[i] < stacks->stack_a[i + 1])
+		i++;
+	if (i == stacks->size_a - 1)
+	{
+		dprintf(2, "sorted\n");//for testing
+		return (true);
+	}
+	else
+	{
+		dprintf(2, "not sorted\n");//for testing
+		return (false);
+	}
+}
+
+int	*indexing(t_data_stack *stacks)
 {
 	int	i;
 	int	j;
@@ -20,16 +40,16 @@ int	*indexing(t_data_stack stacks)
 	int	*index;
 
 	i = 0;
-	index = malloc(sizeof(int *) * stacks.size_a);
+	index = malloc(sizeof(int *) * stacks->size_a);
 	if (!index)
 		return (NULL);
-	while (i < stacks.size_a)
+	while (i < stacks->size_a)
 	{
 		j = 0;
 		count = 0;
-		while (j < stacks.size_a)
+		while (j < stacks->size_a)
 		{
-			if (stacks.stack_a[j] < stacks.stack_a[i])
+			if (stacks->stack_a[j] < stacks->stack_a[i])
 				count++;
 			j++;
 		}
@@ -39,54 +59,59 @@ int	*indexing(t_data_stack stacks)
 	return (index);
 }
 
-bool	is_sorted(t_data_stack stacks)
-{
-	int	i;
-
-	i = 0;
-	while (i < stacks.size_a - 1 && stacks.stack_a[i] < stacks.stack_a [i + 1])
-	{
-		if (i == stacks.size_a - 1)
-		{
-			dprintf(2, "sorted");
-			return (true);
-		}
-		i++;
-	}
-	return (false);
-}
-
-void	ft_algo_of_fire(t_data_stack stacks)//TODO test operations & algo
+void	ft_algo_of_fire(t_data_stack *stacks)//TODO test algo : ne sort pas de la 1ere boucle qui demande si c'est trié
 {
 	int	i;
 	int	j;
+	int	k;//for testing
+	int	l;//for testing
 
 	i = 0;
 	while (!is_sorted(stacks))
 	{
 		j = 0;
-		while (j < stacks.size_a)
+		while (j < stacks->size_a)
 		{
-			dprintf(2, "pouet\n");
-			if ((stacks.stack_a[0] >> i) & 1)
+			if ((stacks->stack_a[0] >> i) & 1)
 			{
-				dprintf(2, "if\n");
 				rotate_a(stacks);
+				k = 0;//for testing
+				l = 0;//for testing
+				dprintf(2, "rotate_a---------------\n");//for testing
+				while (l < stacks->size_a)//for testing
+					dprintf(2, "\t%d\n", stacks->stack_a[l++]);//for testing
+				dprintf(2, "taille a = %d\n", stacks->size_a);//for testing
+				while (k < stacks->size_b)//for testing
+					dprintf(2, "\t%d\n", stacks->stack_b[k++]);//for testing
+				dprintf(2, "taille b = %d\n", stacks->size_b);//for testing
 			}
 			else
 			{
-				dprintf(2, "else\n");
 				push_b(stacks);
-				stacks.size_b++;//a enlever
-				dprintf(2, "count = %d\n", stacks.size_b);
+				k = 0;//for testing
+				l = 0;//for testing
+				dprintf(2, "push_b---------------\n");//for testing
+				while (l < stacks->size_a)//for testing
+					dprintf(2, "\t%d\n", stacks->stack_a[l++]);//for testing
+				dprintf(2, "taille a = %d\n", stacks->size_a);//for testing
+				while (k < stacks->size_b)//for testing
+					dprintf(2, "\t%d\n", stacks->stack_b[k++]);//for testing
+				dprintf(2, "taille b = %d\n", stacks->size_b);//for testing
 			}
 			j++;
 		}
-		while (stacks.size_b > 0)
+		while (stacks->size_b > 0)
 		{
-			dprintf(2, "igloo\n");
 			push_a(stacks);
-			stacks.size_b--;//a enlever
+			k = 0;//for testing
+			l = 0;//for testing
+			dprintf(2, "push_a---------------\n");//for testing
+			while (l < stacks->size_a)//for testing
+				dprintf(2, "\t%d\n", stacks->stack_a[l++]);//for testing
+			dprintf(2, "taille a = %d\n", stacks->size_a);//for testing
+			while (k < stacks->size_b)//for testing
+				dprintf(2, "\t%d\n", stacks->stack_b[k++]);//for testing
+			dprintf(2, "taille b = %d\n", stacks->size_b);//for testing
 		}
 		i++;
 	}

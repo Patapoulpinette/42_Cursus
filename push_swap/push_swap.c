@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:41:09 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/21 21:09:31 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/04/22 01:01:27 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,41 @@ int	main(int argc, char **argv)
 			return (0);
 		while (argv[i] && i < argc)
 			stacks.stack_a[j++] = ft_atoi(argv[i++]);
-		stacks.stack_a = indexing(stacks);
-		ft_algo_of_fire(stacks);
+		
+		i = 0;//for testing
 		j = 0;//for testing
-		while (j < argc - 1)//for testing
-			dprintf(2, "%d\n", stacks.stack_a[j++]);//for testing
+		dprintf(2, "init---------------\n");//for testing
+		while (j < stacks.size_a)//for testing
+			dprintf(2, "\t%d\n", stacks.stack_a[j++]);//for testing
+		dprintf(2, "taille a = %d\n", stacks.size_a);//for testing
+		while (i < stacks.size_b)//for testing
+			dprintf(2, "\t%d\n", stacks.stack_b[i++]);//for testing
+		dprintf(2, "taille b = %d\n", stacks.size_b);//for testing
+
+		stacks.stack_a = indexing(&stacks);
+		
+		i = 0;//for testing
+		j = 0;//for testing
+		dprintf(2, "index---------------\n");//for testing
+		while (j < stacks.size_a)//for testing
+			dprintf(2, "\t%d\n", stacks.stack_a[j++]);//for testing
+		dprintf(2, "taille a = %d\n", stacks.size_a);//for testing
+		while (i < stacks.size_b)//for testing
+			dprintf(2, "\t%d\n", stacks.stack_b[i++]);//for testing
+		dprintf(2, "taille b = %d\n", stacks.size_b);//for testing
+		
+		ft_algo_of_fire(&stacks);
+		
+		i = 0;//for testing
+		j = 0;//for testing
+		dprintf(2, "algo---------------\n");//for testing
+		while (j < stacks.size_a)//for testing
+			dprintf(2, "\t%d\n", stacks.stack_a[j++]);//for testing
+		dprintf(2, "taille a = %d\n", stacks.size_a);//for testing
+		while (i < stacks.size_b)//for testing
+			dprintf(2, "\t%d\n", stacks.stack_b[i++]);//for testing
+		dprintf(2, "taille b = %d\n", stacks.size_b);//for testing
+		
 		free(stacks.stack_a);
 		free(stacks.stack_b);
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:03:04 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/21 22:04:40 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/04/22 00:18:39 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ int		ft_atoi(const char *str);
 long	ft_atol(const char *str);
 
 //algorithm
-void	ft_algo_of_fire(t_data_stack stacks);
-int		*indexing(t_data_stack stacks);
+void	ft_algo_of_fire(t_data_stack *stacks);
+int		*indexing(t_data_stack *stacks);
+bool	is_sorted(t_data_stack *stacks);
 
 #endif
