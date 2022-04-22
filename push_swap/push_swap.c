@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:41:09 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/22 11:35:46 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/22 12:13:49 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,7 @@ int	main(int argc, char **argv)
 		dprintf(2, "init---------------\n");//for testing
 		while (j < stacks.size_a)//for testing
 			dprintf(2, "\t%d\n", stacks.stack_a[j++]);//for testing
-		dprintf(2, "taille a = %d\n", stacks.size_a);//for testing
-		while (i < stacks.size_b)//for testing
-			dprintf(2, "\t%d\n", stacks.stack_b[i++]);//for testing
-		dprintf(2, "taille b = %d\n", stacks.size_b);//for testing
+		dprintf(2, "     Stack A\n");//for testing
 
 		stacks.stack_a = indexing(&stacks);
 
@@ -108,22 +105,16 @@ int	main(int argc, char **argv)
 		dprintf(2, "index---------------\n");//for testing
 		while (j < stacks.size_a)//for testing
 			dprintf(2, "\t%d\n", stacks.stack_a[j++]);//for testing
-		dprintf(2, "taille a = %d\n", stacks.size_a);//for testing
-		while (i < stacks.size_b)//for testing
-			dprintf(2, "\t%d\n", stacks.stack_b[i++]);//for testing
-		dprintf(2, "taille b = %d\n", stacks.size_b);//for testing
+		dprintf(2, "     Stack A\n");//for testing
 
-		ft_algo_of_fire(&stacks);
+		ft_algorithm(&stacks);
 
 		i = 0;//for testing
 		j = 0;//for testing
 		dprintf(2, "algo---------------\n");//for testing
 		while (j < stacks.size_a)//for testing
 			dprintf(2, "\t%d\n", stacks.stack_a[j++]);//for testing
-		dprintf(2, "taille a = %d\n", stacks.size_a);//for testing
-		while (i < stacks.size_b)//for testing
-			dprintf(2, "\t%d\n", stacks.stack_b[i++]);//for testing
-		dprintf(2, "taille b = %d\n", stacks.size_b);//for testing
+		dprintf(2, "     Stack A\n");//for testing
 
 		free(stacks.stack_a);
 		free(stacks.stack_b);

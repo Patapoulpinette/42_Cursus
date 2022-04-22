@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 11:20:52 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/22 11:41:29 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/22 12:37:13 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	*indexing(t_data_stack *stacks)
 	return (index);
 }
 
-void	ft_algo_of_fire(t_data_stack *stacks)
+void	ft_algorithm(t_data_stack *stacks)
 {
 	int	i;
 	int	j;
@@ -73,7 +73,7 @@ void	ft_algo_of_fire(t_data_stack *stacks)
 		while (j < size_a_init)
 		{
 			if ((stacks->stack_a[0] >> i) & 1)
-				rotate_a(stacks);
+				rotate_a(stacks, 1);
 			else
 				push_b(stacks);
 			j++;
