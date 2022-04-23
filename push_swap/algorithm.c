@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 11:20:52 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/22 15:18:31 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/23 15:49:04 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,48 @@ int	*indexing(t_data_stack *stacks)
 	return (index);
 }
 
-void	ft_algorithm(t_data_stack *stacks)
+void	sorting_3nbrs(t_data_stack *stacks)
+{
+	while (!is_sorted(stacks))
+	{
+		if (stacks->stack_a[0] < stacks->stack_a[2] \
+			&& stacks->stack_a[2] < stacks->stack_a[1])
+		{
+			swap_a(stacks, 1);
+			rotate_a(stacks, 1);
+		}
+		else if (stacks->stack_a[1] < stacks->stack_a[0] \
+			&& stacks->stack_a[0] < stacks->stack_a[2])
+			swap_a(stacks, 1);
+		else if (stacks->stack_a[2] < stacks->stack_a[0] \
+			&& stacks->stack_a[0] < stacks->stack_a[1])
+			reverse_rotate_a(stacks, 1);
+		else if (stacks->stack_a[1] < stacks->stack_a[2] \
+			&& stacks->stack_a[2] < stacks->stack_a[0])
+			rotate_a(stacks, 1);
+		else if (stacks->stack_a[2] < stacks->stack_a[1] \
+			&& stacks->stack_a[1] < stacks->stack_a[0])
+		{
+			swap_a(stacks, 1);
+			reverse_rotate_a(stacks, 1);
+		}
+	}
+}
+
+void	sorting_5nbrs(t_data_stack *stacks)
+{
+	while (!is_sorted(stacks))
+	{
+		push_b(stacks);
+		push_b(stacks);
+		sorting_3nbrs(stacks);
+		push_a(stacks);
+		rotate_a(stacks, 1);
+		push_a(stacks);
+	}
+}
+
+void	sorting_radix(t_data_stack *stacks)
 {
 	int	i;
 	int	j;
@@ -48,6 +89,7 @@ void	ft_algorithm(t_data_stack *stacks)
 
 	i = 0;
 	size_a_init = stacks->size_a;
+	stacks->stack_a = indexing(stacks);
 	while (!is_sorted(stacks))
 	{
 		j = 0;

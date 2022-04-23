@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:41:09 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/22 12:13:49 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/23 15:41:34 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,25 +93,21 @@ int	main(int argc, char **argv)
 
 		i = 0;//for testing
 		j = 0;//for testing
-		dprintf(2, "init---------------\n");//for testing
+		dprintf(2, "init----------------\n");//for testing
 		while (j < stacks.size_a)//for testing
 			dprintf(2, "\t%d\n", stacks.stack_a[j++]);//for testing
 		dprintf(2, "     Stack A\n");//for testing
 
-		stacks.stack_a = indexing(&stacks);
+		if (stacks.size_a == 3)
+			sorting_3nbrs(&stacks);
+		else if (stacks.size_a == 5)
+			sorting_5nbrs(&stacks);
+		else
+			sorting_radix(&stacks);
 
 		i = 0;//for testing
 		j = 0;//for testing
-		dprintf(2, "index---------------\n");//for testing
-		while (j < stacks.size_a)//for testing
-			dprintf(2, "\t%d\n", stacks.stack_a[j++]);//for testing
-		dprintf(2, "     Stack A\n");//for testing
-
-		ft_algorithm(&stacks);
-
-		i = 0;//for testing
-		j = 0;//for testing
-		dprintf(2, "algo---------------\n");//for testing
+		dprintf(2, "algo----------------\n");//for testing
 		while (j < stacks.size_a)//for testing
 			dprintf(2, "\t%d\n", stacks.stack_a[j++]);//for testing
 		dprintf(2, "     Stack A\n");//for testing

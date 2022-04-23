@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:03:04 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/23 13:48:46 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/23 15:04:34 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,9 @@ long	ft_atol(const char *str);
 bool	is_sorted(t_data_stack *stacks);
 
 //algorithm
-void	ft_algorithm(t_data_stack *stacks);
 int		*indexing(t_data_stack *stacks);
+void	sorting_3nbrs(t_data_stack *stacks);
+void	sorting_5nbrs(t_data_stack *stacks);
+void	sorting_radix(t_data_stack *stacks);
 
 #endif
