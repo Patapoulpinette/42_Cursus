@@ -84,3 +84,23 @@ long	ft_atol(const char *str)
 	}
 	return (result * neg);
 }
+
+bool	is_sorted(t_data_stack *stacks)
+{
+	int	i;
+
+	i = 0;
+	while (i < stacks->size_a - 1 \
+			&& stacks->stack_a[i] < stacks->stack_a[i + 1])
+		i++;
+	if (i == stacks->size_a - 1)
+	{
+		dprintf(2, "sorted \033[1;32m✔\033[0m\n");//for testing
+		return (true);
+	}
+	else
+	{
+		dprintf(2, "not sorted \033[1;31m✗\033[0m\n");//for testing
+		return (false);
+	}
+}
