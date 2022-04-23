@@ -76,8 +76,21 @@ void	sorting_5nbrs(t_data_stack *stacks)
 		push_b(stacks);
 		sorting_3nbrs(stacks);
 		push_a(stacks);
-		rotate_a(stacks, 1);
+		if (stacks->stack_a[0] > stacks->stack_a[3])
+			rotate_a(stacks, 1);
+		if (stacks->stack_a[0] > stacks->stack_a[1])
+			swap_a(stacks, 1);
+		if (stacks->stack_a[1] > stacks->stack_a[2])
+			swap_a(stacks, 1);
 		push_a(stacks);
+		if (stacks->stack_a[0] > stacks->stack_a[4])
+			rotate_a(stacks, 1);
+		if (stacks->stack_a[0] > stacks->stack_a[1])
+			swap_a(stacks, 1);
+		if (stacks->stack_a[1] > stacks->stack_a[2])
+			swap_a(stacks, 1);
+		if (stacks->stack_a[2] > stacks->stack_a[3])
+			swap_a(stacks, 1);
 	}
 }
 
