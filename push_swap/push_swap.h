@@ -26,6 +26,11 @@ typedef struct s_data_stack
 	int	size_b;
 }				t_data_stack;
 
+//parsing
+int		parsing_digit(int argc, char **tab);
+int		parsing_int(int argc, char **tab);
+int		parsing_duplicates(int argc, char **tab);
+
 //operations
 void	swap_a(t_data_stack *stacks, int mode);
 void	swap_b(t_data_stack *stacks, int mode);
