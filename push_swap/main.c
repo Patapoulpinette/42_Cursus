@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:41:09 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/25 17:53:59 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/25 18:13:21 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	parsing_digit(int argc, char **tab)
 	{
 		while (tab[j][i])
 		{
+			if (tab[j][0] == '-' || tab[j][0] == '+')
+				i++;
 			if (ft_isdigit(tab[j][i]) == 0)
 				return (/*ft_*/printf("Error\n"));
 			i++;
@@ -69,7 +71,7 @@ int	parsing_duplicates(int argc, char **tab)
 	return (0);
 }
 
-int	main(int argc, char **argv)
+int	main(int argc, char **argv)//TODO parsing with '+' et '-' & sorting_5nbrs with less than 13 operations
 {
 	int				i;
 	int				j;
