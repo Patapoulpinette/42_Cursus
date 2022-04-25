@@ -49,7 +49,7 @@ int	parsing_int(int argc, char **tab)
 	while (tab[j] && j < argc)
 	{
 		if (ft_atol(tab[j]) > INT32_MAX || ft_atol(tab[j]) < INT32_MIN \
-			|| ft_strlen(tab[j]) > 10)
+			|| ft_strlen(tab[j]) > 11)
 			return (write(1, "Error\n", 6));
 		j++;
 	}
