@@ -21,10 +21,16 @@ int	parsing_digit(int argc, char **tab)
 	j = 1;
 	while (tab[j] && j < argc)
 	{
+		if (tab[j][0] == '\0')
+			return (write(1, "Error\n", 6));
 		while (tab[j][i])
 		{
-			if (tab[j][0] == '-' || tab[j][0] == '+')
+			if (tab[j][i] == '-' || tab[j][i] == '+')
+			{
+				if (i != 0)
+					return (write(1, "Error\n", 6));
 				i++;
+			}
 			if (ft_isdigit(tab[j][i]) == 0)
 				return (write(1, "Error\n", 6));
 			i++;
