@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:04:29 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/22 11:25:11 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/25 16:48:05 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ bool	is_sorted(t_data_stack *stacks)
 	}
 	else
 	{
-		dprintf(2, "not sorted \033[1;31m✗\033[0m\n");//for testing
+		//dprintf(2, "not sorted \033[1;31m✗\033[0m\n");//for testing
 		return (false);
 	}
 }

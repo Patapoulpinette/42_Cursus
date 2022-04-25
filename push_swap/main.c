@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:41:09 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/23 15:41:34 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/25 15:00:26 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,10 @@ int	main(int argc, char **argv)
 			dprintf(2, "\t%d\n", stacks.stack_a[j++]);//for testing
 		dprintf(2, "     Stack A\n");//for testing
 
-		if (stacks.size_a == 3)
+		if (stacks.size_a == 2)
+			while (!is_sorted(&stacks))
+				swap_a(&stacks, 1);
+		else if (stacks.size_a == 3)
 			sorting_3nbrs(&stacks);
 		else if (stacks.size_a == 5)
 			sorting_5nbrs(&stacks);
