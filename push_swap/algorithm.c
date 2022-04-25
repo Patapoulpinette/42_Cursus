@@ -97,10 +97,18 @@ void	sorting_5nbrs(t_data_stack *stacks)
 		while (stacks->size_a > 3)
 		{
 			smaller_index = search_smaller_nbr(stacks);
-			while (smaller_index != 0)
+			while (smaller_index != 0 && smaller_index != stacks->size_a)
 			{
-				rotate_a(stacks, 1);
-				smaller_index--;
+				if (smaller_index <= stacks->size_a / 2)
+				{
+					rotate_a(stacks, 1);
+					smaller_index--;
+				}
+				else
+				{
+					reverse_rotate_a(stacks, 1);
+					smaller_index++;
+				}
 			}
 			push_b(stacks);
 		}
