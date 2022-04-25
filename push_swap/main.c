@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:41:09 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/25 18:13:21 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/25 18:24:37 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	parsing_digit(int argc, char **tab)
 			if (tab[j][0] == '-' || tab[j][0] == '+')
 				i++;
 			if (ft_isdigit(tab[j][i]) == 0)
-				return (/*ft_*/printf("Error\n"));
+				return (write(1, "Error\n", 6));
 			i++;
 		}
 		i = 0;
@@ -44,7 +44,7 @@ int	parsing_int(int argc, char **tab)
 	{
 		if (ft_atol(tab[j]) > INT32_MAX || ft_atol(tab[j]) < INT32_MIN \
 			|| ft_strlen(tab[j]) > 10)
-			return (/*ft_*/printf("Error\n"));
+			return (write(1, "Error\n", 6));
 		j++;
 	}
 	return (0);
@@ -62,7 +62,7 @@ int	parsing_duplicates(int argc, char **tab)
 		while (tab[j] && tab[i] && j < argc - 1)
 		{
 			if (ft_atoi(tab[j]) == ft_atoi(tab[i]))
-				return (/*ft_*/printf("Error\n"));
+				return (write(1, "Error\n", 6));
 			i++;
 		}
 		j++;
@@ -71,7 +71,7 @@ int	parsing_duplicates(int argc, char **tab)
 	return (0);
 }
 
-int	main(int argc, char **argv)//TODO parsing with '+' et '-' & sorting_5nbrs with less than 13 operations
+int	main(int argc, char **argv)//TODO parsing with "" & sorting_5nbrs with less than 13 operations
 {
 	int				i;
 	int				j;

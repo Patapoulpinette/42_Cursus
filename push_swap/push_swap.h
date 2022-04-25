@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:03:04 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/25 17:48:15 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/25 17:48:16 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <limits.h>//pour INT_MAX && INT_MIN
 # include <stdlib.h>//pour malloc
 # include <stdbool.h>//pour type bool
+# include <unistd.h>//pour write
 
 typedef struct s_data_stack
 {

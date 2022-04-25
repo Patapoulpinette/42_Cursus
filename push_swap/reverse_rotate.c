@@ -28,7 +28,7 @@ void	reverse_rotate_a(t_data_stack *stacks, int mode)
 	}
 	stacks->stack_a[0] = temp;
 	if (mode)
-		/*ft_*/printf("rra\n");
+		write(1, "rra\n", 3);
 }
 
 void	reverse_rotate_b(t_data_stack *stacks, int mode)
@@ -47,12 +47,12 @@ void	reverse_rotate_b(t_data_stack *stacks, int mode)
 	}
 	stacks->stack_b[0] = temp;
 	if (mode)
-		/*ft_*/printf("rrb\n");
+		write(1, "rrb\n", 3);
 }
 
 void	reverse_rotate_ab(t_data_stack *stacks)
 {
 	reverse_rotate_a(stacks, 0);
 	reverse_rotate_b(stacks, 0);
-	/*ft_*/printf("rrr\n");
+	write(1, "rrr\n", 3);
 }

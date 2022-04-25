@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 13:44:39 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/23 13:44:42 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/25 18:27:05 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	push_a(t_data_stack *stacks)
 	}
 	stacks->size_a++;
 	stacks->size_b--;
-	/*ft_*/printf("pa\n");
+	write(1, "pa\n", 3);
 }
 
 void	push_b(t_data_stack *stacks)
@@ -61,5 +61,5 @@ void	push_b(t_data_stack *stacks)
 	}
 	stacks->size_a--;
 	stacks->size_b++;
-	/*ft_*/printf("pb\n");
+	write(1, "pb\n", 3);
 }

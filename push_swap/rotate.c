@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 10:23:56 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/22 12:34:25 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/25 18:27:32 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	rotate_a(t_data_stack *stacks, int mode)
 	}
 	stacks->stack_a[i - 1] = temp;
 	if (mode)
-		/*ft_*/printf("ra\n");
+		write(1, "ra\n", 3);
 }
 
 void	rotate_b(t_data_stack *stacks, int mode)
@@ -47,12 +47,12 @@ void	rotate_b(t_data_stack *stacks, int mode)
 	}
 	stacks->stack_b[i - 1] = temp;
 	if (mode)
-		/*ft_*/printf("rb\n");
+		write(1, "rb\n", 3);
 }
 
 void	rotate_ab(t_data_stack *stacks)
 {
 	rotate_a(stacks, 0);
 	rotate_b(stacks, 0);
-	/*ft_*/printf("rr\n");
+	write(1, "rr\n", 3);
 }
