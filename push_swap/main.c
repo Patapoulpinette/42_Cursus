@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:41:09 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/25 15:00:26 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/25 17:53:59 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ int	main(int argc, char **argv)
 
 	if (parsing_digit(argc, argv) == 0 \
 		&& parsing_int(argc, argv) == 0 \
-		&& parsing_duplicates(argc, argv) == 0)
+		&& parsing_duplicates(argc, argv) == 0 \
+		&& argc > 1)
 	{
 		dprintf(2, "parsing ok\n");//for testing
 		i = 1;

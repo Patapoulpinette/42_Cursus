@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:04:29 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/25 16:48:05 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/25 18:00:43 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_strlen(char *str)
 
 int	ft_isdigit(int c)
 {
-	if ((c >= '0' && c <= '9') || c == '-')
+	if ((c >= '0' && c <= '9') || c == '-' || c == '+')
 		return (1);
 	return (0);
 }
