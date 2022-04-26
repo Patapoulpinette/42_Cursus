@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:41:09 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/25 18:24:37 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/26 10:10:04 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	parsing_duplicates(int argc, char **tab)
 	return (0);
 }
 
-int	main(int argc, char **argv)//TODO parsing with "" & sorting_5nbrs with less than 13 operations
+int	main(int argc, char **argv)//TODO parsing with 000000000000000000001
 {
 	int				i;
 	int				j;
