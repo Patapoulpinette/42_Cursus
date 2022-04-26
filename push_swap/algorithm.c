@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 11:20:52 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/25 16:41:12 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/26 11:03:16 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,35 +138,3 @@ void	sorting_radix(t_data_stack *stacks)
 		i++;
 	}
 }
-
-//______________________________________________________________________________
-//
-//void	algorithm(int size, int *stack_a)
-//{
-//	int	wall;
-//	int	current;
-//	int	pivot;
-//	int	tmp;
-//
-//	if (size < 2)
-//		return ;
-//	pivot = stack_a[size - 1];
-//	wall = 0;
-//	current = 0;
-//	while (current < size)
-//	{
-//		if (stack_a[current] <= pivot)
-//		{
-//			if (wall != current)
-//			{
-//				tmp = stack_a[current];
-//				stack_a[current] = stack_a[wall];
-//				stack_a[wall] = tmp;
-//			}
-//			wall++;
-//		}
-//		current++;
-//	}
-//	algorithm(wall - 1, stack_a);
-//	algorithm(size - wall + 1, stack_a + wall - 1);
-//}

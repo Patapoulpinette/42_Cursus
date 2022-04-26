@@ -6,14 +6,13 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:03:04 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/25 17:48:16 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/26 11:37:31 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdio.h>//pour dprintf
 # include <limits.h>//pour INT_MAX && INT_MIN
 # include <stdlib.h>//pour malloc
 # include <stdbool.h>//pour type bool
@@ -27,7 +26,12 @@ typedef struct s_data_stack
 	int	size_b;
 }				t_data_stack;
 
+//main
+void	initializing(int argc, t_data_stack *stacks);
+void	free_to_quit(t_data_stack *stacks);
+
 //parsing
+int		parsing(int argc, char **argv);
 int		parsing_digit(int argc, char **tab);
 int		parsing_int(int argc, char **tab);
 int		parsing_duplicates(int argc, char **tab);

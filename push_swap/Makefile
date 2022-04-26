@@ -6,7 +6,7 @@
 #    By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/25 16:53:58 by dbouron           #+#    #+#              #
-#    Updated: 2022/04/25 17:47:01 by dbouron          ###   ########.fr        #
+#    Updated: 2022/04/26 11:27:37 by dbouron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ NAME = push_swap
 
 HEADFILE = push_swap.h
 
-SRCS = main.c utils.c algorithm.c swap.c push.c rotate.c reverse_rotate.c
+SRCS =	main.c utils.c algorithm.c swap.c push.c rotate.c reverse_rotate.c \
+		parsing.c
 
 # **************************************************************************** #
 #                                    COLORS                                    #
@@ -56,15 +57,15 @@ all : $(NAME)
 
 %.o: %.c $(HEADFILE) Makefile
 	gcc -Wall -Wextra -Werror -o $@ -c $<
-	@printf "\rLoading..."
+	@printf "\r$(LIGHT_GRAY)Loading...$(NO_COLOR)"
 
 $(NAME) : $(OBJS) $(HEADFILE)
 	gcc -Wall -Wextra -Werror -o $(NAME) $(SRCS)
-	@printf "\r$(LIGHT_GREEN)➞ Compiled [√]$(NO_COLOR)\n"
+	@printf "\r$(LIGHT_GREEN)➞$(NO_COLOR) Compiled $(LIGHT_GREEN)✔$(NO_COLOR)\n"
 
 clean :
 	rm -rf $(OBJS)
-	@printf "\r$(LIGHT_BLUE)➞ Cleaned [√]$(NO_COLOR)\n"
+	@printf "\r$(LIGHT_BLUE)➞$(NO_COLOR) Cleaned $(LIGHT_BLUE)✔$(NO_COLOR)\n"
 
 fclean : clean
 	rm -rf $(NAME)
