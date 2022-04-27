@@ -45,7 +45,7 @@ int	main(int argc, char **argv)
 			swap_a(&stacks, 1);
 		else if (stacks.size_a == 3)
 			sorting_3nbrs(&stacks);
-		else if (stacks.size_a < 5)
+		else if (stacks.size_a <= 5)
 			sorting_5nbrs(&stacks);
 		else
 			sorting_radix(&stacks);
