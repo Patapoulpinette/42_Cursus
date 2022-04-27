@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 11:22:28 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/26 15:54:38 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/27 11:32:31 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,10 +108,16 @@ void	check_0_before_nb(char *str)
 	int	k;
 
 	i = 0;
-	k = 0;
-	while (str[i] && (str[i] == '-' || str[i] == '+' || str[i] == '0'))
-		i++;
-	while (str[i])
-		str[k++] = str[i++];
-	str[k] = '\0';
+	if (str[0] == '-' || str[0] == '+' || str[0] == '0')
+	{
+		while (str[i] && (str[i] == '-' || str[i] == '+' || str[i] == '0'))
+			i++;
+		if (str[0] == '-')
+			k = 1;
+		else
+			k = 0;
+		while (str[i])
+			str[k++] = str[i++];
+		str[k] = '\0';
+	}
 }
