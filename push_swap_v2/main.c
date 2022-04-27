@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:41:09 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/26 11:38:48 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/27 09:49:18 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int argc, char **argv)
 			swap_a(&stacks, 1);
 		else if (stacks.size_a == 3)
 			sorting_3nbrs(&stacks);
-		else if (stacks.size_a < 5)
+		else if (stacks.size_a <= 5)
 			sorting_5nbrs(&stacks);
 		else
 			sorting_radix(&stacks);
