@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:03:04 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/26 11:37:31 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/28 10:21:34 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	free_to_quit(t_data_stack *stacks);
 int		parsing(int argc, char **argv);
 int		parsing_digit(int argc, char **tab);
 int		parsing_int(int argc, char **tab);
+void	check_0_before_nb(char *str);
 int		parsing_duplicates(int argc, char **tab);
 
 //operations
@@ -50,7 +51,7 @@ void	reverse_rotate_b(t_data_stack *stacks, int mode);
 void	reverse_rotate_ab(t_data_stack *stacks);
 
 //utils
-int		ft_strlen(char *str);
+int		ft_strlen(char const *str);
 int		ft_isdigit(int c);
 int		ft_atoi(const char *str);
 long	ft_atol(const char *str);
