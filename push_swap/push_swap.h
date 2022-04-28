@@ -6,17 +6,17 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:03:04 by dbouron           #+#    #+#             */
-/*   Updated: 2022/04/28 10:21:34 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/04/28 11:33:55 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <limits.h>//pour INT_MAX && INT_MIN
-# include <stdlib.h>//pour malloc
-# include <stdbool.h>//pour type bool
-# include <unistd.h>//pour write
+# include <limits.h>//for INT_MAX && INT_MIN
+# include <stdlib.h>//for malloc
+# include <stdbool.h>//for type bool
+# include <unistd.h>//for write
 
 typedef struct s_data_stack
 {
