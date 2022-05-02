@@ -79,9 +79,9 @@ int	main(void)
 	print_pixel_in_window(&mlx_params);
 
 	//printing image in a window
-//	mlx_params.img_path = "./leaf-1.png";
-//	mlx_params.img = mlx_xpm_file_to_image(mlx_params.mlx, mlx_params.img_path, &mlx_params.img_width, &mlx_params.img_height);
-//	mlx_put_image_to_window(mlx_params.mlx, mlx_params.window, mlx_params.img, 1, 1);
+	mlx_params.img_path = "./leaf-1.xpm";
+	mlx_params.img = mlx_xpm_file_to_image(mlx_params.mlx, mlx_params.img_path, &mlx_params.img_width, &mlx_params.img_height);
+	mlx_put_image_to_window(mlx_params.mlx, mlx_params.window, mlx_params.img, 30, 0);
 
 	//printing string in a window
 	mlx_string_put(mlx_params.mlx, mlx_params.window, 225, 225, 49151, "hello");
