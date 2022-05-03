@@ -9,6 +9,8 @@ typedef struct s_mlx_params
 {
 	void	*mlx;
 	void	*window;
+	int		x_win;
+	int		y_win;
 	void	*img;
 	char	*img_path;
 	int		img_width;
@@ -24,7 +26,7 @@ int	press_key(int key, t_mlx_params *mlx_params)
 	else if (key == 53)
 	{
 		mlx_destroy_window(mlx_params->mlx, mlx_params->window);
-		exit(1);
+		exit(0);
 	}
 	else
 	{
@@ -41,30 +43,28 @@ void	print_pixel_in_window(t_mlx_params *mlx_params)
 
 	x = 100;
 	y = 100;
-	mlx_params->mlx = mlx_init();
-	mlx_params->window = mlx_new_window(mlx_params->mlx, 500, 500, "New window");
-	while (x >= 100 && x <= 400)
+	while (x >= 100 && x <= mlx_params->x_win - 100)
 	{
 		mlx_pixel_put(mlx_params->mlx, mlx_params->window, x, y, 16751103);
 		x++;
 	}
 	x = 100;
-	y = 400;
-	while (x >= 100 && x <= 400)
+	y = mlx_params->y_win - 100;
+	while (x >= 100 && x <= mlx_params->x_win - 100)
 	{
 		mlx_pixel_put(mlx_params->mlx, mlx_params->window, x, y, 16751103);
 		x++;
 	}
 	x = 100;
 	y = 100;
-	while (y >= 100 && y <= 400)
+	while (y >= 100 && y <= mlx_params->y_win - 100)
 	{
 		mlx_pixel_put(mlx_params->mlx, mlx_params->window, x, y, 16751103);
 		y++;
 	}
-	x = 400;
+	x = mlx_params->x_win - 100;
 	y = 100;
-	while (y >= 100 && y <= 400)
+	while (y >= 100 && y <= mlx_params->y_win - 100)
 	{
 		mlx_pixel_put(mlx_params->mlx, mlx_params->window, x, y, 16751103);
 		y++;
@@ -75,16 +75,21 @@ int	main(void)
 {
 	t_mlx_params	mlx_params;
 
+	mlx_params.x_win = 800;
+	mlx_params.y_win = 500;
+	mlx_params.mlx = mlx_init();
+	mlx_params.window = mlx_new_window(mlx_params.mlx, mlx_params.x_win, mlx_params.y_win, "New window");
+
 	//printing pixels in a window
 	print_pixel_in_window(&mlx_params);
 
 	//printing image in a window
-	mlx_params.img_path = "./leaf-1.xpm";
+	mlx_params.img_path = "./ampoule.xpm";
 	mlx_params.img = mlx_xpm_file_to_image(mlx_params.mlx, mlx_params.img_path, &mlx_params.img_width, &mlx_params.img_height);
-	mlx_put_image_to_window(mlx_params.mlx, mlx_params.window, mlx_params.img, 30, 0);
+	mlx_put_image_to_window(mlx_params.mlx, mlx_params.window, mlx_params.img, 5, 5);
 
 	//printing string in a window
-	mlx_string_put(mlx_params.mlx, mlx_params.window, 225, 225, 49151, "hello");
+	mlx_string_put(mlx_params.mlx, mlx_params.window, mlx_params.x_win / 2, mlx_params.y_win / 2, 49151, "hello");
 
 	//do something when pressing key in a window
 	mlx_key_hook(mlx_params.window, press_key, &mlx_params);
