@@ -1,39 +1,25 @@
 
-
-#include "minilibx_macos/mlx.h"
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-
-typedef struct s_mlx_params
-{
-	void	*mlx;
-	void	*window;
-	int		x_win;
-	int		y_win;
-	void	*img;
-	char	*img_path;
-	int		img_width;
-	int		img_height;
-}				t_mlx_params;
+#include "fdf.h"
 
 int	press_key(int key, t_mlx_params *mlx_params)
 {
 	if (key == 8)
-	{
 		mlx_clear_window(mlx_params->mlx, mlx_params->window);
-	}
 	else if (key == 53)
 	{
 		mlx_destroy_window(mlx_params->mlx, mlx_params->window);
+		dprintf(2, "exit with ESC\n");
 		exit(0);
 	}
 	else
-	{
 		dprintf(2, "key number : %d\n", key);
-		write(1, "Hello\n", 6);
-	}
 	return (0);
+}
+
+int	exit_program(void)
+{
+	dprintf(2, "exit with mouse\n");
+	exit(0);
 }
 
 void	print_pixel_in_window(t_mlx_params *mlx_params)
@@ -75,7 +61,7 @@ int	main(void)
 {
 	t_mlx_params	mlx_params;
 
-	mlx_params.x_win = 800;
+	mlx_params.x_win = 700;
 	mlx_params.y_win = 500;
 	mlx_params.mlx = mlx_init();
 	mlx_params.window = mlx_new_window(mlx_params.mlx, mlx_params.x_win, mlx_params.y_win, "New window");
@@ -86,13 +72,20 @@ int	main(void)
 	//printing image in a window
 	mlx_params.img_path = "./ampoule.xpm";
 	mlx_params.img = mlx_xpm_file_to_image(mlx_params.mlx, mlx_params.img_path, &mlx_params.img_width, &mlx_params.img_height);
-	mlx_put_image_to_window(mlx_params.mlx, mlx_params.window, mlx_params.img, 5, 5);
+	mlx_put_image_to_window(mlx_params.mlx, mlx_params.window, mlx_params.img, mlx_params.x_win / 3, mlx_params.y_win / 2);
+
+	mlx_params.img_path = "./leaf-1.xpm";
+	mlx_params.img = mlx_xpm_file_to_image(mlx_params.mlx, mlx_params.img_path, &mlx_params.img_width, &mlx_params.img_height);
+	mlx_put_image_to_window(mlx_params.mlx, mlx_params.window, mlx_params.img, mlx_params.x_win / 3, mlx_params.y_win / 4);
 
 	//printing string in a window
-	mlx_string_put(mlx_params.mlx, mlx_params.window, mlx_params.x_win / 2, mlx_params.y_win / 2, 49151, "hello");
+	mlx_string_put(mlx_params.mlx, mlx_params.window, mlx_params.x_win / 2, mlx_params.y_win / 2, 8765929, "hello");
 
 	//do something when pressing key in a window
 	mlx_key_hook(mlx_params.window, press_key, &mlx_params);
+
+	//do something when pressing mouse button
+	mlx_hook(mlx_params.window, 17, 1L << 5, exit_program, (void *)0);
 
 	mlx_loop(mlx_params.mlx);
 	dprintf(2, "end of main\n");
