@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:07:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/03 15:56:45 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/04 14:30:31 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t type_size);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+
+//GNL
+char	*get_next_line(int fd);
 
 //split
 char	**ft_split(char const *s, char c);

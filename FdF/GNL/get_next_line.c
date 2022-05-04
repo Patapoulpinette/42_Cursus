@@ -6,13 +6,13 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 15:03:23 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/24 14:29:42 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/05/04 15:18:48 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	reading(int fd, char **backup)
+static int	reading(int fd, char **backup)
 {
 	int		size;
 	char	buffer[BUFFER_SIZE + 1];
@@ -43,16 +43,16 @@ char	*get_next_line(int fd)
 			return (NULL);
 		if (check_reading == 0)
 		{
-			result = ft_substr(backup, 0, ft_strlen(backup), 1);
+			result = ft_substr_gnl(backup, 0, ft_strlen(backup), 1);
 			backup = NULL;
 			return (result);
 		}
 	}
-	result = ft_substr(backup, 0, ft_strchr_gnl(backup, '\n') + 1, 0);
+	result = ft_substr_gnl(backup, 0, ft_strchr_gnl(backup, '\n') + 1, 0);
 	if (!result)
 		return (NULL);
 	tmp = backup;
-	backup = ft_substr(backup, ft_strchr_gnl(backup, '\n') + 1, \
+	backup = ft_substr_gnl(backup, ft_strchr_gnl(backup, '\n') + 1, \
 			ft_strlen(backup) - ft_strchr_gnl(backup, '\n') - 1, 0);
 	free (tmp);
 	return (result);

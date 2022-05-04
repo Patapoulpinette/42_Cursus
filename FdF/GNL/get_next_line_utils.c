@@ -59,7 +59,7 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 	return (result);
 }
 
-char	*ft_substr(char *s, unsigned int start, size_t len, int mode)
+char	*ft_substr_gnl(char *s, unsigned int start, size_t len, int mode)
 {
 	char	*result;
 	size_t	i;
