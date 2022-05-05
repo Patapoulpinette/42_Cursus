@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:07:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/04 14:30:31 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/05 14:37:00 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,20 @@ typedef struct s_mlx_params
 	int		img_height;
 }				t_mlx_params;
 
+typedef struct s_maps_params
+{
+	int	x0;
+	int	y0;
+	int	x1;
+	int	y1;
+}				t_maps_params;
+
 //main
 
 //parsing
+
+//algo
+void	drawline(t_maps_params	*maps_params, t_mlx_params *mlx_params, int color);
 
 //utils
 size_t	ft_strlen(const char *s);

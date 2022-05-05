@@ -22,7 +22,7 @@ HEADFILE = fdf.h
 MINILIBX = ./minilibx_macos
 #MINILIBX_EXEC = ./minilibx_macos/libmlx.a
 
-SRCS =	essai.c
+SRCS =	essai.c algorithm.c
 
 # **************************************************************************** #
 #                                    COLORS                                    #
