@@ -24,43 +24,45 @@ int	exit_program(void)
 
 void	print_pixel_in_window(t_maps_params *maps_params, t_mlx_params *mlx_params, t_algo_params *algo_params)
 {
+	int	i;
+	int	j;
+
+	i = 1;
+	j = 1;
 	//point 0 (en haut à gauche)
-	maps_params->x0 = 100;
-	maps_params->y0 = 100;
+	maps_params->x0 = 0;
+	maps_params->y0 = 0;
 	mlx_pixel_put(mlx_params->mlx, mlx_params->window, maps_params->x0, maps_params->y0, 16751103);
+
+	while (i <= 50)
+	{
+		maps_params->x1 = mlx_params->x_win / i++;
+		maps_params->y1 = mlx_params->y_win;
+		mlx_pixel_put(mlx_params->mlx, mlx_params->window, maps_params->x1, maps_params->y1, 16751103);
+		drawline(maps_params, mlx_params, algo_params, 16751103);
+	}
+
+	while (j <= 50)
+	{
+		maps_params->x1 = mlx_params->x_win;
+		maps_params->y1 = mlx_params->y_win / j++;
+		mlx_pixel_put(mlx_params->mlx, mlx_params->window, maps_params->x1, maps_params->y1, 16751103);
+		drawline(maps_params, mlx_params, algo_params, 16751103);
+	}
+
 	//point 1 (en haut à droite)
-	maps_params->x1 = mlx_params->x_win - 100;
-	maps_params->y1 = 100;
+	maps_params->x1 = mlx_params->x_win;
+	maps_params->y1 = 0;
 	mlx_pixel_put(mlx_params->mlx, mlx_params->window, maps_params->x1, maps_params->y1, 16751103);
 	drawline(maps_params, mlx_params, algo_params, 16751103);
 	//point 2 (en bas à gauche)
-	maps_params->x1 = 100;
-	maps_params->y1 = mlx_params->y_win - 100;
+	maps_params->x1 = 0;
+	maps_params->y1 = mlx_params->y_win;
 	mlx_pixel_put(mlx_params->mlx, mlx_params->window, maps_params->x1, maps_params->y1, 16751103);
 	drawline(maps_params, mlx_params, algo_params, 16751103);
 	//point 3 (en bas à droite)
-	maps_params->x1 = mlx_params->x_win - 100;
-	maps_params->y1 = mlx_params->y_win - 100;
-	mlx_pixel_put(mlx_params->mlx, mlx_params->window, maps_params->x1, maps_params->y1, 16751103);
-	drawline(maps_params, mlx_params, algo_params, 16751103);
-	//point 4 (en bas au milieu)
-	maps_params->x1 = mlx_params->x_win / 2;
-	maps_params->y1 = mlx_params->y_win - 100;
-	mlx_pixel_put(mlx_params->mlx, mlx_params->window, maps_params->x1, maps_params->y1, 16751103);
-	drawline(maps_params, mlx_params, algo_params, 16751103);
-	//point 4 (en bas au milieu-gauche)
-	maps_params->x1 = mlx_params->x_win / 3;
-	maps_params->y1 = mlx_params->y_win - 100;
-	mlx_pixel_put(mlx_params->mlx, mlx_params->window, maps_params->x1, maps_params->y1, 16751103);
-	drawline(maps_params, mlx_params, algo_params, 16751103);
-	//point 5 (au milieu à droite)
-	maps_params->x1 = mlx_params->x_win - 100;
-	maps_params->y1 = mlx_params->y_win / 2;
-	mlx_pixel_put(mlx_params->mlx, mlx_params->window, maps_params->x1, maps_params->y1, 16751103);
-	drawline(maps_params, mlx_params, algo_params, 16751103);
-	//point 6 (au milieu-haut à droite)
-	maps_params->x1 = mlx_params->x_win - 100;
-	maps_params->y1 = mlx_params->y_win / 3;
+	maps_params->x1 = mlx_params->x_win;
+	maps_params->y1 = mlx_params->y_win;
 	mlx_pixel_put(mlx_params->mlx, mlx_params->window, maps_params->x1, maps_params->y1, 16751103);
 	drawline(maps_params, mlx_params, algo_params, 16751103);
 }
@@ -71,8 +73,8 @@ int	main(void)
 	t_maps_params	maps_params;
 	t_algo_params	algo_params;
 
-	mlx_params.x_win = 800;
-	mlx_params.y_win = 600;
+	mlx_params.x_win = 1500;
+	mlx_params.y_win = 1200;
 	mlx_params.mlx = mlx_init();
 	mlx_params.window = mlx_new_window(mlx_params.mlx, mlx_params.x_win, mlx_params.y_win, "New window");
 	//printing pixels in a window & draw line between pixels
