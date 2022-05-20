@@ -34,7 +34,7 @@ void	print_pixel_in_window(t_maps_params *maps_params, t_mlx_params *mlx_params,
 	maps_params->y0 = 0;
 	mlx_pixel_put(mlx_params->mlx, mlx_params->window, maps_params->x0, maps_params->y0, 16751103);
 
-	while (i <= 50)
+	while (i <= 25)
 	{
 		maps_params->x1 = mlx_params->x_win / i++;
 		maps_params->y1 = mlx_params->y_win;
@@ -42,7 +42,7 @@ void	print_pixel_in_window(t_maps_params *maps_params, t_mlx_params *mlx_params,
 		drawline(maps_params, mlx_params, algo_params, 16751103);
 	}
 
-	while (j <= 50)
+	while (j <= 25)
 	{
 		maps_params->x1 = mlx_params->x_win;
 		maps_params->y1 = mlx_params->y_win / j++;
@@ -67,7 +67,7 @@ void	print_pixel_in_window(t_maps_params *maps_params, t_mlx_params *mlx_params,
 	drawline(maps_params, mlx_params, algo_params, 16751103);
 }
 
-int	main(void)
+void	display(void)
 {
 	t_mlx_params	mlx_params;
 	t_maps_params	maps_params;
