@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:33:54 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/09 10:12:01 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/20 11:49:16 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,28 @@
 //indice  tableau = x
 //Puis, pour chaque point p je dessine une ligne avec le point suivant et le point du dessous (en gros i + 1 et j + 1)
 
+static int	reading(int fd, char **backup)
+{
+	ssize_t	size;
+	char	buffer[BUFFER_SIZE + 1];
+
+	size = read(fd, buffer, BUFFER_SIZE);
+	if (size == -1)
+		return (-1);
+	if (size == 0)
+		return (0);
+	buffer[size] = '\0';
+	*backup = ft_strjoin_gnl(*backup, buffer);
+	if (!backup)
+		return (-1);
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	int		fd;
 	char	*result = NULL;
+	int		check_reading;
 
 	if (argc == 2)
 	{
@@ -29,9 +47,10 @@ int	main(int argc, char **argv)
 		printf("open : %d\n", fd);
 		if (fd == -1)
 			return (0);
-		while (1)
+		check_reading = 1;
+		while (check_reading != 0)
 		{
-			result = get_next_line(fd);
+			check_reading = reading(fd, &result);
 			if (!result)
 				break ;
 			dprintf(2, "%s", result);

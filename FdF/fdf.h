@@ -13,6 +13,13 @@
 #ifndef FDF_H
 # define FDF_H
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 32
+# endif
+# if BUFFER_SIZE <= 0
+#  error "NEGATIVE BUFFER SIZE"
+# endif
+
 # include "minilibx_macos/mlx.h"
 # include <unistd.h>//for close
 # include <stdio.h>//for dprintf
