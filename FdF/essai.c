@@ -1,5 +1,5 @@
 
-#include "fdf.h"
+#include "essai.h"
 
 int	press_key(int key, t_mlx_params *mlx_params)
 {
@@ -67,7 +67,7 @@ void	print_pixel_in_window(t_maps_params *maps_params, t_mlx_params *mlx_params,
 	drawline(maps_params, mlx_params, algo_params, 16751103);
 }
 
-void	display(void)
+int	main(void)
 {
 	t_mlx_params	mlx_params;
 	t_maps_params	maps_params;
@@ -94,6 +94,7 @@ void	display(void)
 	mlx_hook(mlx_params.window, 17, 1L << 5, exit_program, (void *)0);
 	mlx_loop(mlx_params.mlx);
 	dprintf(2, "end of main\n");
+	return (0);
 }
 
 // compile with :
