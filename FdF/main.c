@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:33:54 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/20 14:37:15 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/21 16:22:28 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		map_tab = parsing(argv[1]);
-		display(void);
+		display_window();
 		free_tab(map_tab);
 	}
 	return (0);

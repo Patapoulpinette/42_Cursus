@@ -1,7 +1,7 @@
 
 #include "essai.h"
 
-int	press_key(int key, t_mlx_params *mlx_params)
+static int	press_key(int key, t_mlx_params *mlx_params)
 {
 	if (key == 8)
 		mlx_clear_window(mlx_params->mlx, mlx_params->window);
@@ -16,13 +16,13 @@ int	press_key(int key, t_mlx_params *mlx_params)
 	return (0);
 }
 
-int	exit_program(void)
+static int	exit_program(void)
 {
 	dprintf(2, "exit with mouse\n");
 	exit(0);
 }
 
-void	print_pixel_in_window(t_maps_params *maps_params, t_mlx_params *mlx_params, t_algo_params *algo_params)
+static void	print_pixel_in_window(t_maps_params *maps_params, t_mlx_params *mlx_params, t_algo_params *algo_params)
 {
 	int	i;
 	int	j;
