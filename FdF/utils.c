@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:37:54 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/20 13:54:29 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/21 21:27:00 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@ size_t	ft_strlen(const char *s)
 	if (!s)
 		return (0);
 	while (s[i])
+		i++;
+	return (i);
+}
+
+size_t	ft_tablen(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
 		i++;
 	return (i);
 }

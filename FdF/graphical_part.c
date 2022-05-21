@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:03:34 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/21 16:22:28 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/21 21:01:45 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,16 @@ int	exit_program(void)
 
 void	display_window(void)
 {
-	t_mlx_params mlx_params;
-//	t_maps_params maps_params;
-//	t_algo_params algo_params;
+	t_mlx_params	mlx_params;
+//	t_maps_params	maps_params;
+//	t_algo_params	algo_params;
 
 	mlx_params.x_win = 1500;
 	mlx_params.y_win = 1200;
 	mlx_params.mlx = mlx_init();
 	mlx_params.window = mlx_new_window(mlx_params.mlx, mlx_params.x_win, mlx_params.y_win, "New window");
+	//create a new image and draw map into
+	mlx_new_image(mlx_params.mlx, mlx_params.x_win, mlx_params.y_win);
 	//do something when pressing key in a window
 	mlx_key_hook(mlx_params.window, press_key, &mlx_params);
 	//do something when pressing mouse button

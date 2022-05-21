@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:07:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/21 16:19:45 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/21 21:24:20 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,26 @@ typedef struct s_mlx_params
 	void	*window;
 	int		x_win;
 	int		y_win;
-	void	*img;
-	char	*img_path;
-	int		img_width;
-	int		img_height;
+//	void	*img;
 }				t_mlx_params;
+
+typedef struct s_maps_params
+{
+	int	x0;
+	int	y0;
+	int	x1;
+	int	y1;
+}				t_maps_params;
+
+typedef struct s_algo_params
+{
+	int		x;
+	int		y;
+	int		dx;
+	int		dy;
+	float	m;
+	int		p;
+}				t_algo_params;
 
 //main
 
@@ -50,10 +65,11 @@ int		exit_program(void);
 void	display_window(void);
 
 //algorithm
-//void	drawline(t_maps_params	*maps_params, t_mlx_params *mlx_params, t_algo_params *algo_params, int color);
+void	drawline(t_maps_params	*maps_params, t_mlx_params *mlx_params, t_algo_params *algo_params, int color);
 
 //utils
 size_t	ft_strlen(const char *s);
+size_t	ft_tablen(char **tab);
 int		ft_atoi(const char *str);
 char	*ft_strjoin_free(char *s1, char *s2);
 void	free_tab(char **tab);

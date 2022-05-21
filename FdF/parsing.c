@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 14:22:17 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/20 14:27:29 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/21 21:26:14 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,23 @@ int	reading(int fd, char **backup)
 	return (1);
 }
 
+int	**tabctotabi(char **tab_c)
+{
+	int	**tab_i;
+
+	tab_i = ft_calloc(sizeof(int *), ft_tablen(tab_c));
+	if (!tab_i)
+		return (NULL);
+}
+
 char	**parsing(char *str)
 {
 	int			i = 0;
 	int			fd;
 	int			check_reading;
 	static char	*result_reading = NULL;
-	char		**map_tab;
+	char		**map_tab_c;
+	int			**map_tab_i;
 
 	fd = open(str, O_RDONLY);
 	printf("open : %d\n", fd);
@@ -49,9 +59,11 @@ char	**parsing(char *str)
 			return (0);
 	}
 	close(fd);
-	map_tab = ft_split(result_reading, '\n');
-	while (map_tab[i])
-		printf("%s\n", map_tab[i++]);
+	map_tab_c = ft_split(result_reading, '\n');
+	while (map_tab_c[i])
+		printf("%s\n", map_tab_c[i++]);
+	//convert char ** into int **
+	map_tab_i = tabctotabi(map_tab_c);
 	free(result_reading);
-	return (map_tab);
+	return (map_tabi);
 }
