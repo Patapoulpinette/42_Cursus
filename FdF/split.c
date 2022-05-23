@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-static size_t	ft_nbword(char const *s, char c)
+size_t	ft_nbword(char const *s, char c)
 {
 	size_t	check;
 	size_t	i;

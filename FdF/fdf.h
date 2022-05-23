@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:07:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/21 21:24:20 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/23 11:56:10 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef struct s_algo_params
 //main
 
 //parsing
-char	**parsing(char *str);
+int		**parsing(char *str);
 int		reading(int fd, char **backup);
 
 //graphical_part
@@ -67,18 +67,25 @@ void	display_window(void);
 //algorithm
 void	drawline(t_maps_params	*maps_params, t_mlx_params *mlx_params, t_algo_params *algo_params, int color);
 
-//utils
+//len
 size_t	ft_strlen(const char *s);
 size_t	ft_tablen(char **tab);
+
+//utils
 int		ft_atoi(const char *str);
 char	*ft_strjoin_free(char *s1, char *s2);
-void	free_tab(char **tab);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+
+//free
+void	free_tab_c(char **tab);
+void	free_tab_i(int **tab);
 
 //utils_split
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t type_size);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+size_t	ft_nbword(char const *s, char c);
 
 //split
 char	**ft_split(char const *s, char c);

@@ -6,33 +6,11 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:37:54 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/21 21:27:00 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/23 11:56:10 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-size_t	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
-		i++;
-	return (i);
-}
-
-size_t	ft_tablen(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i])
-		i++;
-	return (i);
-}
 
 int	ft_atoi(const char *str)
 {
@@ -90,12 +68,40 @@ char	*ft_strjoin_free(char *s1, char *s2)
 	return (result);
 }
 
-void	free_tab(char **tab)
+static char	*stupidity_check(char *result, char const *s, unsigned int start,
+								size_t len)
 {
-	int	i;
+	if (ft_strlen(s) > len)
+		result = malloc(sizeof(char) * (len + 1));
+	else
+		result = malloc(sizeof(char) * (ft_strlen(s) - start + 1));
+	if (!result)
+		return (NULL);
+	return (result);
+}
 
-	i = 0;
-	while (tab[i])
-		free(tab[i++]);
-	free(tab);
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*result;
+	size_t	i;
+	size_t	j;
+
+	result = NULL;
+	i = start;
+	j = 0;
+	if (!s)
+		return (0);
+	if (start >= ft_strlen(s))
+		return ((char *)ft_calloc(1, 1));
+	result = stupidity_check(result, s, start, len);
+	if (!result)
+		return (NULL);
+	while (s[i] && i < (start + len))
+	{
+		result[j] = s[i];
+		i++;
+		j++;
+	}
+	result[j] = '\0';
+	return (result);
 }

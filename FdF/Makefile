@@ -6,7 +6,7 @@
 #    By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/03 14:53:19 by dbouron           #+#    #+#              #
-#    Updated: 2022/05/21 16:26:10 by dbouron          ###   ########.fr        #
+#    Updated: 2022/05/23 11:15:46 by dbouron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ HEADFILE = fdf.h
 MINILIBX = ./minilibx_macos
 #MINILIBX_EXEC = ./minilibx_macos/libmlx.a
 
-SRCS =	 main.c parsing.c utils.c split.c utils_split.c graphical_part.c #algorithm.c
+SRCS =	 main.c parsing.c len.c utils.c split.c utils_split.c graphical_part.c free.c #algorithm.c
 
 # **************************************************************************** #
 #                                    COLORS                                    #
