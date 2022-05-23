@@ -6,13 +6,13 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 14:22:17 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/23 16:06:28 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/23 19:12:37 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int	reading(int fd, char **backup)
+int	reading(int fd, char **backup)
 {
 	ssize_t	size;
 	char	buffer[BUFFER_SIZE + 1];
@@ -34,22 +34,26 @@ static void	fill_tab_i(int **tab_i, char **tab_c, int i)
 	int	j;
 	int	start;
 	int	end;
+	int nb_word;
 
 	j = 0;
 	end = 0;
-	tab_i[i] = ft_calloc(sizeof(int), ft_nbword(tab_c[i], ' '));
+	nb_word = (int)ft_nbword(tab_c[i], ' ');
+	tab_i[i] = ft_calloc(sizeof(int), nb_word);
 	if (!tab_i[i])
 		return ;
-	while (tab_c[i][end])
+	while (j < nb_word)
 	{
-		while (tab_c[i][end] == ' ')
+		while (tab_c[i][end] && tab_c[i][end] == ' ')
 			end++;
 		start = end;
-		while (tab_c[i][end] != ' ')
+		while (tab_c[i][end] && tab_c[i][end] != ' ')
 			end++;
-		tab_i[i][j] = ft_atoi(ft_substr(tab_c[i], start, end - start));
+		tab_i[i][j] = ft_atoi(&tab_c[i][start]);
+		dprintf(2, "%d ", tab_i[i][j]);//for testing
 		j++;
 	}
+	dprintf(2, "\n");//for testing
 }
 
 static int	**tabc_to_tabi(char **tab_c)
@@ -72,7 +76,6 @@ static int	**tabc_to_tabi(char **tab_c)
 int	**parsing(char *str)
 {
 	int			i = 0;//for testing
-	int			j = 0;//for testing
 	int			fd;
 	int			check_reading;
 	static char	*result_reading = NULL;
@@ -94,19 +97,9 @@ int	**parsing(char *str)
 	map_tab_c = ft_split(result_reading, '\n');
 	while (map_tab_c[i])//for testing
 		printf("%s\n", map_tab_c[i++]);//for testing
+	dprintf(2, "\n");//for testing
 	//convert char ** into int **
 	map_tab_i = tabc_to_tabi(map_tab_c);
-	i = 0;//for testing
-	while (map_tab_i[i])//for testing
-	{
-		while (map_tab_i[i][j])
-		{
-			printf("%d", map_tab_i[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
 	free(result_reading);
 	free_tab_c(map_tab_c);
 	return (map_tab_i);

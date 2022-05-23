@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:37:54 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/23 11:56:10 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/23 18:06:08 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,43 +65,5 @@ char	*ft_strjoin_free(char *s1, char *s2)
 			result[i++] = s2[j++];
 	result[i] = 0;
 	free(s1);
-	return (result);
-}
-
-static char	*stupidity_check(char *result, char const *s, unsigned int start,
-								size_t len)
-{
-	if (ft_strlen(s) > len)
-		result = malloc(sizeof(char) * (len + 1));
-	else
-		result = malloc(sizeof(char) * (ft_strlen(s) - start + 1));
-	if (!result)
-		return (NULL);
-	return (result);
-}
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char	*result;
-	size_t	i;
-	size_t	j;
-
-	result = NULL;
-	i = start;
-	j = 0;
-	if (!s)
-		return (0);
-	if (start >= ft_strlen(s))
-		return ((char *)ft_calloc(1, 1));
-	result = stupidity_check(result, s, start, len);
-	if (!result)
-		return (NULL);
-	while (s[i] && i < (start + len))
-	{
-		result[j] = s[i];
-		i++;
-		j++;
-	}
-	result[j] = '\0';
 	return (result);
 }

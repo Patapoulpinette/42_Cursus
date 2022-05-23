@@ -74,7 +74,6 @@ size_t	ft_tablen(char **tab);
 //utils
 int		ft_atoi(const char *str);
 char	*ft_strjoin_free(char *s1, char *s2);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 //free
 void	free_tab_c(char **tab);
