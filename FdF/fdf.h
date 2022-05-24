@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:07:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/23 11:56:10 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/25 00:40:21 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,24 @@ typedef struct s_mlx_params
 	void	*window;
 	int		x_win;
 	int		y_win;
-//	void	*img;
 }				t_mlx_params;
 
-typedef struct s_maps_params
+typedef struct	s_image
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		size_line;
+	int		endian;
+}				t_image;
+
+typedef struct s_maps_coord
 {
 	int	x0;
 	int	y0;
 	int	x1;
 	int	y1;
-}				t_maps_params;
+}				t_maps_coord;
 
 typedef struct s_algo_params
 {
@@ -61,11 +69,12 @@ int		reading(int fd, char **backup);
 
 //graphical_part
 int		press_key(int key, t_mlx_params *mlx_params);
+void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
 int		exit_program(void);
 void	display_window(void);
 
 //algorithm
-void	drawline(t_maps_params	*maps_params, t_mlx_params *mlx_params, t_algo_params *algo_params, int color);
+void	drawline(t_maps_coord	*maps_coord, t_mlx_params *mlx_params, t_algo_params *algo_params, int color);
 
 //len
 size_t	ft_strlen(const char *s);

@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:03:34 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/21 21:01:45 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/25 01:12:02 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@ int	press_key(int key, t_mlx_params *mlx_params)
 	return (0);
 }
 
+void	my_mlx_pixel_put(t_image *image, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = image->addr + (y * image->size_line + x * (image->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}
+
 int	exit_program(void)
 {
 	dprintf(2, "exit with mouse\n");
@@ -36,7 +44,8 @@ int	exit_program(void)
 void	display_window(void)
 {
 	t_mlx_params	mlx_params;
-//	t_maps_params	maps_params;
+	t_image			image;
+//	t_maps_coord	maps_coord;
 //	t_algo_params	algo_params;
 
 	mlx_params.x_win = 1500;
@@ -44,7 +53,10 @@ void	display_window(void)
 	mlx_params.mlx = mlx_init();
 	mlx_params.window = mlx_new_window(mlx_params.mlx, mlx_params.x_win, mlx_params.y_win, "New window");
 	//create a new image and draw map into
-	mlx_new_image(mlx_params.mlx, mlx_params.x_win, mlx_params.y_win);
+	image.img = mlx_new_image(mlx_params.mlx, mlx_params.x_win, mlx_params.y_win);
+	image.addr = mlx_get_data_addr(image.img, &image.bits_per_pixel, &image.size_line, &image.endian);
+	my_mlx_pixel_put(&image, 50, 50, 0x00FF0000);
+	mlx_put_image_to_window(mlx_params.mlx, mlx_params.window, image.img, 0, 0);
 	//do something when pressing key in a window
 	mlx_key_hook(mlx_params.window, press_key, &mlx_params);
 	//do something when pressing mouse button
