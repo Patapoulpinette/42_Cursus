@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:03:34 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/25 16:03:54 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/25 16:04:13 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ void	draw_in_image(t_image *image, t_maps_coord *maps_coord)
 	int	j;
 
 	j = 0;
-	maps_coord->x_len = 19;
-	maps_coord->y_len = 11;
 	while (j < maps_coord->y_len)
 	{
 		i = 0;

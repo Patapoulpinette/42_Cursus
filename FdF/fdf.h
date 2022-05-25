@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:07:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/25 15:50:41 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/25 16:39:04 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef struct s_algo_params
 //main
 
 //parsing
-int		**parsing(char *str);
+void	parsing(t_maps_coord *maps_coord, char *str);
 int		reading(int fd, char **backup);
 
 //graphical_part
