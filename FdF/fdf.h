@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:07:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/25 00:40:21 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/25 15:50:41 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ typedef struct	s_image
 
 typedef struct s_maps_coord
 {
+	int	**map_tab;
+	int	x_len;
+	int	y_len;
 	int	x0;
 	int	y0;
 	int	x1;
@@ -70,11 +73,12 @@ int		reading(int fd, char **backup);
 //graphical_part
 int		press_key(int key, t_mlx_params *mlx_params);
 void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
+void	draw_in_image(t_image *image, t_maps_coord *maps_coord);
 int		exit_program(void);
-void	display_window(void);
+void	display_window(t_maps_coord *maps_coord);
 
 //algorithm
-void	drawline(t_maps_coord	*maps_coord, t_mlx_params *mlx_params, t_algo_params *algo_params, int color);
+void	drawline(t_maps_coord *maps_coord, t_mlx_params *mlx_params, t_algo_params *algo_params, int color);
 
 //len
 size_t	ft_strlen(const char *s);

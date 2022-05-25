@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:03:34 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/25 01:12:02 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/25 16:03:54 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,27 +35,48 @@ void	my_mlx_pixel_put(t_image *image, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
+void	draw_in_image(t_image *image, t_maps_coord *maps_coord)
+{
+	int	i;
+	int	j;
+
+	j = 0;
+	maps_coord->x_len = 19;
+	maps_coord->y_len = 11;
+	while (j < maps_coord->y_len)
+	{
+		i = 0;
+		while (i < maps_coord->x_len)
+		{
+			my_mlx_pixel_put(image, i * 50, j * 50, 0xFFBA08);
+			i++;
+		}
+		j++;
+	}
+}
+
 int	exit_program(void)
 {
 	dprintf(2, "exit with mouse\n");
 	exit(0);
 }
 
-void	display_window(void)
+void	display_window(t_maps_coord *maps_coord)
 {
 	t_mlx_params	mlx_params;
 	t_image			image;
-//	t_maps_coord	maps_coord;
-//	t_algo_params	algo_params;
 
 	mlx_params.x_win = 1500;
 	mlx_params.y_win = 1200;
 	mlx_params.mlx = mlx_init();
 	mlx_params.window = mlx_new_window(mlx_params.mlx, mlx_params.x_win, mlx_params.y_win, "New window");
-	//create a new image and draw map into
+	//create a new image
 	image.img = mlx_new_image(mlx_params.mlx, mlx_params.x_win, mlx_params.y_win);
+	//give image address
 	image.addr = mlx_get_data_addr(image.img, &image.bits_per_pixel, &image.size_line, &image.endian);
-	my_mlx_pixel_put(&image, 50, 50, 0x00FF0000);
+	//draw pixel in image
+	draw_in_image(&image, maps_coord);
+	//put image to window
 	mlx_put_image_to_window(mlx_params.mlx, mlx_params.window, image.img, 0, 0);
 	//do something when pressing key in a window
 	mlx_key_hook(mlx_params.window, press_key, &mlx_params);
