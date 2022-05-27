@@ -22,7 +22,7 @@ HEADFILE = fdf.h
 MINILIBX = ./minilibx_macos
 #MINILIBX_EXEC = ./minilibx_macos/libmlx.a
 
-SRCS =	 main.c parsing.c len.c utils.c split.c utils_split.c graphical_part.c free.c #algorithm.c
+SRCS =	 main.c parsing.c len.c utils.c split.c utils_split.c graphical_part.c free.c algorithm.c
 
 # **************************************************************************** #
 #                                    COLORS                                    #

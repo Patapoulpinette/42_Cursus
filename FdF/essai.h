@@ -39,6 +39,6 @@ typedef struct s_algo_params
 }				t_algo_params;
 
 //algorithm
-void	drawline(t_maps_params	*maps_params, t_mlx_params *mlx_params, t_algo_params *algo_params, int color);
+void drawline(t_maps_params *maps_params, t_mlx_params *mlx_params, int color);
 
 #endif

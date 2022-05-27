@@ -73,12 +73,12 @@ int		reading(int fd, char **backup);
 //graphical_part
 int		press_key(int key, t_mlx_params *mlx_params);
 void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
-void	draw_in_image(t_image *image, t_maps_coord *maps_coord);
+void draw_in_image(t_image *image, t_maps_coord *maps_coord);
 int		exit_program(void);
 void	display_window(t_maps_coord *maps_coord);
 
 //algorithm
-void	drawline(t_maps_coord *maps_coord, t_mlx_params *mlx_params, t_algo_params *algo_params, int color);
+void drawline(t_image *image, int x0, int y0, int x1, int y1, int color);
 
 //len
 size_t	ft_strlen(const char *s);

@@ -35,7 +35,7 @@ void	my_mlx_pixel_put(t_image *image, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void	draw_in_image(t_image *image, t_maps_coord *maps_coord)
+void draw_in_image(t_image *image, t_maps_coord *maps_coord)
 {
 	int	i;
 	int	j;
@@ -46,7 +46,9 @@ void	draw_in_image(t_image *image, t_maps_coord *maps_coord)
 		i = 0;
 		while (i < maps_coord->x_len)
 		{
-			my_mlx_pixel_put(image, i * 50, j * 50, 0xFFBA08);
+			my_mlx_pixel_put(image, i * 50, j * 50, 0xfdffb6);
+//			drawline(image, i * 50, j * 50, (i + 1) * 50, j * 50, 0x6a040f);
+//			drawline(image, i * 50, j * 50, i * 50, (j + 1) * 50, 0x6a040f);
 			i++;
 		}
 		j++;
@@ -64,18 +66,18 @@ void	display_window(t_maps_coord *maps_coord)
 	t_mlx_params	mlx_params;
 	t_image			image;
 
-	mlx_params.x_win = 1500;
-	mlx_params.y_win = 1200;
+	mlx_params.x_win = maps_coord->x_len * 60;
+	mlx_params.y_win = maps_coord->y_len * 60;
 	mlx_params.mlx = mlx_init();
 	mlx_params.window = mlx_new_window(mlx_params.mlx, mlx_params.x_win, mlx_params.y_win, "New window");
 	//create a new image
-	image.img = mlx_new_image(mlx_params.mlx, mlx_params.x_win, mlx_params.y_win);
+	image.img = mlx_new_image(mlx_params.mlx, maps_coord->x_len * 50, maps_coord->y_len * 50);
 	//give image address
 	image.addr = mlx_get_data_addr(image.img, &image.bits_per_pixel, &image.size_line, &image.endian);
 	//draw pixel in image
 	draw_in_image(&image, maps_coord);
 	//put image to window
-	mlx_put_image_to_window(mlx_params.mlx, mlx_params.window, image.img, 0, 0);
+	mlx_put_image_to_window(mlx_params.mlx, mlx_params.window, image.img, ((mlx_params.x_win - (maps_coord->x_len * 50)) / 2), ((mlx_params.y_win - (maps_coord->y_len * 50)) / 2));
 	//do something when pressing key in a window
 	mlx_key_hook(mlx_params.window, press_key, &mlx_params);
 	//do something when pressing mouse button
