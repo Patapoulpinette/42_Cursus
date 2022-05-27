@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
-//#include "essai.h"
 
 void drawline(t_image *image, int x0, int y0, int x1, int y1, int color)
 {
