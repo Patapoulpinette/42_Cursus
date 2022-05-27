@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:03:34 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/25 16:04:13 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/27 16:00:23 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,28 +27,32 @@ int	press_key(int key, t_mlx_params *mlx_params)
 	return (0);
 }
 
-void	my_mlx_pixel_put(t_image *image, int x, int y, int color)
+void	my_mlx_pixel_put(t_image *image, t_maps_coord *maps_coord, int x, int y, int color)
 {
 	char	*dst;
 
+	if ((x < 0 || y < 0) || (x > maps_coord->x_len * 60 || y > maps_coord->y_len * 60))
+		return ;
 	dst = image->addr + (y * image->size_line + x * (image->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }
 
-void draw_in_image(t_image *image, t_maps_coord *maps_coord)
+void	draw_in_image(t_image *image, t_maps_coord *maps_coord)
 {
 	int	i;
 	int	j;
 
 	j = 0;
-	while (j < maps_coord->y_len)
+	while (j < maps_coord->y_len - 1)
 	{
 		i = 0;
-		while (i < maps_coord->x_len)
+		while (i < maps_coord->x_len - 1)
 		{
-			my_mlx_pixel_put(image, i * 50, j * 50, 0xfdffb6);
-//			drawline(image, i * 50, j * 50, (i + 1) * 50, j * 50, 0x6a040f);
-//			drawline(image, i * 50, j * 50, i * 50, (j + 1) * 50, 0x6a040f);
+			dprintf(2, "test : %d ; %d\n", i, j);
+			iso(&i, &j, maps_coord->map_tab[j][i]);
+			my_mlx_pixel_put(image, maps_coord, i * 50, j * 50, 0xfdffb6);
+			bhm_line(image, maps_coord, i * 50, j * 50, (i + 1) * 50, j * 50, 0x6a040f);
+			bhm_line(image, maps_coord, i * 50, j * 50, i * 50, (j + 1) * 50, 0x6a040f);
 			i++;
 		}
 		j++;

@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:07:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/25 16:39:04 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/27 15:46:56 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@
 # include "minilibx_macos/mlx.h"
 # include <unistd.h>//for close
 # include <stdio.h>//for printf
-# include <stdlib.h>//for exit
+# include <stdlib.h>//for exit & abs
 # include <fcntl.h>//for open
+# include <math.h>//for cos & sin
 
 typedef struct s_mlx_params
 {
@@ -56,12 +57,16 @@ typedef struct s_maps_coord
 
 typedef struct s_algo_params
 {
-	int		x;
-	int		y;
-	int		dx;
-	int		dy;
-	float	m;
-	int		p;
+	int	x;
+	int	y;
+	int	dx;
+	int	dy;
+	int	dx1;
+	int	dy1;
+	int	px;
+	int	py;
+	int	xe;
+	int	ye;
 }				t_algo_params;
 
 //main
@@ -72,13 +77,14 @@ int		reading(int fd, char **backup);
 
 //graphical_part
 int		press_key(int key, t_mlx_params *mlx_params);
-void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
+void	my_mlx_pixel_put(t_image *image, t_maps_coord *maps_coord, int x, int y, int color);
 void	draw_in_image(t_image *image, t_maps_coord *maps_coord);
 int		exit_program(void);
 void	display_window(t_maps_coord *maps_coord);
 
 //algorithm
-void drawline(t_image *image, int x0, int y0, int x1, int y1, int color);
+void	iso(int *x, int *y, int z);
+void	bhm_line(t_image *image, t_maps_coord *maps_coord, int x1, int y1, int x2, int y2, int color);
 
 //len
 size_t	ft_strlen(const char *s);
