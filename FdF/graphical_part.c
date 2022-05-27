@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:03:34 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/27 16:00:23 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/27 18:23:33 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	press_key(int key, t_mlx_params *mlx_params)
 	return (0);
 }
 
-void	my_mlx_pixel_put(t_image *image, t_maps_coord *maps_coord, int x, int y, int color)
+void	my_mlx_pixel_put(t_image *image, t_maps_coord *maps_coord, int x, int y, int color)//crash ici mais je sais pas pourquoi
 {
 	char	*dst;
 
@@ -48,11 +48,17 @@ void	draw_in_image(t_image *image, t_maps_coord *maps_coord)
 		i = 0;
 		while (i < maps_coord->x_len - 1)
 		{
-			dprintf(2, "test : %d ; %d\n", i, j);
-			iso(&i, &j, maps_coord->map_tab[j][i]);
-			my_mlx_pixel_put(image, maps_coord, i * 50, j * 50, 0xfdffb6);
-			bhm_line(image, maps_coord, i * 50, j * 50, (i + 1) * 50, j * 50, 0x6a040f);
-			bhm_line(image, maps_coord, i * 50, j * 50, i * 50, (j + 1) * 50, 0x6a040f);
+			dprintf(2, "test : %d ; %d\n", i, j);//for testing
+			maps_coord->x0 = i * 50;
+			maps_coord->y0 = j * 50;
+			iso(&maps_coord->x0, &maps_coord->y0, maps_coord->map_tab[j][i]);
+			my_mlx_pixel_put(image, maps_coord, maps_coord->x0, maps_coord->y0, 0xfdffb6);
+			maps_coord->x1 = (i + 1) * 50;
+			maps_coord->y1 = j * 50;
+			bhm_line(image, maps_coord, 0x6a040f);
+			maps_coord->x1 = i * 50;
+			maps_coord->y1 = (j + 1) * 50;
+			bhm_line(image, maps_coord, 0x6a040f);
 			i++;
 		}
 		j++;

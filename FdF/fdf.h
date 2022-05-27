@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:07:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/27 15:46:56 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/27 17:56:22 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	display_window(t_maps_coord *maps_coord);
 
 //algorithm
 void	iso(int *x, int *y, int z);
-void	bhm_line(t_image *image, t_maps_coord *maps_coord, int x1, int y1, int x2, int y2, int color);
+void	bhm_line(t_image *image, t_maps_coord *maps_coord, int color);
 
 //len
 size_t	ft_strlen(const char *s);

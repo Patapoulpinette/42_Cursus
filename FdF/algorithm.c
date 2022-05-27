@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:02:13 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/27 15:57:57 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/27 18:00:26 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ void	iso(int *x, int *y, int z)
 	*y = -z + (previous_x + previous_y) * sin(0.523599);
 }
 
-void	bhm_line(t_image *image, t_maps_coord *maps_coord, int x1, int y1, int x2, int y2, int color)
+void	bhm_line(t_image *image, t_maps_coord *maps_coord, int color)
 {
 	t_algo_params	algo;
 
-	algo.dx = x2 - x1;
-	algo.dy = y2 - y1;
+	algo.dx = maps_coord->x1 - maps_coord->x0;
+	algo.dy = maps_coord->y1 - maps_coord->y0;
 	algo.dx1 = abs(algo.dx);
 	algo.dy1 = abs(algo.dy);
 	algo.px = 2 * algo.dy1 - algo.dx1;
@@ -37,15 +37,15 @@ void	bhm_line(t_image *image, t_maps_coord *maps_coord, int x1, int y1, int x2, 
 	{
 		if (algo.dx >= 0)
 		{
-			algo.x = x1;
-			algo.y = y1;
-			algo.xe = x2;
+			algo.x = maps_coord->x0;
+			algo.y = maps_coord->y0;
+			algo.xe = maps_coord->x1;
 		}
 		else
 		{
-			algo.x = x2;
-			algo.y = y2;
-			algo.xe = x1;
+			algo.x = maps_coord->x1;
+			algo.y = maps_coord->y1;
+			algo.xe = maps_coord->x0;
 		}
 		my_mlx_pixel_put(image, maps_coord, algo.x, algo.y, color);
 		while (algo.x < algo.xe)
@@ -74,15 +74,15 @@ void	bhm_line(t_image *image, t_maps_coord *maps_coord, int x1, int y1, int x2, 
 	{
 		if (algo.dy >= 0)
 		{
-			algo.x = x1;
-			algo.y = y1;
-			algo.ye = y2;
+			algo.x = maps_coord->x0;
+			algo.y = maps_coord->y0;
+			algo.ye = maps_coord->y1;
 		}
 		else
 		{
-			algo.x = x2;
-			algo.y = y2;
-			algo.ye = y1;
+			algo.x = maps_coord->x1;
+			algo.y = maps_coord->y1;
+			algo.ye = maps_coord->y0;
 		}
 		my_mlx_pixel_put(image, maps_coord, algo.x, algo.y, color);
 		while (algo.y < algo.ye)
