@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:07:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/27 20:02:49 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/27 21:42:03 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef struct	s_image
 	int		bits_per_pixel;
 	int		size_line;
 	int		endian;
+	int		x_img;
+	int		y_img;
 }				t_image;
 
 typedef struct s_maps_coord
@@ -83,7 +85,7 @@ int		exit_program(void);
 void	display_window(t_maps_coord *maps_coord);
 
 //algorithm
-void	iso(int *x, int *y, int z);
+void	iso(t_image *image, int *x, int *y, int z);
 void	bhm_line(t_image *image, t_maps_coord *maps_coord, int color);
 
 //len

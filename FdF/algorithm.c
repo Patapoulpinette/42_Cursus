@@ -6,21 +6,21 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:02:13 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/27 18:00:26 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/27 21:49:53 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	iso(int *x, int *y, int z)
+void	iso(t_image *image, int *x, int *y, int z)
 {
 	int	previous_x;
 	int	previous_y;
 
 	previous_x = *x;
 	previous_y = *y;
-	*x = (previous_x - previous_y) * cos(0.523599);
-	*y = -z + (previous_x + previous_y) * sin(0.523599);
+	*x = (previous_x - previous_y) * cos(0.46373398) + (image->x_img / 3);
+	*y = -z + (previous_x + previous_y) * sin(0.46373398) + (image->y_img / 8);
 }
 
 void	bhm_line(t_image *image, t_maps_coord *maps_coord, int color)
