@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:02:13 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/27 21:49:53 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/30 11:53:56 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	iso(t_image *image, int *x, int *y, int z)
 
 	previous_x = *x;
 	previous_y = *y;
-	*x = (previous_x - previous_y) * cos(0.46373398) + (image->x_img / 3);
-	*y = -z + (previous_x + previous_y) * sin(0.46373398) + (image->y_img / 8);
+	*x = (previous_x - previous_y) * cos(0.46373398) + (image->x_img / 2);
+	*y = -z + (previous_x + previous_y) * sin(0.46373398) + (image->y_img / 4);
 }
 
 void	bhm_line(t_image *image, t_maps_coord *maps_coord, int color)
@@ -47,7 +47,7 @@ void	bhm_line(t_image *image, t_maps_coord *maps_coord, int color)
 			algo.y = maps_coord->y1;
 			algo.xe = maps_coord->x0;
 		}
-		my_mlx_pixel_put(image, maps_coord, algo.x, algo.y, color);
+		my_mlx_pixel_put(image, algo.x, algo.y, color);
 		while (algo.x < algo.xe)
 		{
 			algo.x = algo.x + 1;
@@ -67,7 +67,7 @@ void	bhm_line(t_image *image, t_maps_coord *maps_coord, int color)
 				}
 				algo.px = algo.px + 2 * (algo.dy1 - algo.dx1);
 			}
-			my_mlx_pixel_put(image, maps_coord, algo.x, algo.y, color);
+			my_mlx_pixel_put(image, algo.x, algo.y, color);
 		}
 	}
 	else
@@ -84,7 +84,7 @@ void	bhm_line(t_image *image, t_maps_coord *maps_coord, int color)
 			algo.y = maps_coord->y1;
 			algo.ye = maps_coord->y0;
 		}
-		my_mlx_pixel_put(image, maps_coord, algo.x, algo.y, color);
+		my_mlx_pixel_put(image, algo.x, algo.y, color);
 		while (algo.y < algo.ye)
 		{
 			algo.y = algo.y + 1;
@@ -104,7 +104,7 @@ void	bhm_line(t_image *image, t_maps_coord *maps_coord, int color)
 				}
 				algo.py = algo.py + 2 * (algo.dx1 - algo.dy1);
 			}
-			my_mlx_pixel_put(image, maps_coord, algo.x, algo.y, color);
+			my_mlx_pixel_put(image, algo.x, algo.y, color);
 		}
 	}
 }

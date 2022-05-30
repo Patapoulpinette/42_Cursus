@@ -12,8 +12,6 @@
 
 #include "fdf.h"
 
-//Pour chaque point je dessine une ligne avec le point suivant et le point du dessous (en gros i + 1 et j + 1)
-
 int	main(int argc, char **argv)
 {
 	t_maps_coord	maps_coord;
