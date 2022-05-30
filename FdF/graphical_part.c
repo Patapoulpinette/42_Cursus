@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:03:34 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/30 11:55:26 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/30 14:15:48 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,9 @@ void	draw_in_image(t_image *image, t_maps_coord *maps_coord)
 		i = 0;
 		while (i < maps_coord->x_len - 1)
 		{
-//			dprintf(2, "test : %d ; %d\n", i, j);//for testing
 			maps_coord->x0 = i * ZOOM;
 			maps_coord->y0 = j * ZOOM;
 			iso(image, &maps_coord->x0, &maps_coord->y0, Z_MULT * maps_coord->map_tab[j][i]);
-//			dprintf(2, "x0 = %d | y0 = %d\n", maps_coord->x0, maps_coord->y0);
-			my_mlx_pixel_put(image, maps_coord->x0, maps_coord->y0, 0xfdffb6);
 			maps_coord->x1 = (i + 1) * ZOOM;
 			maps_coord->y1 = j * ZOOM;
 			iso(image, &maps_coord->x1, &maps_coord->y1, Z_MULT * maps_coord->map_tab[j][i + 1]);
