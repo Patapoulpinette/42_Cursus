@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:03:34 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/30 21:11:32 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/30 21:53:48 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,14 @@ void	display_window(t_maps_coord *map)
 	t_mlx_params	mlx;
 	t_image			image;
 
-	mlx.x_win = map->x_len * WIN_COEF;
-	mlx.y_win = map->y_len * WIN_COEF;
-	image.x_img = map->x_len * WIN_COEF;
-	image.y_img = map->y_len * WIN_COEF;
+	mlx.x_win = map->x_len * X_WIN_COEF;
+	mlx.y_win = map->y_len * Y_WIN_COEF;
+	image.x_img = map->x_len * X_WIN_COEF;
+	image.y_img = map->y_len * Y_WIN_COEF;
 	mlx.mlx = mlx_init();
 	mlx.window = mlx_new_window(mlx.mlx, mlx.x_win,
 			mlx.y_win, "New window");
+	dprintf(2, "xlen = %d, ylen = %d\n", map->x_len, map->y_len);//for testing
 	dprintf(2, "xwin = %d, ywin = %d\n", mlx.x_win, mlx.y_win);//for testing
 	//create a new image
 	image.img = mlx_new_image(mlx.mlx, image.x_img, image.y_img);

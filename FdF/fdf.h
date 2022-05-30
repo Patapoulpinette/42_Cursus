@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:07:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/30 21:10:11 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/30 22:11:54 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 #  error "NEGATIVE BUFFER SIZE"
 # endif
 
-# define WIN_COEF 60
-# define ZOOM 30
+# define X_WIN_COEF 67
+# define Y_WIN_COEF 67
+# define ZOOM 40
 # define Z_MULT 2
 
 # include "minilibx_macos/mlx.h"

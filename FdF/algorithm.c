@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:02:13 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/30 11:53:56 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/30 21:45:42 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	iso(t_image *image, int *x, int *y, int z)
 
 	previous_x = *x;
 	previous_y = *y;
-	*x = (previous_x - previous_y) * cos(0.46373398) + (image->x_img / 2);
-	*y = -z + (previous_x + previous_y) * sin(0.46373398) + (image->y_img / 4);
+	*x = (previous_x - previous_y) * cos(0.46373398) + (image->x_img / 3);
+	*y = -z + (previous_x + previous_y) * sin(0.46373398) + (image->y_img / 8);
 }
 
 void	bhm_line(t_image *image, t_maps_coord *map, int color)
