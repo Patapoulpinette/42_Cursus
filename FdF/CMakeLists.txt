@@ -1,0 +1,74 @@
+cmake_minimum_required(VERSION 3.22)
+project(dbouron)
+
+set(CMAKE_CXX_STANDARD 14)
+
+include_directories(.)
+include_directories(minilibx_macos)
+
+add_executable(dbouron
+        fdf.dSYM/Contents/Resources/DWARF/fdf
+        fdf.dSYM/Contents/Info.plist
+        maps/10-2.fdf
+        maps/10-70.fdf
+        maps/100-6.fdf
+        maps/20-60.fdf
+        maps/42.fdf
+        maps/50-4.fdf
+        maps/basictest.fdf
+        maps/elem-col.fdf
+        maps/elem-fract.fdf
+        maps/elem.fdf
+        maps/elem2.fdf
+        maps/julia.fdf
+        maps/mars.fdf
+        maps/pentenegpos.fdf
+        maps/plat.fdf
+        maps/pnp_flat.fdf
+        maps/pylone.fdf
+        maps/pyra.fdf
+        maps/pyramide.fdf
+        maps/t1.fdf
+        maps/t2.fdf
+        minilibx_macos/man/man1/mlx.1
+        minilibx_macos/man/man1/mlx_loop.1
+        minilibx_macos/man/man1/mlx_new_image.1
+        minilibx_macos/man/man1/mlx_new_window.1
+        minilibx_macos/man/man1/mlx_pixel_put.1
+        minilibx_macos/man/man3/mlx.1
+        minilibx_macos/man/man3/mlx_loop.1
+        minilibx_macos/man/man3/mlx_new_image.1
+        minilibx_macos/man/man3/mlx_new_window.1
+        minilibx_macos/man/man3/mlx_pixel_put.1
+        minilibx_macos/_README_
+        minilibx_macos/font.c
+        minilibx_macos/font.xcf
+        minilibx_macos/Makefile
+        minilibx_macos/mlx.h
+        minilibx_macos/mlx_init_loop.m
+        minilibx_macos/mlx_int.h
+        minilibx_macos/mlx_int_str_to_wordtab.c
+        minilibx_macos/mlx_new_image.m
+        minilibx_macos/mlx_new_window.h
+        minilibx_macos/mlx_new_window.m
+        minilibx_macos/mlx_rgb.c
+        minilibx_macos/mlx_shaders.c
+        minilibx_macos/mlx_xpm.c
+        algorithm.c
+        algorithm_ex.c
+        ampoule.xpm
+        essai.c
+        essai.h
+        fdf.h
+        fdf_exemple
+        free.c
+        graphical_part.c
+        leaf-1.xpm
+        len.c
+        main.c
+        Makefile
+        mathmart.c
+        parsing.c
+        split.c
+        utils.c
+        utils_split.c)
