@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 14:22:17 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/25 16:46:05 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/30 21:03:08 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	reading(int fd, char **backup)
 	return (1);
 }
 
-static void	fill_tab_i(t_maps_coord	*maps_coord, char **tab_c, int i)
+static void	fill_tab_i(t_maps_coord	*map, char **tab_c, int i)
 {
 	int	j;
 	int	start;
@@ -39,8 +39,8 @@ static void	fill_tab_i(t_maps_coord	*maps_coord, char **tab_c, int i)
 	j = 0;
 	end = 0;
 	nb_word = (int)ft_nbword(tab_c[i], ' ');
-	maps_coord->map_tab[i] = ft_calloc(sizeof(int), nb_word);
-	if (!maps_coord->map_tab[i])
+	map->map_tab[i] = ft_calloc(sizeof(int), nb_word);
+	if (!map->map_tab[i])
 		return ;
 	while (j < nb_word)
 	{
@@ -49,31 +49,31 @@ static void	fill_tab_i(t_maps_coord	*maps_coord, char **tab_c, int i)
 		start = end;
 		while (tab_c[i][end] && tab_c[i][end] != ' ')
 			end++;
-		maps_coord->map_tab[i][j] = ft_atoi(&tab_c[i][start]);
-		dprintf(2, "%d ", maps_coord->map_tab[i][j]);//for testing
+		map->map_tab[i][j] = ft_atoi(&tab_c[i][start]);
+		dprintf(2, "%d ", map->map_tab[i][j]);//for testing
 		j++;
 	}
 	dprintf(2, "\n");//for testing
-	maps_coord->x_len = j;
-	maps_coord->y_len = i + 1;
+	map->x_len = j;
+	map->y_len = i + 1;
 }
 
-void	tabc_to_tabi(t_maps_coord *maps_coord, char **tab_c)
+void	tabc_to_tabi(t_maps_coord *map, char **tab_c)
 {
 	int	i;
 
 	i = 0;
-	maps_coord->map_tab = ft_calloc(sizeof(int *), ft_tablen(tab_c));
-	if (!maps_coord->map_tab)
+	map->map_tab = ft_calloc(sizeof(int *), ft_tablen(tab_c));
+	if (!map->map_tab)
 		return ;
 	while (tab_c[i])
 	{
-		fill_tab_i(maps_coord, tab_c, i);
+		fill_tab_i(map, tab_c, i);
 		i++;
 	}
 }
 
-void	parsing(t_maps_coord *maps_coord, char *str)
+void	parsing(t_maps_coord *map, char *str)
 {
 	int				i = 0;//for testing
 	int				fd;
@@ -98,7 +98,7 @@ void	parsing(t_maps_coord *maps_coord, char *str)
 		printf("%s\n", map_tab_c[i++]);//for testing
 	dprintf(2, "\n");//for testing
 	//convert char ** into int **
-	tabc_to_tabi(maps_coord, map_tab_c);
+	tabc_to_tabi(map, map_tab_c);
 	free(result_reading);
 	free_tab_c(map_tab_c);
 }

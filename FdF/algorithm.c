@@ -23,12 +23,12 @@ void	iso(t_image *image, int *x, int *y, int z)
 	*y = -z + (previous_x + previous_y) * sin(0.46373398) + (image->y_img / 4);
 }
 
-void	bhm_line(t_image *image, t_maps_coord *maps_coord, int color)
+void	bhm_line(t_image *image, t_maps_coord *map, int color)
 {
 	t_algo_params	algo;
 
-	algo.dx = maps_coord->x1 - maps_coord->x0;
-	algo.dy = maps_coord->y1 - maps_coord->y0;
+	algo.dx = map->x1 - map->x0;
+	algo.dy = map->y1 - map->y0;
 	algo.dx1 = abs(algo.dx);
 	algo.dy1 = abs(algo.dy);
 	algo.px = 2 * algo.dy1 - algo.dx1;
@@ -37,15 +37,15 @@ void	bhm_line(t_image *image, t_maps_coord *maps_coord, int color)
 	{
 		if (algo.dx >= 0)
 		{
-			algo.x = maps_coord->x0;
-			algo.y = maps_coord->y0;
-			algo.xe = maps_coord->x1;
+			algo.x = map->x0;
+			algo.y = map->y0;
+			algo.xe = map->x1;
 		}
 		else
 		{
-			algo.x = maps_coord->x1;
-			algo.y = maps_coord->y1;
-			algo.xe = maps_coord->x0;
+			algo.x = map->x1;
+			algo.y = map->y1;
+			algo.xe = map->x0;
 		}
 		my_mlx_pixel_put(image, algo.x, algo.y, color);
 		while (algo.x < algo.xe)
@@ -74,15 +74,15 @@ void	bhm_line(t_image *image, t_maps_coord *maps_coord, int color)
 	{
 		if (algo.dy >= 0)
 		{
-			algo.x = maps_coord->x0;
-			algo.y = maps_coord->y0;
-			algo.ye = maps_coord->y1;
+			algo.x = map->x0;
+			algo.y = map->y0;
+			algo.ye = map->y1;
 		}
 		else
 		{
-			algo.x = maps_coord->x1;
-			algo.y = maps_coord->y1;
-			algo.ye = maps_coord->y0;
+			algo.x = map->x1;
+			algo.y = map->y1;
+			algo.ye = map->y0;
 		}
 		my_mlx_pixel_put(image, algo.x, algo.y, color);
 		while (algo.y < algo.ye)

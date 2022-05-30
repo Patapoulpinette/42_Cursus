@@ -6,19 +6,19 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:03:34 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/30 14:15:48 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/30 21:11:32 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	press_key(int key, t_mlx_params *mlx_params)
+int	press_key(int key, t_mlx_params *mlx)
 {
 	if (key == 8)
-		mlx_clear_window(mlx_params->mlx, mlx_params->window);
+		mlx_clear_window(mlx->mlx, mlx->window);
 	else if (key == 53)
 	{
-		mlx_destroy_window(mlx_params->mlx, mlx_params->window);
+		mlx_destroy_window(mlx->mlx, mlx->window);
 		dprintf(2, "exit with ESC\n");
 		exit(0);
 	}
@@ -33,32 +33,33 @@ void	my_mlx_pixel_put(t_image *image, int x, int y, int color)
 
 	if ((x < 0 || y < 0) || (x > image->x_img || y > image->y_img))
 		return ;
-	dst = image->addr + (y * image->size_line + x * (image->bits_per_pixel / 8));
+	dst = image->addr + (y * image->size_line + x
+			* (image->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
 
-void	draw_in_image(t_image *image, t_maps_coord *maps_coord)
+void	draw_in_image(t_image *image, t_maps_coord *map)
 {
 	int	i;
 	int	j;
 
 	j = 0;
-	while (j < maps_coord->y_len - 1)
+	while (j < map->y_len - 1)
 	{
 		i = 0;
-		while (i < maps_coord->x_len - 1)
+		while (i < map->x_len - 1)
 		{
-			maps_coord->x0 = i * ZOOM;
-			maps_coord->y0 = j * ZOOM;
-			iso(image, &maps_coord->x0, &maps_coord->y0, Z_MULT * maps_coord->map_tab[j][i]);
-			maps_coord->x1 = (i + 1) * ZOOM;
-			maps_coord->y1 = j * ZOOM;
-			iso(image, &maps_coord->x1, &maps_coord->y1, Z_MULT * maps_coord->map_tab[j][i + 1]);
-			bhm_line(image, maps_coord, 0x6a040f);
-			maps_coord->x1 = i * ZOOM;
-			maps_coord->y1 = (j + 1) * ZOOM;
-			iso(image, &maps_coord->x1, &maps_coord->y1, Z_MULT * maps_coord->map_tab[j + 1][i]);
-			bhm_line(image, maps_coord, 0x6a040f);
+			map->x0 = i * ZOOM;
+			map->y0 = j * ZOOM;
+			iso(image, &map->x0, &map->y0, Z_MULT * map->map_tab[j][i]);
+			map->x1 = (i + 1) * ZOOM;
+			map->y1 = j * ZOOM;
+			iso(image, &map->x1, &map->y1, Z_MULT * map->map_tab[j][i + 1]);
+			bhm_line(image, map, 0x6a040f);
+			map->x1 = i * ZOOM;
+			map->y1 = (j + 1) * ZOOM;
+			iso(image, &map->x1, &map->y1, Z_MULT * map->map_tab[j + 1][i]);
+			bhm_line(image, map, 0x6a040f);
 			i++;
 		}
 		j++;
@@ -71,32 +72,32 @@ int	exit_program(void)
 	exit(0);
 }
 
-void	display_window(t_maps_coord *maps_coord)
+void	display_window(t_maps_coord *map)
 {
-	t_mlx_params	mlx_params;
+	t_mlx_params	mlx;
 	t_image			image;
 
-	mlx_params.x_win = maps_coord->x_len * WIN_COEF;
-	mlx_params.y_win = maps_coord->y_len * WIN_COEF;
-	image.x_img = maps_coord->x_len * WIN_COEF;
-	image.y_img = maps_coord->y_len * WIN_COEF;
-	mlx_params.mlx = mlx_init();
-	mlx_params.window = mlx_new_window(mlx_params.mlx, mlx_params.x_win,
-			mlx_params.y_win, "New window");
-	dprintf(2, "xwin = %d, ywin = %d\n", mlx_params.x_win, mlx_params.y_win);//for testing
+	mlx.x_win = map->x_len * WIN_COEF;
+	mlx.y_win = map->y_len * WIN_COEF;
+	image.x_img = map->x_len * WIN_COEF;
+	image.y_img = map->y_len * WIN_COEF;
+	mlx.mlx = mlx_init();
+	mlx.window = mlx_new_window(mlx.mlx, mlx.x_win,
+			mlx.y_win, "New window");
+	dprintf(2, "xwin = %d, ywin = %d\n", mlx.x_win, mlx.y_win);//for testing
 	//create a new image
-	image.img = mlx_new_image(mlx_params.mlx, image.x_img, image.y_img);
+	image.img = mlx_new_image(mlx.mlx, image.x_img, image.y_img);
 	dprintf(2, "ximg = %d, yimg = %d\n", image.x_img, image.y_img);//for testing
 	//give image address
 	image.addr = mlx_get_data_addr(image.img, &image.bits_per_pixel,
 			&image.size_line, &image.endian);
 	//draw pixel in image
-	draw_in_image(&image, maps_coord);
+	draw_in_image(&image, map);
 	//put image to window
-	mlx_put_image_to_window(mlx_params.mlx, mlx_params.window, image.img, 0, 0);
+	mlx_put_image_to_window(mlx.mlx, mlx.window, image.img, 0, 0);
 	//do something when pressing key in a window
-	mlx_key_hook(mlx_params.window, press_key, &mlx_params);
+	mlx_key_hook(mlx.window, press_key, &mlx);
 	//do something when pressing mouse button
-	mlx_hook(mlx_params.window, 17, 1L << 5, exit_program, (void *)0);
-	mlx_loop(mlx_params.mlx);
+	mlx_hook(mlx.window, 17, 1L << 5, exit_program, (void *)0);
+	mlx_loop(mlx.mlx);
 }

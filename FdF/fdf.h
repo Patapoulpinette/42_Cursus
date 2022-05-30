@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:07:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/30 14:26:41 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/30 21:10:11 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_mlx_params
 	int		y_win;
 }				t_mlx_params;
 
-typedef struct	s_image
+typedef struct s_image
 {
 	void	*img;
 	char	*addr;
@@ -78,19 +78,19 @@ typedef struct s_algo_params
 //main
 
 //parsing
-void	parsing(t_maps_coord *maps_coord, char *str);
+void	parsing(t_maps_coord *map, char *str);
 int		reading(int fd, char **backup);
 
 //graphical_part
-int		press_key(int key, t_mlx_params *mlx_params);
+int		press_key(int key, t_mlx_params *mlx);
 void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
-void	draw_in_image(t_image *image, t_maps_coord *maps_coord);
+void	draw_in_image(t_image *image, t_maps_coord *map);
 int		exit_program(void);
-void	display_window(t_maps_coord *maps_coord);
+void	display_window(t_maps_coord *map);
 
 //algorithm
 void	iso(t_image *image, int *x, int *y, int z);
-void	bhm_line(t_image *image, t_maps_coord *maps_coord, int color);
+void	bhm_line(t_image *image, t_maps_coord *map, int color);
 
 //len
 size_t	ft_strlen(const char *s);
