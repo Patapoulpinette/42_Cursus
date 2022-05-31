@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 14:22:17 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/30 21:03:08 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/31 14:57:22 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ static void	fill_tab_i(t_maps_coord	*map, char **tab_c, int i)
 		while (tab_c[i][end] && tab_c[i][end] != ' ')
 			end++;
 		map->map_tab[i][j] = ft_atoi(&tab_c[i][start]);
-		dprintf(2, "%d ", map->map_tab[i][j]);//for testing
+//		dprintf(2, "%d ", map->map_tab[i][j]);//for testing
 		j++;
 	}
-	dprintf(2, "\n");//for testing
+//	dprintf(2, "\n");//for testing
 	map->x_len = j;
 	map->y_len = i + 1;
 }
@@ -75,7 +75,7 @@ void	tabc_to_tabi(t_maps_coord *map, char **tab_c)
 
 void	parsing(t_maps_coord *map, char *str)
 {
-	int				i = 0;//for testing
+//	int				i = 0;//for testing
 	int				fd;
 	int				check_reading;
 	static char		*result_reading = NULL;
@@ -93,12 +93,15 @@ void	parsing(t_maps_coord *map, char *str)
 			return ;
 	}
 	close(fd);
+	dprintf(2, "fin de lecture\n");
 	map_tab_c = ft_split(result_reading, '\n');
-	while (map_tab_c[i])//for testing
-		printf("%s\n", map_tab_c[i++]);//for testing
-	dprintf(2, "\n");//for testing
+	dprintf(2, "fin de split\n");
+//	while (map_tab_c[i])//for testing
+//		printf("%s\n", map_tab_c[i++]);//for testing
+//	dprintf(2, "\n");//for testing
 	//convert char ** into int **
 	tabc_to_tabi(map, map_tab_c);
+	dprintf(2, "fin de tab_i\n");
 	free(result_reading);
 	free_tab_c(map_tab_c);
 }

@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:07:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/31 12:09:59 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/31 15:58:35 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 # endif
 
 # define X_WIN_COEF 60
-# define Y_WIN_COEF 40
+# define Y_WIN_COEF 60
 # define ZOOM 30
-# define Z_MULT 10
+# define Z_MULT 2
 
 # include "minilibx_macos/mlx.h"
 # include <unistd.h>//for close
