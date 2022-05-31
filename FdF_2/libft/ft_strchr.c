@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/03 15:37:54 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/31 16:41:10 by dbouron          ###   ########.fr       */
+/*   Created: 2021/11/12 17:48:50 by dbouron           #+#    #+#             */
+/*   Updated: 2022/02/08 19:00:12 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-size_t	ft_tablen(char **tab)
+char	*ft_strchr(const char *s, int c)
 {
 	int	i;
 
 	i = 0;
-	while (tab[i])
+	while (s[i])
+	{
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
 		i++;
-	return (i);
+	}
+	if (s[i] == (char)c)
+		return ((char *)&s[i]);
+	return (0);
 }

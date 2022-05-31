@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/03 15:37:54 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/31 16:41:10 by dbouron          ###   ########.fr       */
+/*   Created: 2022/02/08 16:18:22 by dbouron           #+#    #+#             */
+/*   Updated: 2022/02/08 16:36:01 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-size_t	ft_tablen(char **tab)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	int	i;
-
-	i = 0;
-	while (tab[i])
-		i++;
-	return (i);
+	if (lst != NULL)
+	{
+		(*f)(lst->content);
+		while (lst->next != NULL)
+		{
+			lst = lst->next;
+			(*f)(lst->content);
+		}
+	}
+	return ;
 }

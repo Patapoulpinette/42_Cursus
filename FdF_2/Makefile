@@ -6,7 +6,7 @@
 #    By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/03 14:53:19 by dbouron           #+#    #+#              #
-#    Updated: 2022/05/31 16:15:40 by dbouron          ###   ########.fr        #
+#    Updated: 2022/05/31 16:49:38 by dbouron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,17 @@ NAME = fdf
 #                               FILES and PATHS                                #
 # **************************************************************************** #
 
-HEADFILE = fdf.h ./GNL/get_next_line.h
+HEADFILE =	fdf.h \
+			./GNL/get_next_line.h \
+			./libft/libft.h
 
 MINILIBX = ./minilibx_macos
 #MINILIBX_EXEC = ./minilibx_macos/libmlx.a
 
-SRCS =	main.c parsing.c len.c utils.c split.c utils_split.c graphical_part.c \
-		free.c algorithm.c \
+LIBFT = ./libft
+LIBFT_EXEC = ./libft/libft.a
+
+SRCS =	main.c parsing.c utils.c graphical_part.c free.c algorithm.c \
 		./GNL/get_next_line.c \
 		./GNL/get_next_line_utils.c
 
@@ -59,27 +63,32 @@ NO_COLOR		=	\033[0m
 
 OBJS = $(SRCS:.c=.o)
 
-all : compile_minilibx $(NAME)
+all : compile_minilibx compile_libft $(NAME)
 
 %.o: %.c $(HEADFILE) Makefile
 	gcc -Wall -Wextra -Werror -o $@ -c $<
 	@printf "\r$(LIGHT_GRAY)Loading...$(NO_COLOR)"
 
-$(NAME) : $(OBJS) $(HEADFILE)
-	gcc -Wall -Wextra -Werror -o $(NAME) $(SRCS) -I/usr/local/include -L minilibx_macos -lmlx -framework OpenGL -framework AppKit
+$(NAME) : $(OBJS) $(HEADFILE) $(LIBFT_EXEC)
+	gcc -Wall -Wextra -Werror -o $(NAME) $(LIBFT_EXEC) $(SRCS) -I/usr/local/include -L minilibx_macos -lmlx -framework OpenGL -framework AppKit
 	@printf "\r$(LIGHT_GREEN)➞$(NO_COLOR) Compiled $(LIGHT_GREEN)✔$(NO_COLOR)\n"
 
 compile_minilibx :
 	@make -C $(MINILIBX)
 
+compile_libft :
+	@make -C $(LIBFT)
+
 clean :
 	rm -rf $(OBJS)
 	@make clean -C $(MINILIBX)
+	@make clean -C $(LIBFT)
 	@printf "\r$(LIGHT_BLUE)➞$(NO_COLOR) Cleaned $(LIGHT_BLUE)✔$(NO_COLOR)\n"
 
 fclean : clean
 	rm -rf $(NAME)
 	@make clean -C $(MINILIBX)
+	@make fclean -C $(LIBFT)
 
 re : fclean all
 

@@ -6,27 +6,21 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:07:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/31 16:09:07 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/31 17:32:43 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 3200
-# endif
-# if BUFFER_SIZE <= 0
-#  error "NEGATIVE BUFFER SIZE"
-# endif
-
-# define X_WIN_COEF 5
-# define Y_WIN_COEF 5
-# define ZOOM 2
+# define X_WIN_COEF 60
+# define Y_WIN_COEF 60
+# define ZOOM 30
 # define Z_MULT 2
 
 # include "minilibx_macos/mlx.h"
 # include "GNL/get_next_line.h"
+# include "libft/libft.h"
 # include <unistd.h>//for close
 # include <stdio.h>//for printf
 # include <stdlib.h>//for exit & abs
@@ -77,11 +71,9 @@ typedef struct s_algo_params
 	int	ye;
 }				t_algo_params;
 
-//main
-
 //parsing
+int		read_size(int fd);
 void	parsing(t_maps_coord *map, char *str);
-int		reading(int fd, char **backup);
 
 //graphical_part
 int		press_key(int key, t_mlx_params *mlx);
@@ -94,26 +86,11 @@ void	display_window(t_maps_coord *map);
 void	iso(t_image *image, int *x, int *y, int z);
 void	bhm_line(t_image *image, t_maps_coord *map, int color);
 
-//len
-size_t	ft_strlen(const char *s);
-size_t	ft_tablen(char **tab);
-
 //utils
-int		ft_atoi(const char *str);
-char	*ft_strjoin_free(char *s1, char *s2);
+size_t	ft_tablen(char **tab);
 
 //free
 void	free_tab_c(char **tab);
 void	free_tab_i(int **tab);
-
-//utils_split
-void	*ft_memset(void *b, int c, size_t len);
-void	ft_bzero(void *s, size_t n);
-void	*ft_calloc(size_t count, size_t type_size);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-size_t	ft_nbword(char const *s, char c);
-
-//split
-char	**ft_split(char const *s, char c);
 
 #endif

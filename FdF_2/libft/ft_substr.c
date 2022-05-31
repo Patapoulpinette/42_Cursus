@@ -1,50 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_split.c                                      :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/20 13:53:30 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/20 13:54:29 by dbouron          ###   ########.fr       */
+/*   Created: 2021/11/14 19:16:16 by dbouron           #+#    #+#             */
+/*   Updated: 2022/02/08 19:16:15 by dbouron          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-
-void	*ft_memset(void *b, int c, size_t len)
-{
-	size_t	i;
-	char	*str;
-
-	i = 0;
-	str = (char *)b;
-	while (i < len)
-	{
-		str[i] = c;
-		i++;
-	}
-	return (b);
-}
-
-void	ft_bzero(void *s, size_t n)
-{
-	ft_memset(s, 0, n);
-}
-
-void	*ft_calloc(size_t count, size_t type_size)
-{
-	void	*result;
-
-	result = malloc(count * type_size);
-	if (!result)
-		return (NULL);
-	ft_bzero (result, count * type_size);
-	return (result);
-}
+#include "libft.h"
 
 static char	*stupidity_check(char *result, char const *s, unsigned int start,
-								size_t len)
+		size_t len)
 {
 	if (ft_strlen(s) > len)
 		result = malloc(sizeof(char) * (len + 1));
