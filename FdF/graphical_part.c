@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:03:34 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/30 21:53:48 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/05/31 11:47:24 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,15 @@ void	draw_in_image(t_image *image, t_maps_coord *map)
 		{
 			map->x0 = i * ZOOM;
 			map->y0 = j * ZOOM;
-			iso(image, &map->x0, &map->y0, Z_MULT * map->map_tab[j][i]);
+			iso(image, &map->x0, &map->y0, map->map_tab[j][i]);
 			map->x1 = (i + 1) * ZOOM;
 			map->y1 = j * ZOOM;
-			iso(image, &map->x1, &map->y1, Z_MULT * map->map_tab[j][i + 1]);
-			bhm_line(image, map, 0x6a040f);
+			iso(image, &map->x1, &map->y1, map->map_tab[j][i + 1]);
+			bhm_line(image, map, 0xffb703);
 			map->x1 = i * ZOOM;
 			map->y1 = (j + 1) * ZOOM;
-			iso(image, &map->x1, &map->y1, Z_MULT * map->map_tab[j + 1][i]);
-			bhm_line(image, map, 0x6a040f);
+			iso(image, &map->x1, &map->y1, map->map_tab[j + 1][i]);
+			bhm_line(image, map, 0xffb703);
 			i++;
 		}
 		j++;

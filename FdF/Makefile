@@ -6,7 +6,7 @@
 #    By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/03 14:53:19 by dbouron           #+#    #+#              #
-#    Updated: 2022/05/27 15:32:23 by dbouron          ###   ########.fr        #
+#    Updated: 2022/05/31 11:57:54 by dbouron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ all : compile_minilibx $(NAME)
 	@printf "\r$(LIGHT_GRAY)Loading...$(NO_COLOR)"
 
 $(NAME) : $(OBJS) $(HEADFILE)
-	gcc -Wall -Wextra -Werror -fsanitize=address -g3 -o $(NAME) $(SRCS) -I/usr/local/include -L minilibx_macos -lmlx -framework OpenGL -framework AppKit
+	gcc -Wall -Wextra -Werror -o $(NAME) $(SRCS) -I/usr/local/include -L minilibx_macos -lmlx -framework OpenGL -framework AppKit
 	@printf "\r$(LIGHT_GREEN)➞$(NO_COLOR) Compiled $(LIGHT_GREEN)✔$(NO_COLOR)\n"
 
 compile_minilibx :
