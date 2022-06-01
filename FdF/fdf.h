@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:07:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/31 15:58:35 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/01 11:09:30 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int		reading(int fd, char **backup);
 
 //graphical_part
 int		press_key(int key, t_mlx_params *mlx);
-void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
+void	my_img_pixel_put(t_image *image, int x, int y, int color);
 void	draw_in_image(t_image *image, t_maps_coord *map);
 int		exit_program(void);
 void	display_window(t_maps_coord *map);

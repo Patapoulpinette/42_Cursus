@@ -67,10 +67,7 @@ add_executable(dbouron
         fdf.h
         free.c
         graphical_part.c
-        len.c
         main.c
         Makefile
         parsing.c
-        split.c
-        utils.c
-        utils_split.c)
+        utils.c)

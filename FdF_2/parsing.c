@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 14:22:17 by dbouron           #+#    #+#             */
-/*   Updated: 2022/06/01 10:19:40 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/01 17:10:18 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	tabc_to_tabi(t_maps_coord *map, char **tab_c)
 
 void	parsing(t_maps_coord *map, char *str)
 {
-	int		i = 0;//for testing
+//	int		i = 0;//for testing
 	int		fd;
 	int		len;
 	int		j;
@@ -105,8 +105,8 @@ void	parsing(t_maps_coord *map, char *str)
 	while (j < len)
 		map_tab_c[j++] = get_next_line(fd);
 	close(fd);
-	while (map_tab_c[i])//for testing
-		printf("%s\n", map_tab_c[i++]);//for testing
+//	while (map_tab_c[i])//for testing
+//		printf("%s\n", map_tab_c[i++]);//for testing
 	//convert char ** into int **
 	tabc_to_tabi(map, map_tab_c);
 	free_tab_c(map_tab_c);

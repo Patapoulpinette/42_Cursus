@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:02:13 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/31 11:53:45 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/01 18:23:18 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,39 @@ void	iso(t_image *image, int *x, int *y, int z)
 	previous_y = *y;
 	*x = (previous_x - previous_y) * cos(0.46373398) + ((float)image->x_img / 2);
 	*y = -z * Z_MULT + (previous_x + previous_y) * sin(0.46373398) + ((float)image->y_img / 8);
+}
+
+void draw_last_line(t_image *image, t_maps_coord *map)
+{
+	int	i;
+	int	j;
+
+	i = map->x_len - 1;
+	j = 0;
+	while (j < map->y_len - 1)
+	{
+		map->x0 = i * (5120 / map->x_len / 4);
+		map->y0 = j * (5120 / map->x_len / 4);
+		iso(image, &map->x0, &map->y0, map->map_tab[j][i]);
+		map->x1 = i * (5120 / map->x_len / 4);
+		map->y1 = (j + 1) * (5120 / map->x_len / 4);
+		iso(image, &map->x1, &map->y1, map->map_tab[j + 1][i]);
+		bhm_line(image, map, 0xffb703);
+		j++;
+	}
+	i = 0;
+	j = map->y_len - 1;
+	while (i < map->x_len - 1)
+	{
+		map->x0 = i * (5120 / map->x_len / 4);
+		map->y0 = j * (5120 / map->x_len / 4);
+		iso(image, &map->x0, &map->y0, map->map_tab[j][i]);
+		map->x1 = (i + 1) * (5120 / map->x_len / 4);
+		map->y1 = j * (5120 / map->x_len / 4);
+		iso(image, &map->x1, &map->y1, map->map_tab[j][i + 1]);
+		bhm_line(image, map, 0xfb8500);
+		i++;
+	}
 }
 
 void	bhm_line(t_image *image, t_maps_coord *map, int color)
@@ -47,7 +80,7 @@ void	bhm_line(t_image *image, t_maps_coord *map, int color)
 			algo.y = map->y1;
 			algo.xe = map->x0;
 		}
-		my_mlx_pixel_put(image, algo.x, algo.y, color);
+		my_img_pixel_put(image, algo.x, algo.y, color);
 		while (algo.x < algo.xe)
 		{
 			algo.x = algo.x + 1;
@@ -67,7 +100,7 @@ void	bhm_line(t_image *image, t_maps_coord *map, int color)
 				}
 				algo.px = algo.px + 2 * (algo.dy1 - algo.dx1);
 			}
-			my_mlx_pixel_put(image, algo.x, algo.y, color);
+			my_img_pixel_put(image, algo.x, algo.y, color);
 		}
 	}
 	else
@@ -84,7 +117,7 @@ void	bhm_line(t_image *image, t_maps_coord *map, int color)
 			algo.y = map->y1;
 			algo.ye = map->y0;
 		}
-		my_mlx_pixel_put(image, algo.x, algo.y, color);
+		my_img_pixel_put(image, algo.x, algo.y, color);
 		while (algo.y < algo.ye)
 		{
 			algo.y = algo.y + 1;
@@ -104,7 +137,7 @@ void	bhm_line(t_image *image, t_maps_coord *map, int color)
 				}
 				algo.py = algo.py + 2 * (algo.dx1 - algo.dy1);
 			}
-			my_mlx_pixel_put(image, algo.x, algo.y, color);
+			my_img_pixel_put(image, algo.x, algo.y, color);
 		}
 	}
 }
