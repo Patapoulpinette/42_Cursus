@@ -6,55 +6,11 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:02:13 by dbouron           #+#    #+#             */
-/*   Updated: 2022/06/01 18:23:18 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/01 18:41:12 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-void	iso(t_image *image, int *x, int *y, int z)
-{
-	int	previous_x;
-	int	previous_y;
-
-	previous_x = *x;
-	previous_y = *y;
-	*x = (previous_x - previous_y) * cos(0.46373398) + ((float)image->x_img / 2);
-	*y = -z * Z_MULT + (previous_x + previous_y) * sin(0.46373398) + ((float)image->y_img / 8);
-}
-
-void draw_last_line(t_image *image, t_maps_coord *map)
-{
-	int	i;
-	int	j;
-
-	i = map->x_len - 1;
-	j = 0;
-	while (j < map->y_len - 1)
-	{
-		map->x0 = i * (5120 / map->x_len / 4);
-		map->y0 = j * (5120 / map->x_len / 4);
-		iso(image, &map->x0, &map->y0, map->map_tab[j][i]);
-		map->x1 = i * (5120 / map->x_len / 4);
-		map->y1 = (j + 1) * (5120 / map->x_len / 4);
-		iso(image, &map->x1, &map->y1, map->map_tab[j + 1][i]);
-		bhm_line(image, map, 0xffb703);
-		j++;
-	}
-	i = 0;
-	j = map->y_len - 1;
-	while (i < map->x_len - 1)
-	{
-		map->x0 = i * (5120 / map->x_len / 4);
-		map->y0 = j * (5120 / map->x_len / 4);
-		iso(image, &map->x0, &map->y0, map->map_tab[j][i]);
-		map->x1 = (i + 1) * (5120 / map->x_len / 4);
-		map->y1 = j * (5120 / map->x_len / 4);
-		iso(image, &map->x1, &map->y1, map->map_tab[j][i + 1]);
-		bhm_line(image, map, 0xfb8500);
-		i++;
-	}
-}
 
 void	bhm_line(t_image *image, t_maps_coord *map, int color)
 {

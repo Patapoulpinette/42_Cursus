@@ -6,17 +6,19 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:07:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/06/01 17:43:53 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/01 18:57:34 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-/*# define X_WIN_COEF 4
-# define Y_WIN_COEF 2.5
-# define ZOOM 2*/
+# define X_RESOLUTION 5120
+# define Y_RESOLUTION 2880
+# define ANGLE 0.46373398
 # define Z_MULT 3
+# define COLOR_1 0xfb8500
+# define COLOR_2 0xffb703
 
 # include "minilibx_macos/mlx.h"
 # include "GNL/get_next_line.h"

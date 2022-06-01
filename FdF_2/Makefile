@@ -6,7 +6,7 @@
 #    By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/03 14:53:19 by dbouron           #+#    #+#              #
-#    Updated: 2022/05/31 16:49:38 by dbouron          ###   ########.fr        #
+#    Updated: 2022/06/01 18:45:15 by dbouron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,10 @@ MINILIBX = ./minilibx_macos
 LIBFT = ./libft
 LIBFT_EXEC = ./libft/libft.a
 
-SRCS =	main.c parsing.c utils.c graphical_part.c free.c algorithm.c \
+SRCS =	main.c \
+		parsing.c utils.c \
+		graphical_part.c drawing_part.c algorithm.c \
+		free.c \
 		./GNL/get_next_line.c \
 		./GNL/get_next_line_utils.c
 
