@@ -6,17 +6,17 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:07:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/31 17:32:43 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/01 10:23:51 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# define X_WIN_COEF 60
-# define Y_WIN_COEF 60
-# define ZOOM 30
-# define Z_MULT 2
+# define X_WIN_COEF 4
+# define Y_WIN_COEF 2.5
+# define ZOOM 2
+# define Z_MULT 1
 
 # include "minilibx_macos/mlx.h"
 # include "GNL/get_next_line.h"

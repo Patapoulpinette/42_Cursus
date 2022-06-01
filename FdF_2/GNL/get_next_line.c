@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 15:03:23 by dbouron           #+#    #+#             */
-/*   Updated: 2022/02/24 14:29:42 by dbouron          ###   ########lyon.fr   */
+/*   Updated: 2022/06/01 10:11:22 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	reading(int fd, char **backup)
 {
-	int		size;
+	ssize_t	size;
 	char	buffer[BUFFER_SIZE + 1];
 
 	size = read(fd, buffer, BUFFER_SIZE);

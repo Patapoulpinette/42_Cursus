@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 14:22:17 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/31 18:07:24 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/01 10:19:40 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,6 @@ void	tabc_to_tabi(t_maps_coord *map, char **tab_c)
 	}
 }
 
-/**
- * todo: savoir la taille du tableau
- **/
 void	parsing(t_maps_coord *map, char *str)
 {
 	int		i = 0;//for testing
@@ -99,13 +96,17 @@ void	parsing(t_maps_coord *map, char *str)
 		return ;
 	len = read_size(fd);
 	dprintf(2, "len = %d\n", len);//for testing
+	close(fd);
 	map_tab_c = ft_calloc(sizeof(char *), len + 1);
+	fd = open(str, O_RDONLY);
+	printf("open : %d\n", fd);//for testing
+	if (fd == -1)
+		return ;
 	while (j < len)
 		map_tab_c[j++] = get_next_line(fd);
 	close(fd);
 	while (map_tab_c[i])//for testing
 		printf("%s\n", map_tab_c[i++]);//for testing
-	dprintf(2, "\n");//for testing
 	//convert char ** into int **
 	tabc_to_tabi(map, map_tab_c);
 	free_tab_c(map_tab_c);
