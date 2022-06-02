@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 14:22:17 by dbouron           #+#    #+#             */
-/*   Updated: 2022/06/01 18:50:54 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/02 11:28:41 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,13 @@ static void	fill_tab_i(t_maps_coord	*map, char **tab_c, int i)
 		while (tab_c[i][end] && tab_c[i][end] != ' ')
 			end++;
 		map->map_tab[i][j] = ft_atoi(&tab_c[i][start]);
-//		dprintf(2, "%d ", map->map_tab[i][j]);//for testing
 		j++;
 	}
-//	dprintf(2, "\n");//for testing
 	map->x_len = j;
 	map->y_len = i + 1;
 }
 
-void	tabc_to_tabi(t_maps_coord *map, char **tab_c)
+static void	tabc_to_tabi(t_maps_coord *map, char **tab_c)
 {
 	int	i;
 
@@ -83,7 +81,6 @@ void	tabc_to_tabi(t_maps_coord *map, char **tab_c)
 
 void	parsing(t_maps_coord *map, char *str)
 {
-//	int		i = 0;//for testing
 	int		fd;
 	int		len;
 	int		j;
@@ -91,7 +88,6 @@ void	parsing(t_maps_coord *map, char *str)
 
 	j = 0;
 	fd = open(str, O_RDONLY);
-	printf("open : %d\n", fd);//for testing
 	if (fd == -1)
 		return ;
 	len = read_size(fd);
@@ -103,8 +99,6 @@ void	parsing(t_maps_coord *map, char *str)
 	while (j < len)
 		map_tab_c[j++] = get_next_line(fd);
 	close(fd);
-//	while (map_tab_c[i])//for testing
-//		printf("%s\n", map_tab_c[i++]);//for testing
 	tabc_to_tabi(map, map_tab_c);
 	free_tab_c(map_tab_c);
 }
