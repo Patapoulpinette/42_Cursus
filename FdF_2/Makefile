@@ -95,4 +95,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY: all compile_minilibx clean fclean re
+.PHONY: all compile_minilibx compile_libft clean fclean re
