@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:07:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/06/01 18:57:34 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/02 11:22:57 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,23 @@ void	parsing(t_maps_coord *map, char *str);
 
 //graphical_part
 int		press_key(int key, t_mlx_params *mlx);
-void	my_img_pixel_put(t_image *image, int x, int y, int color);
-void	draw_in_image(t_image *image, t_maps_coord *map);
 int		exit_program(void);
 void	display_window(t_maps_coord *map);
 
-//algorithm
+//drawing_part
 void	iso(t_image *image, int *x, int *y, int z);
-void draw_last_line(t_image *image, t_maps_coord *map);
+void	my_img_pixel_put(t_image *image, int x, int y, int color);
+void	draw_last_line_x(t_image *image, t_maps_coord *map);
+void	draw_last_line_y(t_image *image, t_maps_coord *map);
+void	draw_in_image(t_image *image, t_maps_coord *map);
+
+//algorithm
+void	drawline_1(t_image *image, t_maps_coord *map, t_algo_params *algo, \
+					int color);
+void	drawline_2(t_image *image, t_algo_params *algo, int color);
+void	drawline_3(t_image *image, t_maps_coord *map, t_algo_params *algo, \
+					int color);
+void	drawline_4(t_image *image, t_algo_params *algo, int color);
 void	bhm_line(t_image *image, t_maps_coord *map, int color);
 
 //utils
