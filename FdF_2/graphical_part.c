@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:03:34 by dbouron           #+#    #+#             */
-/*   Updated: 2022/06/02 16:07:57 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/02 16:13:21 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,22 @@ int	press_key(int key, t_structs *structs)
 		mlx_clear_window(structs->mlx->mlx, structs->mlx->window);
 		create_image(structs->mlx, structs->image);
 		structs->image->x_translation += 10;
+		draw_in_image(structs->image, structs->map);
+		mlx_put_image_to_window(structs->mlx->mlx, structs->mlx->window, structs->image->img, 0, 0);
+	}
+	else if (key == 125)
+	{
+		mlx_clear_window(structs->mlx->mlx, structs->mlx->window);
+		create_image(structs->mlx, structs->image);
+		structs->image->y_translation += 10;
+		draw_in_image(structs->image, structs->map);
+		mlx_put_image_to_window(structs->mlx->mlx, structs->mlx->window, structs->image->img, 0, 0);
+	}
+	else if (key == 126)
+	{
+		mlx_clear_window(structs->mlx->mlx, structs->mlx->window);
+		create_image(structs->mlx, structs->image);
+		structs->image->y_translation -= 10;
 		draw_in_image(structs->image, structs->map);
 		mlx_put_image_to_window(structs->mlx->mlx, structs->mlx->window, structs->image->img, 0, 0);
 	}
