@@ -42,7 +42,7 @@ void	display_window(t_maps_coord *map)
 	image.y_img = map->y_len * (Y_RESOLUTION / map->y_len / 2);
 	mlx.mlx = mlx_init();
 	mlx.window = mlx_new_window(mlx.mlx, mlx.x_win,
-			mlx.y_win, "New window");
+			mlx.y_win, map->name);
 	image.img = mlx_new_image(mlx.mlx, image.x_img, image.y_img);
 	dprintf(2, "xlen = %d, ylen = %d | xwin = %d, ywin = %d | ximg = %d, yimg = %d\n", map->x_len, map->y_len, mlx.x_win, mlx.y_win, image.x_img, image.y_img);//for testing
 	image.addr = mlx_get_data_addr(image.img, &image.bits_per_pixel,

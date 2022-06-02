@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:07:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/06/02 12:15:11 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/02 13:51:01 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # define Y_RESOLUTION 2880
 # define ANGLE 0.46373398
 # define Z_MULT 3
-# define COLOR_1 0xfb8500
-# define COLOR_2 0xffb703
+# define COLOR_1 0xdee2e6
+# define COLOR_2 0x495057
 
 # include "minilibx_macos/mlx.h"
 # include "GNL/get_next_line.h"

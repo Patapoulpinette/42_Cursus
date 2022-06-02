@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 14:22:17 by dbouron           #+#    #+#             */
-/*   Updated: 2022/06/02 12:26:59 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/02 13:36:50 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	save_map_name(t_maps_coord *map, char *str)
 	int	i;
 
 	end = 0;
+	i = 0;
 	while (str[end] != '/')
 		end++;
 	start = end + 1;
@@ -93,7 +94,7 @@ void	save_map_name(t_maps_coord *map, char *str)
 		end++;
 	map->name = ft_calloc(end - start + 1, sizeof(char));
 	while (start < end)
-		map->name[i++] = str[start];
+		map->name[i++] = str[start++];
 	map->name[i] = '\0';
 }
 

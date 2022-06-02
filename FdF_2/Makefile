@@ -6,10 +6,9 @@
 #    By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/03 14:53:19 by dbouron           #+#    #+#              #
-#    Updated: 2022/06/01 18:45:15 by dbouron          ###   ########.fr        #
+#    Updated: 2022/06/02 13:46:24 by dbouron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 NAME = fdf
 
@@ -73,7 +72,7 @@ all : compile_minilibx compile_libft $(NAME)
 	@printf "\r$(LIGHT_GRAY)Loading...$(NO_COLOR)"
 
 $(NAME) : $(OBJS) $(HEADFILE) $(LIBFT_EXEC)
-	gcc -Wall -Wextra -Werror -fsanitize=address -g3 -o $(NAME) $(LIBFT_EXEC) $(SRCS) -I/usr/local/include -L minilibx_macos -lmlx -framework OpenGL -framework AppKit
+	gcc -Wall -Wextra -Werror -o $(NAME) $(LIBFT_EXEC) $(SRCS) -I/usr/local/include -L minilibx_macos -lmlx -framework OpenGL -framework AppKit
 	@printf "\r$(LIGHT_GREEN)➞$(NO_COLOR) Compiled $(LIGHT_GREEN)✔$(NO_COLOR)\n"
 
 compile_minilibx :
