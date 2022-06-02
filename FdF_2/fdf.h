@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:07:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/06/02 13:51:01 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/02 16:01:05 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ typedef struct s_image
 	int		endian;
 	int		x_img;
 	int		y_img;
+	int		zoom;
+	int		x_translation;
+	int		y_translation;
 }				t_image;
 
 typedef struct s_maps_coord
@@ -74,12 +77,21 @@ typedef struct s_algo_params
 	int	ye;
 }				t_algo_params;
 
+typedef struct s_structs
+{
+	t_mlx_params	*mlx;
+	t_image			*image;
+	t_maps_coord	*map;
+}				t_structs;
+
 //parsing
 int		read_size(int fd);
 void	parsing(t_maps_coord *map, char *str);
 
 //graphical_part
-int		press_key(int key, t_mlx_params *mlx);
+void	create_image(t_mlx_params *mlx, t_image *image);
+void	init_coeff_values(t_maps_coord *map, t_image *image);
+int		press_key(int key, t_structs *structs);
 int		exit_program(void);
 void	display_window(t_maps_coord *map);
 
