@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 14:22:17 by dbouron           #+#    #+#             */
-/*   Updated: 2022/06/02 11:28:41 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/02 12:26:59 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,24 @@ static void	tabc_to_tabi(t_maps_coord *map, char **tab_c)
 	}
 }
 
+void	save_map_name(t_maps_coord *map, char *str)
+{
+	int	start;
+	int	end;
+	int	i;
+
+	end = 0;
+	while (str[end] != '/')
+		end++;
+	start = end + 1;
+	while (str[end] != '.')
+		end++;
+	map->name = ft_calloc(end - start + 1, sizeof(char));
+	while (start < end)
+		map->name[i++] = str[start];
+	map->name[i] = '\0';
+}
+
 void	parsing(t_maps_coord *map, char *str)
 {
 	int		fd;
@@ -86,6 +104,7 @@ void	parsing(t_maps_coord *map, char *str)
 	int		j;
 	char	**map_tab_c;
 
+	save_map_name(map, str);
 	j = 0;
 	fd = open(str, O_RDONLY);
 	if (fd == -1)

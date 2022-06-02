@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:07:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/06/02 11:22:57 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/02 12:15:11 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,14 @@ typedef struct s_image
 
 typedef struct s_maps_coord
 {
-	int	**map_tab;
-	int	x_len;
-	int	y_len;
-	int	x0;
-	int	y0;
-	int	x1;
-	int	y1;
+	char	*name;
+	int		**map_tab;
+	int		x_len;
+	int		y_len;
+	int		x0;
+	int		y0;
+	int		x1;
+	int		y1;
 }				t_maps_coord;
 
 typedef struct s_algo_params
