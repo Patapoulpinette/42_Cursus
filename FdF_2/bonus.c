@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 10:06:35 by dbouron           #+#    #+#             */
-/*   Updated: 2022/06/03 10:56:19 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/03 11:35:11 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,19 @@ void	zoom(int key, t_structs *structs)
 		structs->image->zoom += 1;
 	else if (key == 78)
 		structs->image->zoom -= 1;
+	draw_in_image(structs->image, structs->map);
+	mlx_put_image_to_window(structs->mlx->mlx, structs->mlx->window, \
+		structs->image->img, 0, 0);
+}
+
+void	change_height(int key, t_structs *structs)
+{
+	mlx_clear_window(structs->mlx->mlx, structs->mlx->window);
+	create_image(structs->mlx, structs->image);
+	if (key == 24)
+		structs->image->z_multiplicator += 1;
+	else if (key == 27)
+		structs->image->z_multiplicator -= 1;
 	draw_in_image(structs->image, structs->map);
 	mlx_put_image_to_window(structs->mlx->mlx, structs->mlx->window, \
 		structs->image->img, 0, 0);

@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:07:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/06/03 10:49:45 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/03 11:35:11 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@
 # define X_RESOLUTION 5120
 # define Y_RESOLUTION 2880
 # define ANGLE 0.46373398
-# define Z_MULT 3
 # define COLOR_1 0xdee2e6
-# define COLOR_2 0x495057
+# define COLOR_2 0x6c757d
 
 # include "minilibx_macos/mlx.h"
 # include "GNL/get_next_line.h"
@@ -49,6 +48,7 @@ typedef struct s_image
 	int		zoom;
 	int		x_translation;
 	int		y_translation;
+	int		z_multiplicator;
 }				t_image;
 
 typedef struct s_maps_coord
@@ -114,6 +114,7 @@ void	bhm_line(t_image *image, t_maps_coord *map, int color);
 //bonus
 void	translation(int key, t_structs *structs);
 void	zoom(int key, t_structs *structs);
+void	change_height(int key, t_structs *structs);
 
 //utils
 size_t	ft_tablen(char **tab);

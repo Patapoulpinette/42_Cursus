@@ -21,7 +21,7 @@ void	iso(t_image *image, int *x, int *y, int z)
 	previous_y = *y;
 	*x = (previous_x - previous_y) * cos(ANGLE)
 		+ image->x_translation;
-	*y = -z * Z_MULT + (previous_x + previous_y) * sin(ANGLE)
+	*y = -z * image->z_multiplicator + (previous_x + previous_y) * sin(ANGLE)
 		+ image->y_translation;
 }
 
