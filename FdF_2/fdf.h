@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:07:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/06/03 17:39:14 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/03 17:42:57 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,6 @@ void	ft_error(void);
 
 //free
 void	free_tab_c(char **tab);
-void	free_tab_i(int **tab);
+void	free_tab_i(int **tab, int size);
 
 #endif

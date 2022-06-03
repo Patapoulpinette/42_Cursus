@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:33:54 by dbouron           #+#    #+#             */
-/*   Updated: 2022/06/02 13:48:09 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/03 18:08:33 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ int	main(int argc, char **argv)
 	{
 		parsing(&map, argv[1]);
 		display_window(&map);
-		free_tab_i(map.map_tab);
-		free(map.map_tab);
+		free_tab_i(map.map_tab, map.y_len);
 		free(map.name);
 	}
 	return (0);
