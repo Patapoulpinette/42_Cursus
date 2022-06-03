@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 14:22:17 by dbouron           #+#    #+#             */
-/*   Updated: 2022/06/02 13:36:50 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/03 12:32:47 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,13 +109,15 @@ void	parsing(t_maps_coord *map, char *str)
 	j = 0;
 	fd = open(str, O_RDONLY);
 	if (fd == -1)
-		return ;
+		ft_error();
 	len = read_size(fd);
+	if (len == 0)
+		exit (0);
 	close(fd);
 	map_tab_c = ft_calloc(sizeof(char *), len + 1);
 	fd = open(str, O_RDONLY);
 	if (fd == -1)
-		return ;
+		ft_error();
 	while (j < len)
 		map_tab_c[j++] = get_next_line(fd);
 	close(fd);

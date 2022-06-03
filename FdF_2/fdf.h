@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:07:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/06/03 11:53:16 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/03 12:31:40 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include "GNL/get_next_line.h"
 # include "libft/libft.h"
 # include <unistd.h>//for close
-# include <stdio.h>//for printf
+# include <stdio.h>//for printf & perror
 # include <stdlib.h>//for exit & abs
 # include <fcntl.h>//for open
 # include <math.h>//for cos & sin
@@ -119,6 +119,7 @@ void	rotate(int key, t_structs *structs);
 
 //utils
 size_t	ft_tablen(char **tab);
+void	ft_error(void);
 
 //free
 void	free_tab_c(char **tab);

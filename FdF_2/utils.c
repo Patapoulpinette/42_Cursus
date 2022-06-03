@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:37:54 by dbouron           #+#    #+#             */
-/*   Updated: 2022/05/31 16:41:10 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/03 12:35:52 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,10 @@ size_t	ft_tablen(char **tab)
 	while (tab[i])
 		i++;
 	return (i);
+}
+
+void	ft_error(void)
+{
+	perror("");
+	exit (-1);
 }
