@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:03:34 by dbouron           #+#    #+#             */
-/*   Updated: 2022/06/03 11:36:31 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/03 11:56:20 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	init_coeff_values(t_maps_coord *map, t_image *image)
 	image->x_translation = (image->x_img / 2);
 	image->y_translation = (image->y_img / 8);
 	image->z_multiplicator = 3;
+	image->angle = 0.46373398;
 }
 
 int	press_key(int key, t_structs *structs)
@@ -44,6 +45,8 @@ int	press_key(int key, t_structs *structs)
 		zoom(key, structs);
 	else if (key == 24 || key == 27)
 		change_height(key, structs);
+	else if (key == 15 || key == 37)
+		rotate(key, structs);
 	else
 		dprintf(2, "key number : %d\n", key);
 	return (0);

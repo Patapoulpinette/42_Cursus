@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 18:43:02 by dbouron           #+#    #+#             */
-/*   Updated: 2022/06/02 15:06:02 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/03 11:32:33 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	iso(t_image *image, int *x, int *y, int z)
 
 	previous_x = *x;
 	previous_y = *y;
-	*x = (previous_x - previous_y) * cos(ANGLE)
+	*x = (previous_x - previous_y) * cos(image->angle)
 		+ image->x_translation;
-	*y = -z * image->z_multiplicator + (previous_x + previous_y) * sin(ANGLE)
-		+ image->y_translation;
+	*y = -z * image->z_multiplicator + (previous_x + previous_y) \
+		* sin(image->angle) + image->y_translation;
 }
 
 void	my_img_pixel_put(t_image *image, int x, int y, int color)
