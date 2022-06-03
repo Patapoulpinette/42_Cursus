@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:03:34 by dbouron           #+#    #+#             */
-/*   Updated: 2022/06/03 18:05:42 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/03 18:50:35 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	press_key(int key, t_structs *structs)
 	else if (key == 53)
 	{
 		mlx_destroy_window(structs->mlx->mlx, structs->mlx->window);
-		exit(0);
+		exit(EXIT_SUCCESS);
 	}
 	else if (key == 123 || key == 124 || key == 125 || key == 126)
 		translation(key, structs);
@@ -54,7 +54,7 @@ int	press_key(int key, t_structs *structs)
 
 int	exit_program(void)
 {
-	exit(0);
+	exit(EXIT_SUCCESS);
 }
 
 void	display_window(t_maps_coord *map)

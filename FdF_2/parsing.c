@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 14:22:17 by dbouron           #+#    #+#             */
-/*   Updated: 2022/06/03 12:36:49 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/03 18:48:45 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ static void	save_map_name(t_maps_coord *map, char const *str)
 	while (start < end)
 		map->name[i++] = str[start++];
 	map->name[i] = '\0';
+	if (ft_strncmp(str + end, "fdf", 3) != 0)
+		exit (EXIT_FAILURE);
 }
 
 void	parsing(t_maps_coord *map, char *str)
