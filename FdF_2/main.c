@@ -12,8 +12,6 @@
 
 #include "fdf.h"
 
-//TODO : enlever les commentaires et les dprintf
-
 int	main(int argc, char **argv)
 {
 	t_maps_coord	map;
