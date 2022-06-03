@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 10:06:35 by dbouron           #+#    #+#             */
-/*   Updated: 2022/06/03 11:55:19 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/03 17:42:36 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ void	rotate(int key, t_structs *structs)
 	mlx_clear_window(structs->mlx->mlx, structs->mlx->window);
 	create_image(structs->mlx, structs->image);
 	if (key == 15)
-		structs->image->angle += 0.1;
+		structs->image->angle += 0.01;
 	else if (key == 37)
-		structs->image->angle -= 0.1;
+		structs->image->angle -= 0.01;
 	draw_in_image(structs->image, structs->map);
 	mlx_put_image_to_window(structs->mlx->mlx, structs->mlx->window, \
 		structs->image->img, 0, 0);
