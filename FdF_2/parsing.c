@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 14:22:17 by dbouron           #+#    #+#             */
-/*   Updated: 2022/06/03 12:32:47 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/03 12:36:49 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static void	tabc_to_tabi(t_maps_coord *map, char **tab_c)
 	}
 }
 
-void	save_map_name(t_maps_coord *map, char *str)
+static void	save_map_name(t_maps_coord *map, char const *str)
 {
 	int	start;
 	int	end;
