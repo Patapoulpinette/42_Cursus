@@ -71,4 +71,5 @@ add_executable(dbouron
         Makefile
         parsing.c
         utils.c
-        drawing_part.c)
+        drawing_part.c
+        bonus.c)

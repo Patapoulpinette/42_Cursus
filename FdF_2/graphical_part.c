@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:03:34 by dbouron           #+#    #+#             */
-/*   Updated: 2022/06/02 16:13:21 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/03 10:56:58 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	create_image(t_mlx_params *mlx, t_image *image)
 void	init_coeff_values(t_maps_coord *map, t_image *image)
 {
 	image->zoom = (X_RESOLUTION / map->x_len / 4);
-	image->x_translation = ((float)image->x_img / 2);
-	image->y_translation = ((float)image->y_img / 8);
+	image->x_translation = (image->x_img / 2);
+	image->y_translation = (image->y_img / 8);
 }
 
 int	press_key(int key, t_structs *structs)
@@ -37,38 +37,10 @@ int	press_key(int key, t_structs *structs)
 		mlx_destroy_window(structs->mlx->mlx, structs->mlx->window);
 		exit(0);
 	}
-	else if (key == 123)
-	{
-		mlx_clear_window(structs->mlx->mlx, structs->mlx->window);
-		create_image(structs->mlx, structs->image);
-		structs->image->x_translation -= 10;
-		draw_in_image(structs->image, structs->map);
-		mlx_put_image_to_window(structs->mlx->mlx, structs->mlx->window, structs->image->img, 0, 0);
-	}
-	else if (key == 124)
-	{
-		mlx_clear_window(structs->mlx->mlx, structs->mlx->window);
-		create_image(structs->mlx, structs->image);
-		structs->image->x_translation += 10;
-		draw_in_image(structs->image, structs->map);
-		mlx_put_image_to_window(structs->mlx->mlx, structs->mlx->window, structs->image->img, 0, 0);
-	}
-	else if (key == 125)
-	{
-		mlx_clear_window(structs->mlx->mlx, structs->mlx->window);
-		create_image(structs->mlx, structs->image);
-		structs->image->y_translation += 10;
-		draw_in_image(structs->image, structs->map);
-		mlx_put_image_to_window(structs->mlx->mlx, structs->mlx->window, structs->image->img, 0, 0);
-	}
-	else if (key == 126)
-	{
-		mlx_clear_window(structs->mlx->mlx, structs->mlx->window);
-		create_image(structs->mlx, structs->image);
-		structs->image->y_translation -= 10;
-		draw_in_image(structs->image, structs->map);
-		mlx_put_image_to_window(structs->mlx->mlx, structs->mlx->window, structs->image->img, 0, 0);
-	}
+	else if (key == 123 || key == 124 || key == 125 || key == 126)
+		translation(key, structs);
+	else if (key == 69 || key == 78)
+		zoom(key, structs);
 	else
 		dprintf(2, "key number : %d\n", key);
 	return (0);

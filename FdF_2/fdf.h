@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:07:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/06/02 16:01:05 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/06/03 10:49:45 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,10 @@ void	drawline_3(t_image *image, t_maps_coord *map, t_algo_params *algo, \
 					int color);
 void	drawline_4(t_image *image, t_algo_params *algo, int color);
 void	bhm_line(t_image *image, t_maps_coord *map, int color);
+
+//bonus
+void	translation(int key, t_structs *structs);
+void	zoom(int key, t_structs *structs);
 
 //utils
 size_t	ft_tablen(char **tab);

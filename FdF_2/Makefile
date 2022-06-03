@@ -6,7 +6,7 @@
 #    By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/03 14:53:19 by dbouron           #+#    #+#              #
-#    Updated: 2022/06/02 14:59:53 by dbouron          ###   ########.fr        #
+#    Updated: 2022/06/03 10:06:30 by dbouron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS =	main.c \
 		parsing.c utils.c \
 		graphical_part.c drawing_part.c algorithm.c \
 		free.c \
+		bonus.c \
 		./GNL/get_next_line.c \
 		./GNL/get_next_line_utils.c
 
