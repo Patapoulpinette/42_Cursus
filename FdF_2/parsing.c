@@ -96,7 +96,7 @@ static void	save_map_name(t_maps_coord *map, char const *str)
 	while (start < end)
 		map->name[i++] = str[start++];
 	map->name[i] = '\0';
-	if (ft_strncmp(str + end, "fdf", 3) != 0)
+	if (ft_strncmp(str + end, ".fdf", 3) != 0)
 		exit (EXIT_FAILURE);
 }
 
