@@ -1,49 +1,74 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   parsing2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 10:48:03 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/07 15:15:29 by dbouron          ###   ########.fr       */
+/*   Created: 2022/07/07 15:48:48 by dbouron           #+#    #+#             */
+/*   Updated: 2022/07/07 18:40:24 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	parsing(char **arg)
+int	parsing2(int argc, char **argv)
 {
-	if (parsing_digit(arg) || parsing_limits(arg))
-		exit(EXIT_SUCCESS);
-}
-
-int	parsing_digit(char **arg)
-{
-	int	i;
 	int	j;
 
-	i = 0;
 	j = 1;
-	while (arg[j])
+	if (argc == 5 || argc == 6)
 	{
-		if (arg[j][0] == '\0')
-			return (printf("Error: empty argument\n"));
-		while (arg[j][i])
+		while (argv[j])
 		{
-			if (arg[j][i] == '-' || arg[j][i] == '+')
-			{
-				if (i != 0)
-					return (printf("Error: wrong number: put sign before number\n"));
-				i++;
-			}
-			if (ft_isdigit(arg[j][i]) == 0)
-				return (printf("Error: wrong number: use digit only\n"));
+			if (check_digits(argv[j]) || check_limits(j, argv[j]))
+				return (EXIT_FAILURE);
+			j++;
+		}
+	}
+	else
+		return (print_parsing_error(1));
+	return (EXIT_SUCCESS);
+}
+
+int	check_digits(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[0] == '\0')
+		return (print_parsing_error(2));
+	while (str[i])
+	{
+		if (str[i] == '-' || str[i] == '+')
+		{
+			if (i != 0)
+				return (print_parsing_error(3));
 			i++;
 		}
-		i = 0;
-		j++;
+		if (ft_isdigit(str[i]))
+			return (print_parsing_error(4));
+		i++;
 	}
+	return (0);
+}
+
+int	check_limits(int arg_nb, char *str)
+{
+	if (ft_strlen(str) > 8)
+		check_0_before_nb(str);
+	if (arg_nb == 1 && \
+		(ft_atoi(str) < PHILO_MIN || ft_atoi(str) > PHILO_MAX || \
+		ft_strlen(str) > 4))
+		return (print_parsing_error(5));
+	if ((arg_nb >= 2 && arg_nb <= 4) && \
+		(ft_atoi(str) < TIME_MIN || ft_atoi(str) > TIME_MAX || \
+		ft_strlen(str) > 8))
+		return (print_parsing_error(6));
+	if (arg_nb == 5 && \
+		(ft_atoi(str) < MEAL_MIN || ft_atoi(str) > MEAL_MAX || \
+		ft_strlen(str) > 4))
+		return (print_parsing_error(7));
 	return (0);
 }
 
@@ -66,36 +91,4 @@ void	check_0_before_nb(char *str)
 			str[k++] = str[i++];
 		str[k] = '\0';
 	}
-}
-
-int	parsing_limits(char **arg)
-{
-	int	j;
-	int	error;
-
-	j = 1;
-	error = 0;
-	while (arg[j])
-	{
-		if (ft_strlen(arg[j]) > 8)
-			check_0_before_nb(arg[j]);
-		printf("arg[%d] = %d\n", j, ft_atoi(arg[j]));
-		if (j == 1 && (ft_atoi(arg[j]) < NUM_PHILO_MIN || ft_atoi(arg[j]) > NUM_PHILO_MAX || ft_strlen(arg[j]) > 4))
-		{
-			print_parsing_error(j);
-			error++;
-		}
-		if ((j >= 2 && j <= 4) && (ft_atoi(arg[j]) < TIME_MIN || ft_atoi(arg[j]) > TIME_MAX || ft_strlen(arg[j]) > 8))
-		{
-			print_parsing_error(j);
-			error++;
-		}
-		if (j == 5 && (ft_atoi(arg[j]) < NUM_MEAL_MIN || ft_atoi(arg[j]) > NUM_MEAL_MAX || ft_strlen(arg[j]) > 4))
-		{
-			print_parsing_error(j);
-			error++;
-		}
-		j++;
-	}
-	return (error);
 }
