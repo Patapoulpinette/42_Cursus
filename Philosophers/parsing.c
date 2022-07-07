@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 10:48:03 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/07 12:11:14 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/07 14:56:53 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,30 @@
 
 void	parsing(char **arg)
 {
-	if (parsing_digit(arg) || errors(arg))
+	if (parsing_digit(arg) || parsing_limits(arg))
 		exit(EXIT_SUCCESS);
 }
 
-int	parsing_digit(char **tab)
+int	parsing_digit(char **arg)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 1;
-	while (tab[j])
+	while (arg[j])
 	{
-		if (tab[j][0] == '\0')
+		if (arg[j][0] == '\0')
 			return (printf("Error: empty argument\n"));
-		while (tab[j][i])
+		while (arg[j][i])
 		{
-			if (tab[j][i] == '-' || tab[j][i] == '+')
+			if (arg[j][i] == '-' || arg[j][i] == '+')
 			{
 				if (i != 0)
 					return (printf("Error: wrong number: put sign before number\n"));
 				i++;
 			}
-			if (ft_isdigit(tab[j][i]) == 0)
+			if (ft_isdigit(arg[j][i]) == 0)
 				return (printf("Error: wrong number: use digit only\n"));
 			i++;
 		}
@@ -68,35 +68,34 @@ void	check_0_before_nb(char *str)
 	}
 }
 
-int	errors(char **arg)
+int	parsing_limits(char **arg)
 {
+	int	j;
 	int	error;
 
+	j = 1;
 	error = 0;
-	if (ft_atoi(arg[1]) < 0 || ft_atoi(arg[1]) > 200)
+	while (arg[j])
 	{
-		printf("Error: wrong number_of_philosophers: must be between 0 and 200\n");
-		error++;
-	}
-	if (ft_atoi(arg[2]) < 0 || ft_atoi(arg[2]) > INT32_MAX)
-	{
-		printf("Error: wrong time_to_die: must be between 0 and INT_MAX\n");
-		error++;
-	}
-	if (ft_atoi(arg[3]) < 0 || ft_atoi(arg[3]) > INT32_MAX)
-	{
-		printf("Error: wrong time_to_eat: must be between 0 and INT_MAX\n");
-		error++;
-	}
-	if (ft_atoi(arg[4]) < 0 || ft_atoi(arg[4]) > INT32_MAX)
-	{
-		printf("Error: wrong time_to_sleep: must be between 0 and INT_MAX\n");
-		error++;
-	}
-	if (arg[5] && (ft_atoi(arg[5]) < 0 || ft_atoi(arg[5]) > INT32_MAX))
-	{
-		printf("Error: wrong number_of_times_each_philosopher_must_eat: must be between 0 and INT_MAX\n");
-		error++;
+		if (ft_strlen(arg[j]) > 8)
+			check_0_before_nb(arg[j]);
+		printf("arg[%d] = %d\n", j, ft_atoi(arg[j]));
+		if (j == 1 && (ft_atoi(arg[j]) < 0 || ft_atoi(arg[j]) > 200 || ft_strlen(arg[j]) > 4))
+		{
+			print_error(j);
+			error++;
+		}
+		if ((j >= 2 && j <= 4) && (ft_atoi(arg[j]) < 0 || ft_atoi(arg[j]) > 2520000 || ft_strlen(arg[j]) > 8)) //42 minutes
+		{
+			print_error(j);
+			error++;
+		}
+		if (j == 5 && (ft_atoi(arg[j]) < 0 || ft_atoi(arg[j]) > 200 || ft_strlen(arg[j]) > 4))
+		{
+			print_error(j);
+			error++;
+		}
+		j++;
 	}
 	return (error);
 }
