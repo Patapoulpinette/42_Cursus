@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 10:48:03 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/07 14:56:53 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/07 15:15:29 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,19 +80,19 @@ int	parsing_limits(char **arg)
 		if (ft_strlen(arg[j]) > 8)
 			check_0_before_nb(arg[j]);
 		printf("arg[%d] = %d\n", j, ft_atoi(arg[j]));
-		if (j == 1 && (ft_atoi(arg[j]) < 0 || ft_atoi(arg[j]) > 200 || ft_strlen(arg[j]) > 4))
+		if (j == 1 && (ft_atoi(arg[j]) < NUM_PHILO_MIN || ft_atoi(arg[j]) > NUM_PHILO_MAX || ft_strlen(arg[j]) > 4))
 		{
-			print_error(j);
+			print_parsing_error(j);
 			error++;
 		}
-		if ((j >= 2 && j <= 4) && (ft_atoi(arg[j]) < 0 || ft_atoi(arg[j]) > 2520000 || ft_strlen(arg[j]) > 8)) //42 minutes
+		if ((j >= 2 && j <= 4) && (ft_atoi(arg[j]) < TIME_MIN || ft_atoi(arg[j]) > TIME_MAX || ft_strlen(arg[j]) > 8))
 		{
-			print_error(j);
+			print_parsing_error(j);
 			error++;
 		}
-		if (j == 5 && (ft_atoi(arg[j]) < 0 || ft_atoi(arg[j]) > 200 || ft_strlen(arg[j]) > 4))
+		if (j == 5 && (ft_atoi(arg[j]) < NUM_MEAL_MIN || ft_atoi(arg[j]) > NUM_MEAL_MAX || ft_strlen(arg[j]) > 4))
 		{
-			print_error(j);
+			print_parsing_error(j);
 			error++;
 		}
 		j++;

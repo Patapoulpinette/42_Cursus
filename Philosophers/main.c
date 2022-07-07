@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 10:13:21 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/07 11:10:07 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/07 15:27:33 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ int	main(int argc, char **argv)
 		pthread_exit(NULL);
 	}
 	else
-		printf("Error: wrong number of arguments\n");
+		print_parsing_error(-1);
 	return (0);
 }
