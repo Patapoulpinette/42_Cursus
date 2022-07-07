@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 10:15:59 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/07 18:27:42 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/07 18:27:57 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define MEAL_MAX	200
 
 //Parsing----------------------------------------------------------------------
-int		parsing2(int argc, char **argv);
+int		parsing(int argc, char **argv);
 int		check_digits(char *str);
 int		check_limits(int arg_nb, char *str);
 void	check_0_before_nb(char *str);

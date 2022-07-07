@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 10:13:21 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/07 18:00:40 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/07 18:23:30 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 	int			rc;
 	long		t;
 
-	if (parsing2(argc, argv))
+	if (parsing(argc, argv))
 		return (EXIT_FAILURE);
 	t = 0;
 	while (t < NUM_PHILO)

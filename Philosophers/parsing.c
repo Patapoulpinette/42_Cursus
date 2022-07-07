@@ -6,13 +6,13 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:48:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/07 18:40:24 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/07 18:41:54 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	parsing2(int argc, char **argv)
+int	parsing(int argc, char **argv)
 {
 	int	j;
 

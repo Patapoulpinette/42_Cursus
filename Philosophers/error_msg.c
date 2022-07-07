@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 14:03:54 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/07 18:19:41 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/07 18:28:55 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	print_parsing_error(int nb)
 	if (nb == 3)
 		printf("Error: wrong number: put sign before number\n");
 	if (nb == 4)
-		printf("Error: wrong number: use digit only\n");
+		printf("Error: wrong number: use digits only\n");
 	if (nb == 5)
 		printf("Error: wrong number_of_philosophers: " \
 				"must be between 0 and 200\n");
