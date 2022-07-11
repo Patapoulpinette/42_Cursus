@@ -17,7 +17,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-# define PHILO_MIN	0
+# define PHILO_MIN	1
 # define PHILO_MAX	200
 # define NUM_PHILO	5
 # define TIME_MIN	0

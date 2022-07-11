@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 14:03:54 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/07 18:28:55 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/11 11:26:46 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,21 @@
 
 int	print_parsing_error(int nb)
 {
-	if (nb == 1)
-		printf("Error: wrong number of arguments: [number_of_philosophers] " \
-				"[time_to_die] [time_to_eat] [time_to_sleep] " \
-				"[number_of_times_each_philosopher_must_eat (optional)]\n");
-	if (nb == 2)
-		printf("Error: empty argument\n");
-	if (nb == 3)
-		printf("Error: wrong number: put sign before number\n");
-	if (nb == 4)
-		printf("Error: wrong number: use digits only\n");
-	if (nb == 5)
-		printf("Error: wrong number_of_philosophers: " \
-				"must be between 0 and 200\n");
-	if (nb == 6)
-		printf("Error: wrong time_to_die/eat/sleep: " \
-				"must be between 0 and 2520000 ms\n");
-	if (nb == 7)
-		printf("Error: wrong number_of_times_each_philosopher_must_eat: " \
-				"must be between 0 and 200\n");
-	if (nb == 8)
-		printf("");
+	static const char *const	error_messages[] = {
+		NULL,
+		"wrong number of arguments: [number_of_philosophers] " \
+			"[time_to_die] [time_to_eat] [time_to_sleep] " \
+			"[number_of_times_each_philosopher_must_eat (optional)]",
+		"empty argument",
+		"wrong number: put sign before number",
+		"wrong number: use digits only",
+		"wrong number_of_philosophers: must be between 1 and 200",
+		"wrong time_to_die/eat/sleep: must be between 0 and 2520000 ms",
+		"wrong number_of_times_each_philosopher_must_eat: " \
+			"ust be between 0 and 200",
+	};
+
+	printf("Error: %s\n", error_messages[nb]);
 	return (1);
 }
 
