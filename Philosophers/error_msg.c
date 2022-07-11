@@ -25,7 +25,7 @@ int	print_parsing_error(int nb)
 		"wrong number_of_philosophers: must be between 1 and 200",
 		"wrong time_to_die/eat/sleep: must be between 0 and 2520000 ms",
 		"wrong number_of_times_each_philosopher_must_eat: " \
-			"ust be between 0 and 200",
+			"must be between 0 and 200",
 	};
 
 	printf("Error: %s\n", error_messages[nb]);
