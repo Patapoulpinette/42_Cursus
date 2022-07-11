@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 14:03:54 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/11 11:26:46 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/11 16:15:56 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ int	print_parsing_error(int nb)
 		"wrong number: put sign before number",
 		"wrong number: use digits only",
 		"wrong number_of_philosophers: must be between 1 and 200",
-		"wrong time_to_die/eat/sleep: must be between 0 and 2520000 ms",
+		"wrong time_to_die: must be between 0 and 2520000 ms",
+		"wrong time_to_eat: must be between 0 and 2520000 ms",
+		"wrong time_to_sleep: must be between 0 and 2520000 ms",
 		"wrong number_of_times_each_philosopher_must_eat: " \
 			"must be between 0 and 200",
 	};

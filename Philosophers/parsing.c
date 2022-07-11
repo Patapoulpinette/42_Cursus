@@ -6,13 +6,13 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:48:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/07 18:41:54 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/11 16:37:25 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	parsing(int argc, char **argv)
+int	parsing(int argc, char **argv, t_param *param)
 {
 	int	j;
 
@@ -25,6 +25,7 @@ int	parsing(int argc, char **argv)
 				return (EXIT_FAILURE);
 			j++;
 		}
+		save_params(argv, param);
 	}
 	else
 		return (print_parsing_error(1));
@@ -64,11 +65,11 @@ int	check_limits(int arg_nb, char *str)
 	if ((arg_nb >= 2 && arg_nb <= 4) && \
 		(ft_atoi(str) < TIME_MIN || ft_atoi(str) > TIME_MAX || \
 		ft_strlen(str) > 8))
-		return (print_parsing_error(6));
+		return (print_parsing_error(arg_nb + 4));
 	if (arg_nb == 5 && \
 		(ft_atoi(str) < MEAL_MIN || ft_atoi(str) > MEAL_MAX || \
 		ft_strlen(str) > 4))
-		return (print_parsing_error(7));
+		return (print_parsing_error(9));
 	return (0);
 }
 
@@ -91,4 +92,14 @@ void	check_0_before_nb(char *str)
 			str[k++] = str[i++];
 		str[k] = '\0';
 	}
+}
+
+void	save_params(char **argv, t_param *param)
+{
+	param->philo_nbr = ft_atoi(argv[1]);
+	param->t_die = ft_atoi(argv[2]);
+	param->t_eat = ft_atoi(argv[3]);
+	param->t_sleep = ft_atoi(argv[4]);
+	if (argv[5])
+		param->eat_num = ft_atoi(argv[5]);
 }

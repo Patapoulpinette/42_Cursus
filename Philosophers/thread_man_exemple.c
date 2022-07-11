@@ -27,8 +27,7 @@ static void	*thread_start(void *arg)
 	struct thread_info	*tinfo = arg;
 	char				*uargv;
 
-	printf("Thread %d: top of stack near %p; argv_string=%s\n",
-		tinfo->thread_num, (void *) &tinfo, tinfo->argv_string);
+	printf("Thread %d: top of stack near %p; argv_string=%s\n", tinfo->thread_num, (void *) &tinfo, tinfo->argv_string);
 	uargv = strdup(tinfo->argv_string);
 	if (uargv == NULL)
 		handle_error("strdup");
@@ -39,67 +38,32 @@ static void	*thread_start(void *arg)
 
 int	main(int argc, char *argv[])
 {
-	int s, opt, num_threads;
-	pthread_attr_t attr;
-	ssize_t stack_size;
+	int s, num_threads;
 	void *res;
-
-	/* The "-s" option specifies a stack size for our threads. */
-	stack_size = -1;
-	while ((opt = getopt(argc, argv, "s:")) != -1) {
-		switch (opt) {
-			case 's':
-				stack_size = strtoul(optarg, NULL, 0);
-				break;
-			default:
-				fprintf(stderr, "Usage: %s [-s stack-size] arg...\n",
-					argv[0]);
-				exit(EXIT_FAILURE);
-		}
-	}
-	num_threads = argc - optind;
-
-	/* Initialize thread creation attributes. */
-	s = pthread_attr_init(&attr);
-	if (s != 0)
-		handle_error_en(s, "pthread_attr_init");
-	if (stack_size > 0) {
-		s = pthread_attr_setstacksize(&attr, stack_size);
-		if (s != 0)
-			handle_error_en(s, "pthread_attr_setstacksize");
-	}
+	struct thread_info	*tinfo;
 
 	/* Allocate memory for pthread_create() arguments. */
-	struct thread_info *tinfo = calloc(num_threads, sizeof(*tinfo));
+	tinfo = calloc(num_threads, sizeof(*tinfo));
 	if (tinfo == NULL)
 		handle_error("calloc");
 
 	/* Create one thread for each command-line argument. */
-	for (int tnum = 0; tnum < num_threads; tnum++) {
+	for (int tnum = 0; tnum < num_threads; tnum++)
+	{
 		tinfo[tnum].thread_num = tnum + 1;
 		tinfo[tnum].argv_string = argv[optind + tnum];
-
-		/* The pthread_create() call stores the thread ID into
-		   corresponding element of tinfo[]. */
-		s = pthread_create(&tinfo[tnum].thread_id, &attr,
-			&thread_start, &tinfo[tnum]);
+		s = pthread_create(&tinfo[tnum].thread_id, NULL, &thread_start, &tinfo[tnum]); /* The pthread_create() call stores the thread ID into corresponding element of tinfo[]. */
 		if (s != 0)
 			handle_error_en(s, "pthread_create");
 	}
 
-	/* Destroy the thread attributes object, since it is no
-	   longer needed. */
-	s = pthread_attr_destroy(&attr);
-	if (s != 0)
-		handle_error_en(s, "pthread_attr_destroy");
-
 	/* Now join with each thread, and display its returned value. */
-	for (int tnum = 0; tnum < num_threads; tnum++) {
+	for (int tnum = 0; tnum < num_threads; tnum++)
+	{
 		s = pthread_join(tinfo[tnum].thread_id, &res);
 		if (s != 0)
 			handle_error_en(s, "pthread_join");
-		printf("Joined with thread %d; returned value was %s\n",
-			tinfo[tnum].thread_num, (char *) res);
+		printf("Joined with thread %d; returned value was %s\n", tinfo[tnum].thread_num, (char *) res);
 		free(res);	/* Free memory allocated by thread */
 	}
 	free(tinfo);

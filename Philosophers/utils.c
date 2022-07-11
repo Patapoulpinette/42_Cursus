@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 11:00:58 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/07 14:49:46 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/11 17:16:03 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,15 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return (result * neg);
+}
+
+void	*ft_calloc(size_t count, size_t type_size)
+{
+	void	*result;
+
+	result = malloc(count * type_size);
+	if (!result)
+		return (NULL);
+	memset(result, 0, count * type_size);
+	return (result);
 }
