@@ -49,11 +49,11 @@ int		check_limits(int arg_nb, char *str);
 void	check_0_before_nb(char *str);
 void	save_params(char **argv, t_param *param);
 
-//Execution
+//Execution---------------------------------------------------------------------
 int		execution(t_param *param, t_thread_info *philos_group);
 void	*philos_routine(void *philos);
 
-//Ending
+//Ending------------------------------------------------------------------------
 int		ending(t_param *param, t_thread_info *philos_group);
 
 //Error messages---------------------------------------------------------------

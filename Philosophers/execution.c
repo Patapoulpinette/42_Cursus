@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 09:43:39 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/18 11:28:56 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/18 18:40:07 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,24 @@ int	execution(t_param *param, t_thread_info *philos_group)
 	}
 	return (0);
 }
+
+/**
+ * @param philos
+ *	- Il faut que la fourchette soit disponible (géré par le mutex je crois)
+ *	  et que le philo ait moins de 2 fourchettes
+ *		◦ timestamp_in_ms X has taken a fork
+ *	- Il faut que le philo ait 2 fourchettes
+ *		◦ timestamp_in_ms X is eating
+ *	- Il faut que le philosophe vienne de manger —> philo_status
+ *	  (has taken a fork [1], has taken 2 forks [2], has eaten [3],
+ *	  has slept [4], has thank [5], has died [6])
+ *		◦ timestamp_in_ms X is sleeping
+ *	- En attendant d’avoir 2 fourchettes après avoir dormi
+ *		◦ timestamp_in_ms X is thinking
+ *	- Si le philosophe n’a pas réussi à prendre 2 fourchettes dans les temps
+ *	  <time_to_die>
+ *		◦ timestamp_in_ms X died
+ */
 
 void	*philos_routine(void *philos)
 {
