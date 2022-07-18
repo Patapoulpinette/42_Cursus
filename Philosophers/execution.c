@@ -6,20 +6,11 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 09:43:39 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/18 09:59:53 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/18 11:28:56 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-void	*philos_routine(void *philos)
-{
-	t_thread_info	*philo;
-
-	philo = philos;
-	printf("thread #%d created\n", philo->philo_num);
-	return (NULL);
-}
 
 int	execution(t_param *param, t_thread_info *philos_group)
 {
@@ -38,6 +29,15 @@ int	execution(t_param *param, t_thread_info *philos_group)
 	return (0);
 }
 
+void	*philos_routine(void *philos)
+{
+	t_thread_info	*philo;
+
+	philo = philos;
+	printf("thread #%d created\n", philo->philo_num);
+	return (NULL);
+}
+
 int	ending(t_param *param, t_thread_info *philos_group)
 {
 	int	thread_num;
@@ -46,12 +46,12 @@ int	ending(t_param *param, t_thread_info *philos_group)
 	thread_num = 0;
 	while (thread_num < param->philo_nbr)
 	{
-		//id = pthread_join(philos_group[thread_num].thread_id, NULL);
-		id = pthread_detach(philos_group[thread_num].thread_id);
+		id = pthread_join(philos_group[thread_num].thread_id, NULL);
+		//id = pthread_detach(philos_group[thread_num].thread_id); //marche pas tout le temps et je sais pas pourquoi
 		if (id)
 			return (EXIT_FAILURE);
-		//printf("thread #%d joined\n", philos_group[thread_num].philo_num);
-		printf("thread #%d detached\n", philos_group[thread_num].philo_num);
+		printf("thread #%d joined\n", philos_group[thread_num].philo_num);
+		//printf("thread #%d detached\n", philos_group[thread_num].philo_num);
 		thread_num++;
 	}
 	free(philos_group);

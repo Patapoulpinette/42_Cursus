@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 10:15:59 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/18 09:58:26 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/18 10:27:54 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <sys/time.h>
 
 # define PHILO_MIN	1
 # define PHILO_MAX	200
@@ -49,10 +50,11 @@ void	check_0_before_nb(char *str);
 void	save_params(char **argv, t_param *param);
 
 //Execution
-int execution(t_param *param, t_thread_info *philos_group);
+int		execution(t_param *param, t_thread_info *philos_group);
+void	*philos_routine(void *philos);
 
 //Ending
-int ending(t_param *param, t_thread_info *philos_group);
+int		ending(t_param *param, t_thread_info *philos_group);
 
 //Error messages---------------------------------------------------------------
 int		print_parsing_error(int nb);
