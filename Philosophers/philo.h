@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 10:15:59 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/11 17:12:48 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/18 09:58:26 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@ int		check_digits(char *str);
 int		check_limits(int arg_nb, char *str);
 void	check_0_before_nb(char *str);
 void	save_params(char **argv, t_param *param);
+
+//Execution
+int execution(t_param *param, t_thread_info *philos_group);
+
+//Ending
+int ending(t_param *param, t_thread_info *philos_group);
 
 //Error messages---------------------------------------------------------------
 int		print_parsing_error(int nb);
