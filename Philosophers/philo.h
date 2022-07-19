@@ -64,6 +64,13 @@ void	save_params(char **argv, t_param *param);
 int		execution(t_param *param, t_thread_info *philos);
 void	*philos_routine(void *philo_thread);
 
+//Actions
+void	ft_take_fork(t_thread_info *philo);
+void	ft_eat(t_thread_info *philo);
+void	ft_sleep(t_thread_info *philo);
+void	ft_think(t_thread_info *philo);
+void	ft_die(t_thread_info *philo);
+
 //Ending------------------------------------------------------------------------
 int		ending(t_param *param, t_thread_info *philos_group);
 
