@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 10:15:59 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/19 11:08:00 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/19 17:51:48 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ typedef struct s_param
 
 typedef struct s_thread_info
 {
-	pthread_t	thread_id;
-	int			philo_num;
-	short		philo_status;
-	time_t		t_last_meal;
-	int			fork;
-	t_param		param;
+	pthread_t		thread_id;
+	int				philo_num;
+	short			philo_status;
+	time_t			t_last_meal;
+	pthread_mutex_t	fork;
+	t_param			param;
 }				t_thread_info;
 
 //Parsing----------------------------------------------------------------------
@@ -63,6 +63,7 @@ void	save_params(char **argv, t_param *param);
 //Execution---------------------------------------------------------------------
 int		execution(t_param *param, t_thread_info *philos);
 void	*philos_routine(void *philo_thread);
+time_t	diff_time(struct timeval *time, time_t t_last_meal);
 
 //Actions
 void	ft_take_fork(t_thread_info *philo);

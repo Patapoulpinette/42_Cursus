@@ -6,11 +6,20 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 09:43:39 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/19 14:39:49 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/19 18:17:29 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+/**
+ * Piste : envoyer les infos de tous les philos aux threads créés
+ * mais : comment je fais la distinction entre les threads du coup ?
+ * (quel thread correspond à quel philo ?)
+ * @param param
+ * @param philos
+ * @return
+ */
 
 int	execution(t_param *param, t_thread_info *philos)
 {
@@ -21,7 +30,7 @@ int	execution(t_param *param, t_thread_info *philos)
 	while (thread_num < param->philo_nbr)
 	{
 		philos[thread_num].philo_num = thread_num + 1;
-		philos[thread_num].fork = thread_num + 1;
+		//philos[thread_num].fork = thread_num + 1;
 		philos->philo_status = THINKING;
 		id = pthread_create(&philos[thread_num].thread_id, NULL, &philos_routine, &philos[thread_num]);
 		if (id)
@@ -53,6 +62,11 @@ void	*philos_routine(void *philo_thread)
 			ft_die(philo);
 	}
 	return (NULL);
+}
+
+time_t	diff_time(struct timeval *time, time_t t_last_meal)
+{
+	return ((time->tv_sec + 1000000 * time->tv_usec) - t_last_meal);
 }
 
 int	ending(t_param *param, t_thread_info *philos_group)
