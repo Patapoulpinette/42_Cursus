@@ -15,14 +15,14 @@
 int	main(int argc, char **argv)
 {
 	t_param			param;
-	t_thread_info	*philos_group;
+	t_thread_info	*philos;
 
 	if (parsing(argc, argv, &param))
 		return (EXIT_FAILURE);
-	philos_group = ft_calloc(param.philo_nbr, sizeof(*philos_group));
-	if (!philos_group)
+	philos = ft_calloc(param.philo_nbr, sizeof(*philos));
+	if (!philos)
 		return (EXIT_FAILURE);
-	execution(&param, philos_group);
-	ending(&param, philos_group);
+	execution(&param, philos);
+	ending(&param, philos);
 	return (0);
 }

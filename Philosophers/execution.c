@@ -6,20 +6,18 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 09:43:39 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/19 18:17:29 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/21 11:46:36 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-/**
- * Piste : envoyer les infos de tous les philos aux threads créés
- * mais : comment je fais la distinction entre les threads du coup ?
- * (quel thread correspond à quel philo ?)
- * @param param
- * @param philos
- * @return
- */
+void	initialization(t_thread_info *philos, int thread_num)
+{
+	philos->philo_num = thread_num + 1;
+	//philos[thread_num].fork = thread_num + 1;
+	philos->philo_status = THINKING;
+}
 
 int	execution(t_param *param, t_thread_info *philos)
 {
@@ -29,10 +27,9 @@ int	execution(t_param *param, t_thread_info *philos)
 	thread_num = 0;
 	while (thread_num < param->philo_nbr)
 	{
-		philos[thread_num].philo_num = thread_num + 1;
-		//philos[thread_num].fork = thread_num + 1;
-		philos->philo_status = THINKING;
-		id = pthread_create(&philos[thread_num].thread_id, NULL, &philos_routine, &philos[thread_num]);
+		initialization(&philos[thread_num], thread_num);
+		id = pthread_create(&philos[thread_num].thread_id, NULL, \
+			&philos_routine, &philos[thread_num]);
 		if (id)
 			return (EXIT_FAILURE);
 		thread_num++;

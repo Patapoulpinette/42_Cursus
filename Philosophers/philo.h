@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 10:15:59 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/19 17:51:48 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/21 11:32:47 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,9 @@ typedef struct s_thread_info
 	int				philo_num;
 	short			philo_status;
 	time_t			t_last_meal;
-	pthread_mutex_t	fork;
-	t_param			param;
+	pthread_mutex_t	left_fork;
+	pthread_mutex_t	*right_fork;
+	t_param			*param;
 }				t_thread_info;
 
 //Parsing----------------------------------------------------------------------
