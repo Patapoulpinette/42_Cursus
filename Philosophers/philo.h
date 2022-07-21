@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 10:15:59 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/21 11:32:47 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/21 16:20:59 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # define MEAL_MIN	0
 # define MEAL_MAX	200
 
-# define HAS_FORK	1
 # define HAS_FORKS	2
 # define HAS_EATEN	3
 # define HAS_SLEPT	4
@@ -62,11 +61,11 @@ void	check_0_before_nb(char *str);
 void	save_params(char **argv, t_param *param);
 
 //Execution---------------------------------------------------------------------
+void	initialization(t_thread_info *philos, int thread_num, t_param *param);
 int		execution(t_param *param, t_thread_info *philos);
 void	*philos_routine(void *philo_thread);
-time_t	diff_time(struct timeval *time, time_t t_last_meal);
 
-//Actions
+//Actions-----------------------------------------------------------------------
 void	ft_take_fork(t_thread_info *philo);
 void	ft_eat(t_thread_info *philo);
 void	ft_sleep(t_thread_info *philo);
@@ -84,5 +83,8 @@ int		ft_isdigit(int c);
 int		ft_strlen(const char *str);
 int		ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t type_size);
+
+//Time--------------------------------------------------------------------------
+time_t	get_time(void);
 
 #endif

@@ -6,17 +6,22 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 09:43:39 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/21 11:46:36 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/21 16:33:10 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	initialization(t_thread_info *philos, int thread_num)
+void	initialization(t_thread_info *philos, int thread_num, t_param *param)
 {
-	philos->philo_num = thread_num + 1;
-	//philos[thread_num].fork = thread_num + 1;
-	philos->philo_status = THINKING;
+	philos[thread_num].philo_num = thread_num + 1;
+	philos[thread_num].philo_status = THINKING;
+	philos[thread_num].t_last_meal = get_time();
+	if (thread_num > 0)
+		philos[thread_num].right_fork = &philos[thread_num - 1].left_fork;
+	else
+		philos[thread_num].right_fork = &philos[param->philo_nbr - 1].left_fork;
+	philos[thread_num].param = param;
 }
 
 int	execution(t_param *param, t_thread_info *philos)
@@ -27,7 +32,7 @@ int	execution(t_param *param, t_thread_info *philos)
 	thread_num = 0;
 	while (thread_num < param->philo_nbr)
 	{
-		initialization(&philos[thread_num], thread_num);
+		initialization(philos, thread_num, param);
 		id = pthread_create(&philos[thread_num].thread_id, NULL, \
 			&philos_routine, &philos[thread_num]);
 		if (id)
@@ -40,30 +45,23 @@ int	execution(t_param *param, t_thread_info *philos)
 void	*philos_routine(void *philo_thread)
 {
 	t_thread_info	*philo;
-	struct timeval	time;
 
 	philo = philo_thread;
-	printf("thread #%d created\n", philo->philo_num);
+	printf("thread philo #%d created\n", philo->philo_num);
 	while (philo->philo_status != HAS_DIED)
 	{
 		if (philo->philo_status == THINKING)
 			ft_take_fork(philo);
 		if (philo->philo_status == HAS_FORKS)
-			ft_eat(philo);//ne pas oublier de faire gettimeofday pour t_last_meal
+			ft_eat(philo);
 		if (philo->philo_status == HAS_EATEN)
 			ft_sleep(philo);
 		if (philo->philo_status == HAS_SLEPT)
 			ft_think(philo);
-		gettimeofday(&time, NULL);
-		if (diff_time(&time, philo->t_last_meal) > philo->param.t_die)
+		if ((get_time() - philo->t_last_meal) > philo->param->t_die)
 			ft_die(philo);
 	}
 	return (NULL);
-}
-
-time_t	diff_time(struct timeval *time, time_t t_last_meal)
-{
-	return ((time->tv_sec + 1000000 * time->tv_usec) - t_last_meal);
 }
 
 int	ending(t_param *param, t_thread_info *philos_group)
