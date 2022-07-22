@@ -61,7 +61,7 @@ void	check_0_before_nb(char *str);
 void	save_params(char **argv, t_param *param);
 
 //Execution---------------------------------------------------------------------
-void	initialization(t_thread_info *philos, int thread_num, t_param *param);
+int		initialization(t_thread_info *philos, int thread_num, t_param *param);
 int		execution(t_param *param, t_thread_info *philos);
 void	*philos_routine(void *philo_thread);
 

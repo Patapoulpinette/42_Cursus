@@ -6,14 +6,17 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 09:43:39 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/21 16:33:10 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/22 12:48:45 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	initialization(t_thread_info *philos, int thread_num, t_param *param)
+int	initialization(t_thread_info *philos, int thread_num, t_param *param)
 {
+	int	init_l;
+	int	init_r;
+
 	philos[thread_num].philo_num = thread_num + 1;
 	philos[thread_num].philo_status = THINKING;
 	philos[thread_num].t_last_meal = get_time();
@@ -22,6 +25,11 @@ void	initialization(t_thread_info *philos, int thread_num, t_param *param)
 	else
 		philos[thread_num].right_fork = &philos[param->philo_nbr - 1].left_fork;
 	philos[thread_num].param = param;
+	init_l = pthread_mutex_init(&philos[thread_num].left_fork, NULL);
+	init_r = pthread_mutex_init(philos[thread_num].right_fork, NULL);
+	if (init_l || init_r)
+		return (EXIT_FAILURE);
+	return (0);
 }
 
 int	execution(t_param *param, t_thread_info *philos)
@@ -68,16 +76,20 @@ int	ending(t_param *param, t_thread_info *philos_group)
 {
 	int	thread_num;
 	int	id;
+	int	dest_l;
+	int	dest_r;
 
 	thread_num = 0;
 	while (thread_num < param->philo_nbr)
 	{
 		id = pthread_join(philos_group[thread_num].thread_id, NULL);
-		//id = pthread_detach(philos_group[thread_num].thread_id); //n'attend pas forcément que les thread soient terminés
 		if (id)
 			return (EXIT_FAILURE);
 		printf("thread #%d joined\n", philos_group[thread_num].philo_num);
-		//printf("thread #%d detached\n", philos_group[thread_num].philo_num);
+		dest_l = pthread_mutex_destroy(&philos_group[thread_num].left_fork);
+		dest_r = pthread_mutex_destroy(philos_group[thread_num].right_fork);
+		if (dest_l || dest_r)
+			return (EXIT_FAILURE);
 		thread_num++;
 	}
 	free(philos_group);
