@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 09:43:39 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/22 12:48:45 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/22 16:34:26 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	execution(t_param *param, t_thread_info *philos)
 	int	id;
 
 	thread_num = 0;
+	param->start_time = get_time();
 	while (thread_num < param->philo_nbr)
 	{
 		initialization(philos, thread_num, param);

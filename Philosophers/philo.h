@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 10:15:59 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/21 16:20:59 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/22 16:26:01 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_param
 	time_t		t_eat;
 	time_t		t_sleep;
 	int			eat_num;
+	time_t		start_time;
 }				t_param;
 
 typedef struct s_thread_info
