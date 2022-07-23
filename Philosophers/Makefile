@@ -18,7 +18,7 @@ NAME = philo
 
 HEADFILE = philo.h
 
-SRCS = main.c parsing.c execution.c actions.c utils.c time.c error_msg.c
+SRCS = main.c parsing.c execution.c actions.c utils.c time.c messages.c
 
 # **************************************************************************** #
 #                                    COLORS                                    #

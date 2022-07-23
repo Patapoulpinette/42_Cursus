@@ -34,4 +34,19 @@ int	print_parsing_error(int nb)
 	return (1);
 }
 
-//print_exec_error
+void	print_action(t_thread_info *philo, int action)
+{
+	pthread_mutex_lock(&philo->param->display);
+	printf("%ld %d ", get_time() - philo->param->start_time, philo->philo_num);
+	if (action == HAS_FORK)
+		printf("has taken a fork\n");
+	else if (action == HAS_EATEN)
+		printf("is eating\n");
+	else if (action == HAS_SLEPT)
+		printf("is sleeping\n");
+	else if (action == THINKING)
+		printf("is thinking\n");
+	else if (action == HAS_DIED)
+		printf("died\n");
+	pthread_mutex_unlock(&philo->param->display);
+}

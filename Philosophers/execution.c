@@ -56,7 +56,7 @@ void	*philos_routine(void *philo_thread)
 	t_thread_info	*philo;
 
 	philo = philo_thread;
-	printf("thread philo #%d created\n", philo->philo_num);
+	//printf("thread philo #%d created\n", philo->philo_num);
 	while (philo->philo_status != HAS_DIED)
 	{
 		if (philo->philo_status == THINKING)
@@ -86,7 +86,7 @@ int	ending(t_param *param, t_thread_info *philos_group)
 		id = pthread_join(philos_group[thread_num].thread_id, NULL);
 		if (id)
 			return (EXIT_FAILURE);
-		printf("thread #%d joined\n", philos_group[thread_num].philo_num);
+		//printf("thread #%d joined\n", philos_group[thread_num].philo_num);
 		dest_l = pthread_mutex_destroy(&philos_group[thread_num].left_fork);
 		dest_r = pthread_mutex_destroy(philos_group[thread_num].right_fork);
 		if (dest_l || dest_r)
