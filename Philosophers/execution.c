@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 09:43:39 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/23 18:20:01 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/23 19:19:45 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,11 @@ void	*philos_routine(void *philo_thread)
 	t_thread_info	*philo;
 
 	philo = philo_thread;
+	if (philo->philo_num % 2 != 0)
+	{
+		philo->philo_status = HAS_SLEPT;
+		usleep(100);
+	}
 	//printf("thread philo #%d created\n", philo->philo_num);
 	while (philo->philo_status != HAS_DIED)
 	{
@@ -79,6 +84,7 @@ int	ending(t_param *param, t_thread_info *philos_group)
 	int	id;
 	int	dest_l;
 	int	dest_r;
+	int	dest_d;
 
 	thread_num = 0;
 	while (thread_num < param->philo_nbr)
@@ -93,6 +99,9 @@ int	ending(t_param *param, t_thread_info *philos_group)
 			return (EXIT_FAILURE);
 		thread_num++;
 	}
+	dest_d = pthread_mutex_destroy(&param->display);
+	if (dest_d)
+		return (EXIT_FAILURE);
 	free(philos_group);
 	return (0);
 }

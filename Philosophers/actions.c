@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 11:37:34 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/23 18:22:16 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/23 18:48:12 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_take_fork(t_thread_info *philo)
 	print_action(philo, HAS_FORK);
 	if (philo->param->philo_nbr == 1)
 	{
-		usleep(philo->param->t_die * 1000);
+		ft_usleep(philo->param->t_die);
 		ft_die(philo);
 		return ;
 	}
@@ -31,7 +31,7 @@ void	ft_eat(t_thread_info *philo)
 {
 	philo->t_last_meal = get_time();
 	print_action(philo, HAS_EATEN);
-	usleep(philo->param->t_eat * 1000);
+	ft_usleep(philo->param->t_eat);
 	philo->philo_status = HAS_EATEN;
 	pthread_mutex_unlock(&philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
@@ -40,7 +40,7 @@ void	ft_eat(t_thread_info *philo)
 void	ft_sleep(t_thread_info *philo)
 {
 	print_action(philo, HAS_SLEPT);
-	usleep(philo->param->t_sleep * 1000);
+	ft_usleep(philo->param->t_sleep);
 	philo->philo_status = HAS_SLEPT;
 }
 

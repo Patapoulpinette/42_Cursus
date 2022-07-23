@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 10:15:59 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/23 17:30:32 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/23 18:48:12 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,6 @@ void	*ft_calloc(size_t count, size_t type_size);
 
 //Time--------------------------------------------------------------------------
 time_t	get_time(void);
+void	ft_usleep(time_t time);
 
 #endif
