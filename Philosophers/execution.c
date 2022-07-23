@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 09:43:39 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/22 16:34:26 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/23 18:20:01 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,16 @@ void	*philos_routine(void *philo_thread)
 	//printf("thread philo #%d created\n", philo->philo_num);
 	while (philo->philo_status != HAS_DIED)
 	{
-		if (philo->philo_status == THINKING)
-			ft_take_fork(philo);
-		if (philo->philo_status == HAS_FORKS)
-			ft_eat(philo);
-		if (philo->philo_status == HAS_EATEN)
-			ft_sleep(philo);
-		if (philo->philo_status == HAS_SLEPT)
-			ft_think(philo);
 		if ((get_time() - philo->t_last_meal) > philo->param->t_die)
 			ft_die(philo);
+		else if (philo->philo_status == THINKING)
+			ft_take_fork(philo);
+		else if (philo->philo_status == HAS_FORKS)
+			ft_eat(philo);
+		else if (philo->philo_status == HAS_EATEN)
+			ft_sleep(philo);
+		else if (philo->philo_status == HAS_SLEPT)
+			ft_think(philo);
 	}
 	return (NULL);
 }

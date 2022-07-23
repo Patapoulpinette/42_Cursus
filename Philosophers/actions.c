@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 11:37:34 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/23 17:02:25 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/23 18:22:16 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_take_fork(t_thread_info *philo)
 	print_action(philo, HAS_FORK);
 	if (philo->param->philo_nbr == 1)
 	{
+		usleep(philo->param->t_die * 1000);
 		ft_die(philo);
 		return ;
 	}
