@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 15:04:19 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/25 20:57:58 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/25 20:59:12 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ void	ft_usleep(time_t time)
 
 	start = get_time();
 	while (get_time() - start < time)
-		usleep(25);
+		usleep(100);
 }
