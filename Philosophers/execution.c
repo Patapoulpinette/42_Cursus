@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 09:43:39 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/23 19:19:45 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/25 21:01:09 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	*philos_routine(void *philo_thread)
 	if (philo->philo_num % 2 != 0)
 	{
 		philo->philo_status = HAS_SLEPT;
-		usleep(1000);
+		usleep(100);
 	}
 	//printf("thread philo #%d created\n", philo->philo_num);
 	while (philo->philo_status != HAS_DIED)
