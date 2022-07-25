@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 15:04:19 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/23 18:48:12 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/25 20:31:18 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,9 @@ time_t	get_time(void)
 
 void	ft_usleep(time_t time)
 {
-	long	t;
+	time_t	start;
 
-	t = time / 10;
-	while (t >= 0)
-	{
-		usleep(10 * 1000);
-		t--;
-	}
+	start = get_time();
+	while (get_time() - start < time)
+		usleep(10);
 }
