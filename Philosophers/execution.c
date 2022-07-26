@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 09:43:39 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/26 11:10:54 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/26 11:42:04 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ void	*philos_routine(void *philo_thread)
 		philo->philo_status = HAS_SLEPT;
 		usleep(1000);
 	}
-	//printf("thread philo #%d created\n", philo->philo_num);
 	while (philo->philo_status != HAS_DIED && philo->param->dead == 0)
 	{
-		if ((get_time() - philo->t_last_meal) > philo->param->t_die || philo->param->dead == 1)
+		if ((get_time() - philo->t_last_meal) > philo->param->t_die || \
+			philo->param->dead == 1)
 			ft_die(philo);
 		else if (philo->philo_status == THINKING && philo->param->dead == 0)
 			ft_take_fork(philo);
@@ -78,25 +78,21 @@ void	*philos_routine(void *philo_thread)
 	return (NULL);
 }
 
-int	ending(t_param *param, t_thread_info *philos_group)
+int	ending(t_param *param, t_thread_info *philos)
 {
 	int	thread_num;
 	int	id;
-	int	dest_l;
-	int	dest_r;
+	int	dest_fork;
 	int	dest_disp;
 	int	dest_death;
 
 	thread_num = 0;
 	while (thread_num < param->philo_nbr)
 	{
-		id = pthread_join(philos_group[thread_num].thread_id, NULL);
-		if (id)
-			return (EXIT_FAILURE);
-		//printf("thread #%d joined\n", philos_group[thread_num].philo_num);
-		dest_l = pthread_mutex_destroy(&philos_group[thread_num].left_fork);
-		dest_r = pthread_mutex_destroy(philos_group[thread_num].right_fork);
-		if (dest_l || dest_r)
+		id = pthread_join(philos[thread_num].thread_id, NULL);
+		dest_fork = pthread_mutex_destroy(&philos[thread_num].left_fork);
+		dest_fork += pthread_mutex_destroy(philos[thread_num].right_fork);
+		if (id || dest_fork)
 			return (EXIT_FAILURE);
 		thread_num++;
 	}
@@ -104,6 +100,6 @@ int	ending(t_param *param, t_thread_info *philos_group)
 	dest_death = pthread_mutex_destroy(&param->death);
 	if (dest_disp || dest_death)
 		return (EXIT_FAILURE);
-	free(philos_group);
+	free(philos);
 	return (0);
 }

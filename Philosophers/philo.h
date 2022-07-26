@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 10:15:59 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/26 11:01:14 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/26 11:01:33 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	ft_think(t_thread_info *philo);
 void	ft_die(t_thread_info *philo);
 
 //Ending------------------------------------------------------------------------
-int		ending(t_param *param, t_thread_info *philos_group);
+int		ending(t_param *param, t_thread_info *philos);
 
 //Messages---------------------------------------------------------------
 int		print_parsing_error(int nb);
