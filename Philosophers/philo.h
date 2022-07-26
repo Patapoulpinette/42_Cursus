@@ -22,7 +22,7 @@
 
 # define PHILO_MIN	1
 # define PHILO_MAX	200
-# define TIME_MIN	0
+# define TIME_MIN	60
 # define TIME_MAX	2520000 //42 minutes
 # define MEAL_MIN	0
 # define MEAL_MAX	200

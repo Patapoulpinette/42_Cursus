@@ -23,9 +23,9 @@ int	print_parsing_error(int nb)
 		"wrong number: put sign before number",
 		"wrong number: use digits only",
 		"wrong number_of_philosophers: must be between 1 and 200",
-		"wrong time_to_die: must be between 0 and 2520000 ms",
-		"wrong time_to_eat: must be between 0 and 2520000 ms",
-		"wrong time_to_sleep: must be between 0 and 2520000 ms",
+		"wrong time_to_die: must be between 60 and 2520000 ms",
+		"wrong time_to_eat: must be between 60 and 2520000 ms",
+		"wrong time_to_sleep: must be between 60 and 2520000 ms",
 		"wrong number_of_times_each_philosopher_must_eat: " \
 			"must be between 0 and 200",
 	};
