@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 11:37:34 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/23 18:48:12 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/26 11:06:03 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ void	ft_think(t_thread_info *philo)
 
 void	ft_die(t_thread_info *philo)
 {
+	pthread_mutex_lock(&philo->param->death);
 	print_action(philo, HAS_DIED);
 	philo->philo_status = HAS_DIED;
+	philo->param->dead = 1;
+	pthread_mutex_unlock(&philo->param->death);
 }

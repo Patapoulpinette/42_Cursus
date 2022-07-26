@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 09:43:39 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/25 21:20:20 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/26 11:10:54 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,17 @@ void	*philos_routine(void *philo_thread)
 		usleep(1000);
 	}
 	//printf("thread philo #%d created\n", philo->philo_num);
-	while (philo->philo_status != HAS_DIED)
+	while (philo->philo_status != HAS_DIED && philo->param->dead == 0)
 	{
-		if ((get_time() - philo->t_last_meal) > philo->param->t_die)
+		if ((get_time() - philo->t_last_meal) > philo->param->t_die || philo->param->dead == 1)
 			ft_die(philo);
-		else if (philo->philo_status == THINKING)
+		else if (philo->philo_status == THINKING && philo->param->dead == 0)
 			ft_take_fork(philo);
-		else if (philo->philo_status == HAS_FORKS)
+		else if (philo->philo_status == HAS_FORKS && philo->param->dead == 0)
 			ft_eat(philo);
-		else if (philo->philo_status == HAS_EATEN)
+		else if (philo->philo_status == HAS_EATEN && philo->param->dead == 0)
 			ft_sleep(philo);
-		else if (philo->philo_status == HAS_SLEPT)
+		else if (philo->philo_status == HAS_SLEPT && philo->param->dead == 0)
 			ft_think(philo);
 	}
 	return (NULL);
@@ -84,7 +84,8 @@ int	ending(t_param *param, t_thread_info *philos_group)
 	int	id;
 	int	dest_l;
 	int	dest_r;
-	int	dest_d;
+	int	dest_disp;
+	int	dest_death;
 
 	thread_num = 0;
 	while (thread_num < param->philo_nbr)
@@ -99,8 +100,9 @@ int	ending(t_param *param, t_thread_info *philos_group)
 			return (EXIT_FAILURE);
 		thread_num++;
 	}
-	dest_d = pthread_mutex_destroy(&param->display);
-	if (dest_d)
+	dest_disp = pthread_mutex_destroy(&param->display);
+	dest_death = pthread_mutex_destroy(&param->death);
+	if (dest_disp || dest_death)
 		return (EXIT_FAILURE);
 	free(philos_group);
 	return (0);
