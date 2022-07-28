@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 09:43:39 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/26 11:42:04 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/28 10:42:55 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	initialization(t_thread_info *philos, int thread_num, t_param *param)
 	philos[thread_num].philo_num = thread_num + 1;
 	philos[thread_num].philo_status = THINKING;
 	philos[thread_num].t_last_meal = get_time();
+	philos[thread_num].eat_num = 0;
 	if (thread_num > 0)
 		philos[thread_num].right_fork = &philos[thread_num - 1].left_fork;
 	else
@@ -61,7 +62,8 @@ void	*philos_routine(void *philo_thread)
 		philo->philo_status = HAS_SLEPT;
 		usleep(1000);
 	}
-	while (philo->philo_status != HAS_DIED && philo->param->dead == 0)
+	while (philo->philo_status != HAS_DIED && philo->param->dead == 0 && \
+		philo->philo_status != SATIATED)
 	{
 		if ((get_time() - philo->t_last_meal) > philo->param->t_die || \
 			philo->param->dead == 1)

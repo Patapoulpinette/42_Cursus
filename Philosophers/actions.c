@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 11:37:34 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/26 11:06:03 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/28 10:40:09 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ void	ft_eat(t_thread_info *philo)
 	print_action(philo, HAS_EATEN);
 	ft_usleep(philo->param->t_eat);
 	philo->philo_status = HAS_EATEN;
+	philo->eat_num++;
+	if (philo->eat_num == philo->param->eat_nbr)
+		philo->philo_status = SATIATED;
 	pthread_mutex_unlock(&philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
 }

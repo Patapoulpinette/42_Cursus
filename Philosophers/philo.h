@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 10:15:59 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/26 11:01:33 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/28 10:39:27 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # define HAS_SLEPT	4
 # define THINKING	5
 # define HAS_DIED	6
+# define SATIATED	7
 
 typedef struct s_param
 {
@@ -40,7 +41,7 @@ typedef struct s_param
 	time_t			t_die;
 	time_t			t_eat;
 	time_t			t_sleep;
-	int				eat_num;
+	int				eat_nbr;
 	time_t			start_time;
 	pthread_mutex_t	display;
 	int				dead;
@@ -53,6 +54,7 @@ typedef struct s_thread_info
 	int				philo_num;
 	short			philo_status;
 	time_t			t_last_meal;
+	int				eat_num;
 	pthread_mutex_t	left_fork;
 	pthread_mutex_t	*right_fork;
 	t_param			*param;

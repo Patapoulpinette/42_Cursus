@@ -105,7 +105,7 @@ void	save_params(char **argv, t_param *param)
 	param->t_sleep = ft_atoi(argv[4]);
 	param->dead = 0;
 	if (argv[5])
-		param->eat_num = ft_atoi(argv[5]);
+		param->eat_nbr = ft_atoi(argv[5]);
 	init_disp = pthread_mutex_init(&param->display, NULL);
 	init_death = pthread_mutex_init(&param->death, NULL);
 	if (init_disp || init_death)
