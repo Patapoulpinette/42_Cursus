@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 09:43:39 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/28 10:42:55 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/07/28 10:43:18 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	*philos_routine(void *philo_thread)
 		usleep(1000);
 	}
 	while (philo->philo_status != HAS_DIED && philo->param->dead == 0 && \
-		philo->philo_status != SATIATED)
+		philo->philo_status != SATIATED && philo->param->eat_nbr != 0)
 	{
 		if ((get_time() - philo->t_last_meal) > philo->param->t_die || \
 			philo->param->dead == 1)
