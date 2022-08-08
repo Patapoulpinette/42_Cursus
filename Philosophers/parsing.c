@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:48:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/26 11:02:15 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/08/08 11:09:01 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ void	save_params(char **argv, t_param *param)
 	param->dead = 0;
 	if (argv[5])
 		param->eat_nbr = ft_atoi(argv[5]);
+	else
+		param->eat_nbr = INT32_MAX;
 	init_disp = pthread_mutex_init(&param->display, NULL);
 	init_death = pthread_mutex_init(&param->death, NULL);
 	if (init_disp || init_death)
