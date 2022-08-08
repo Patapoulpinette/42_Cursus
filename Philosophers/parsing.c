@@ -110,6 +110,7 @@ void	save_params(char **argv, t_param *param)
 		param->eat_nbr = INT32_MAX;
 	init_disp = pthread_mutex_init(&param->display, NULL);
 	init_death = pthread_mutex_init(&param->death, NULL);
+	init_death += pthread_mutex_init(&param->die, NULL);
 	if (init_disp || init_death)
 		return ;
 }

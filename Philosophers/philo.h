@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 10:15:59 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/28 10:39:27 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/08/08 17:24:00 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_param
 	pthread_mutex_t	display;
 	int				dead;
 	pthread_mutex_t	death;
+	pthread_mutex_t	die;
 }				t_param;
 
 typedef struct s_thread_info
@@ -71,6 +72,7 @@ void	save_params(char **argv, t_param *param);
 int		initialization(t_thread_info *philos, int thread_num, t_param *param);
 int		execution(t_param *param, t_thread_info *philos);
 void	*philos_routine(void *philo_thread);
+void	check_death(t_param *param, t_thread_info *philos);
 
 //Actions-----------------------------------------------------------------------
 void	ft_take_fork(t_thread_info *philo);

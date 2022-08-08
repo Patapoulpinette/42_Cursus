@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 11:37:34 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/28 10:40:09 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/08/08 17:41:04 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_take_fork(t_thread_info *philo)
 
 void	ft_eat(t_thread_info *philo)
 {
-	philo->t_last_meal = get_time();
+	philo->t_last_meal = get_time();//apparently need mutex here
 	print_action(philo, HAS_EATEN);
 	ft_usleep(philo->param->t_eat);
 	philo->philo_status = HAS_EATEN;
@@ -55,9 +55,9 @@ void	ft_think(t_thread_info *philo)
 
 void	ft_die(t_thread_info *philo)
 {
-	pthread_mutex_lock(&philo->param->death);
+	pthread_mutex_lock(&philo->param->die);
 	print_action(philo, HAS_DIED);
 	philo->philo_status = HAS_DIED;
 	philo->param->dead = 1;
-	pthread_mutex_unlock(&philo->param->death);
+	pthread_mutex_unlock(&philo->param->die);
 }
