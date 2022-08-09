@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 
 	if (parsing(argc, argv, &param))
 		return (EXIT_FAILURE);
-	philos = ft_calloc(param.philo_nbr, sizeof(*philos));
+	philos = ft_calloc(param.philo_nbr, sizeof(t_thread_info));
 	if (!philos)
 		return (EXIT_FAILURE);
 	execution(&param, philos);

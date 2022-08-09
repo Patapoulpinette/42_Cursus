@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 09:43:39 by dbouron           #+#    #+#             */
-/*   Updated: 2022/08/08 17:29:18 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/08/09 11:53:14 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,26 +107,18 @@ void	check_death(t_param *param, t_thread_info *philos)
 int	ending(t_param *param, t_thread_info *philos)
 {
 	int	thread_num;
-	int	id;
-	int	dest_fork;
-	int	dest_disp;
-	int	dest_death;
 
 	thread_num = 0;
 	while (thread_num < param->philo_nbr)
 	{
-		id = pthread_join(philos[thread_num].thread_id, NULL);
-		dest_fork = pthread_mutex_destroy(&philos[thread_num].left_fork);
-		dest_fork += pthread_mutex_destroy(philos[thread_num].right_fork);
-		if (id || dest_fork)
-			return (EXIT_FAILURE);
+		pthread_join(philos[thread_num].thread_id, NULL);
+		pthread_mutex_destroy(&philos[thread_num].left_fork);
+		pthread_mutex_destroy(philos[thread_num].right_fork);
 		thread_num++;
 	}
-	dest_disp = pthread_mutex_destroy(&param->display);
-	dest_death = pthread_mutex_destroy(&param->death);
-	dest_death += pthread_mutex_destroy(&param->die);
-	if (dest_disp || dest_death)
-		return (EXIT_FAILURE);
+	pthread_mutex_destroy(&param->display);
+	pthread_mutex_destroy(&param->death);
+	pthread_mutex_destroy(&param->die);
 	free(philos);
 	return (0);
 }
