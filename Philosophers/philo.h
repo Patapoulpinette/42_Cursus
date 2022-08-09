@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 10:15:59 by dbouron           #+#    #+#             */
-/*   Updated: 2022/08/08 17:24:00 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/08/09 14:42:25 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ typedef struct s_param
 	int				eat_nbr;
 	time_t			start_time;
 	pthread_mutex_t	display;
+	pthread_mutex_t	last_meal;
 	int				dead;
-	pthread_mutex_t	death;
 	pthread_mutex_t	die;
 }				t_param;
 

@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:48:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/08/08 11:09:01 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/08/09 14:38:38 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,6 @@ void	check_0_before_nb(char *str)
 
 void	save_params(char **argv, t_param *param)
 {
-	int	init_disp;
-	int	init_death;
-
 	param->philo_nbr = ft_atoi(argv[1]);
 	param->t_die = ft_atoi(argv[2]);
 	param->t_eat = ft_atoi(argv[3]);
@@ -108,9 +105,7 @@ void	save_params(char **argv, t_param *param)
 		param->eat_nbr = ft_atoi(argv[5]);
 	else
 		param->eat_nbr = INT32_MAX;
-	init_disp = pthread_mutex_init(&param->display, NULL);
-	init_death = pthread_mutex_init(&param->death, NULL);
-	init_death += pthread_mutex_init(&param->die, NULL);
-	if (init_disp || init_death)
-		return ;
+	pthread_mutex_init(&param->display, NULL);
+	pthread_mutex_init(&param->last_meal, NULL);
+	pthread_mutex_init(&param->die, NULL);
 }

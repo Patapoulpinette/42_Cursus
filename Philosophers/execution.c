@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 09:43:39 by dbouron           #+#    #+#             */
-/*   Updated: 2022/08/09 11:53:14 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/08/09 14:42:25 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,19 +63,18 @@ void	*philos_routine(void *philo_thread)
 		philo->philo_status = HAS_SLEPT;
 		usleep(1000);
 	}
-	while (philo->philo_status != HAS_DIED && /*philo->param->dead == 0 && */\
+	while (philo->philo_status != HAS_DIED && \
 		philo->philo_status != SATIATED && philo->param->eat_nbr != 0)
 	{
-		if ((get_time() - philo->t_last_meal) > philo->param->t_die/* || \
-			philo->param->dead == 1*/)
+		if ((get_time() - philo->t_last_meal) > philo->param->t_die)
 			ft_die(philo);
-		else if (philo->philo_status == THINKING/* && philo->param->dead == 0*/)
+		else if (philo->philo_status == THINKING)
 			ft_take_fork(philo);
-		else if (philo->philo_status == HAS_FORKS/* && philo->param->dead == 0*/)
+		else if (philo->philo_status == HAS_FORKS)
 			ft_eat(philo);
-		else if (philo->philo_status == HAS_EATEN/* && philo->param->dead == 0*/)
+		else if (philo->philo_status == HAS_EATEN)
 			ft_sleep(philo);
-		else if (philo->philo_status == HAS_SLEPT/* && philo->param->dead == 0*/)
+		else if (philo->philo_status == HAS_SLEPT)
 			ft_think(philo);
 	}
 	return (NULL);
@@ -91,14 +90,14 @@ void	check_death(t_param *param, t_thread_info *philos)
 		index = 0;
 		while (index < param->philo_nbr)
 		{
-			pthread_mutex_lock(&param->death);
+			pthread_mutex_lock(&param->last_meal);
 			diff = get_time() - philos[index].t_last_meal;
+			pthread_mutex_unlock(&param->last_meal);
 			if (diff >= param->t_die)
 			{
 				ft_die(&philos[index]);
 				return ;
 			}
-			pthread_mutex_unlock(&param->death);
 			index++;
 		}
 	}
@@ -117,7 +116,7 @@ int	ending(t_param *param, t_thread_info *philos)
 		thread_num++;
 	}
 	pthread_mutex_destroy(&param->display);
-	pthread_mutex_destroy(&param->death);
+	pthread_mutex_destroy(&param->last_meal);
 	pthread_mutex_destroy(&param->die);
 	free(philos);
 	return (0);
