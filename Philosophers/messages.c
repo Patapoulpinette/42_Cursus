@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 14:03:54 by dbouron           #+#    #+#             */
-/*   Updated: 2022/08/09 18:12:10 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/08/09 18:48:20 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ void	print_action(t_thread_info *philo, int action)
 	else if (action == THINKING)
 		printf("is thinking\n");
 	else if (action == HAS_DIED)
+	{
 		printf("died\n");
+		ending(philo->param, philo);//exit works but it is forbidden
+	}
 	pthread_mutex_unlock(&philo->param->display);
 }
