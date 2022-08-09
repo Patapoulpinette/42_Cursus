@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 09:43:39 by dbouron           #+#    #+#             */
-/*   Updated: 2022/08/09 14:42:25 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/08/09 17:44:59 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,18 @@ void	*philos_routine(void *philo_thread)
 		philo->philo_status = HAS_SLEPT;
 		usleep(1000);
 	}
-	while (philo->philo_status != HAS_DIED && \
+	while (philo->philo_status != HAS_DIED && philo->param->dead == 0 && \
 		philo->philo_status != SATIATED && philo->param->eat_nbr != 0)
 	{
 		if ((get_time() - philo->t_last_meal) > philo->param->t_die)
 			ft_die(philo);
-		else if (philo->philo_status == THINKING)
+		else if (philo->philo_status == THINKING && philo->param->dead == 0)
 			ft_take_fork(philo);
-		else if (philo->philo_status == HAS_FORKS)
+		else if (philo->philo_status == HAS_FORKS && philo->param->dead == 0)
 			ft_eat(philo);
-		else if (philo->philo_status == HAS_EATEN)
+		else if (philo->philo_status == HAS_EATEN && philo->param->dead == 0)
 			ft_sleep(philo);
-		else if (philo->philo_status == HAS_SLEPT)
+		else if (philo->philo_status == HAS_SLEPT && philo->param->dead == 0)
 			ft_think(philo);
 	}
 	return (NULL);

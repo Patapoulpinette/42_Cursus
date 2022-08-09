@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 }
 
 /*TODO
- * Data race in actions.c
+ * Data race ✓
  * Thread leaks ✓
  * Norminette
  * Re do basic tests

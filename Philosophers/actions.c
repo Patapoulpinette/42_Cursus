@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 11:37:34 by dbouron           #+#    #+#             */
-/*   Updated: 2022/08/09 14:46:04 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/08/09 18:13:20 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ void	ft_think(t_thread_info *philo)
 void	ft_die(t_thread_info *philo)
 {
 	pthread_mutex_lock(&philo->param->die);
-	print_action(philo, HAS_DIED);
+	if (philo->philo_status != SATIATED)
+		print_action(philo, HAS_DIED);
 	philo->philo_status = HAS_DIED;
 	philo->param->dead = 1;
 	pthread_mutex_unlock(&philo->param->die);

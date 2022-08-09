@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 14:03:54 by dbouron           #+#    #+#             */
-/*   Updated: 2022/08/09 14:54:20 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/08/09 18:12:10 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,7 @@ int	print_parsing_error(int nb)
 
 void	print_action(t_thread_info *philo, int action)
 {
-	int	is_dead;
-
-	is_dead = philo->param->dead;
-	if (philo->philo_status == HAS_DIED || is_dead == 1)
+	if (philo->philo_status == HAS_DIED || philo->param->dead == 1)
 		return ;
 	pthread_mutex_lock(&philo->param->display);
 	printf("%ld %d ", get_time() - philo->param->start_time, philo->philo_num);
