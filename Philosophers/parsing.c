@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:48:48 by dbouron           #+#    #+#             */
-/*   Updated: 2022/08/09 14:38:38 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/08/10 14:30:12 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	save_params(char **argv, t_param *param)
 		param->eat_nbr = ft_atoi(argv[5]);
 	else
 		param->eat_nbr = INT32_MAX;
-	pthread_mutex_init(&param->display, NULL);
 	pthread_mutex_init(&param->last_meal, NULL);
+	pthread_mutex_init(&param->display, NULL);
 	pthread_mutex_init(&param->die, NULL);
 }
