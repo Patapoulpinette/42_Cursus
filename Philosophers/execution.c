@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 09:43:39 by dbouron           #+#    #+#             */
-/*   Updated: 2022/08/10 14:43:27 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/08/10 15:51:43 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	*philos_routine(void *philo_thread)
 	if (philo->philo_num % 2 != 0)
 	{
 		philo->philo_status = HAS_SLEPT;
-		usleep(1000);
+		usleep(1500);
 	}
 	while (philo->philo_status != HAS_DIED && philo->param->dead == 0 && \
 		philo->philo_status != SATIATED && philo->param->eat_nbr != 0)

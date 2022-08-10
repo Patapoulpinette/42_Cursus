@@ -26,10 +26,3 @@ int	main(int argc, char **argv)
 	ending(&param, philos);
 	return (0);
 }
-
-/*TODO
- * Data race ✓
- * Thread leaks ✓
- * Norminette
- * Re do basic tests
- */
