@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 09:43:39 by dbouron           #+#    #+#             */
-/*   Updated: 2022/08/10 15:51:43 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/08/10 22:15:04 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	initialization(t_thread_info *philos, int thread_num, t_param *param)
 	int	init_l;
 
 	philos[thread_num].philo_num = thread_num + 1;
+	philos[thread_num].philo_status = THINKING;
 	philos[thread_num].t_last_meal = get_time();
 	philos[thread_num].eat_num = 0;
 	if (thread_num > 0)
@@ -55,26 +56,27 @@ void	*philos_routine(void *philo_thread)
 	t_thread_info	*philo;
 
 	philo = philo_thread;
-	philo->philo_status = THINKING;
 	if (philo->philo_num % 2 != 0)
 	{
 		philo->philo_status = HAS_SLEPT;
 		usleep(1500);
 	}
-	while (philo->philo_status != HAS_DIED && philo->param->dead == 0 && \
-		philo->philo_status != SATIATED && philo->param->eat_nbr != 0)
+	while (get_value_protected(&philo->param->dead, &philo->param->die) == 0 && \
+		philo->param->eat_nbr != 0 && philo->philo_status != SATIATED)
 	{
 		if ((get_time() - philo->t_last_meal) > philo->param->t_die)
 			ft_die(philo);
-		else if (philo->philo_status == THINKING && philo->param->dead == 0)
+		else if (philo->philo_status == THINKING)
 			ft_take_fork(philo);
-		else if (philo->philo_status == HAS_FORKS && philo->param->dead == 0)
+		else if (philo->philo_status == HAS_FORKS)
 			ft_eat(philo);
-		else if (philo->philo_status == HAS_EATEN && philo->param->dead == 0)
+		else if (philo->philo_status == HAS_EATEN)
 			ft_sleep(philo);
-		else if (philo->philo_status == HAS_SLEPT && philo->param->dead == 0)
+		else if (philo->philo_status == HAS_SLEPT)
 			ft_think(philo);
 	}
+	pthread_mutex_unlock(&philo->left_fork);
+	pthread_mutex_unlock(philo->right_fork);
 	return (NULL);
 }
 
@@ -83,7 +85,7 @@ void	check_death(t_param *param, t_thread_info *philos)
 	int		index;
 	time_t	diff;
 
-	while (param->dead == 0)
+	while (get_value_protected(&param->dead, &param->die) == 0)
 	{
 		index = 0;
 		while (index < param->philo_nbr)
@@ -106,9 +108,10 @@ int	ending(t_param *param, t_thread_info *philos)
 	int	thread_num;
 
 	thread_num = 0;
+	(void) philos;
 	while (thread_num < param->philo_nbr)
 	{
-		pthread_detach(philos[thread_num].thread_id);
+		pthread_join(philos[thread_num].thread_id, NULL);
 		pthread_mutex_destroy(&philos[thread_num].left_fork);
 		thread_num++;
 	}

@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 10:15:59 by dbouron           #+#    #+#             */
-/*   Updated: 2022/08/10 14:15:55 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/08/10 19:39:02 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,14 @@ int		ending(t_param *param, t_thread_info *philos);
 
 //Messages---------------------------------------------------------------
 int		print_parsing_error(int nb);
-void	print_action(t_thread_info *philo, int action);
+void	print_action(t_thread_info *philo, int action, int force_write);
 
 //Utils------------------------------------------------------------------------
 int		ft_isdigit(int c);
 int		ft_strlen(const char *str);
 int		ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t type_size);
+int		get_value_protected(int *value, pthread_mutex_t *mutex);
 
 //Time--------------------------------------------------------------------------
 time_t	get_time(void);

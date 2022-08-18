@@ -6,7 +6,7 @@
 /*   By: dbouron <dbouron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 11:00:58 by dbouron           #+#    #+#             */
-/*   Updated: 2022/07/23 17:11:50 by dbouron          ###   ########.fr       */
+/*   Updated: 2022/08/10 18:50:11 by dbouron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,15 @@ void	*ft_calloc(size_t count, size_t type_size)
 	if (!result)
 		return (NULL);
 	memset(result, 0, count * type_size);
+	return (result);
+}
+
+int	get_value_protected(int *value, pthread_mutex_t *mutex)
+{
+	int	result;
+
+	pthread_mutex_lock(mutex);
+	result = *value;
+	pthread_mutex_unlock(mutex);
 	return (result);
 }
